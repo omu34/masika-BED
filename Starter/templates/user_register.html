@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>SignUp</title>
+{% endblock %}
+{% block content %}
+<div class="bg-gray-500 mx-auto w-full pt-2 pb-2">
+    
+        <div
+            class="max-w-xl mx-auto  mt-1 mb-1 md:mt-2 md:mb-2 bg-gray-300 dark:bg-gray-800 rounded-lg shadow-lg px-8 py-10  flex flex-col items-center">
+            <h1 class="text-xl font-bold text-center text-gray-700 dark:text-gray-200 mb-8 ">
+                <a href="{{ url_for('views.index') }}" class="flex items-center hidden lg:block">
+                    <img width="314" height="47"
+                        src="https://www.masikakoross.com/wp-content/uploads/2022/02/cropped-rsz_mk_letterhead_1-removebg-preview.png"
+                        class="custom-logo   pl-1 pr-1 rounded-lg transition-transform duration-500 transform ease-in-out hover:scale-110"
+                        alt="https://www.masikakoross.com/wp-content/uploads/2022/02/cropped-rsz_mk_letterhead_1-removebg-preview.png">
+                </a>
+            </h1>
+            <form method="POST" action="{{ url_for('auth.auth_register') }}" class="w-full flex flex-col  gap-4 ">
+                <div class="flex items-start flex-col justify-start">
+                    <label for="username" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Your Name:</label>
+                    <input type="text" id="username" name="username" required
+                        class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <div class="flex items-start flex-col justify-start">
+                    <label for="email" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Email:</label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+
+                <div class="flex items-start flex-col justify-start">
+                    <label for="password" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Password:</label>
+                    <input type="password" id="password" name="password" required
+                        class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+
+                <div class="flex items-start flex-col justify-start">
+                    <label for="password" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Confirm
+                        Password:</label>
+                    <input type="password" id="password" name="password" required
+                        class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+
+
+
+                <label for="is_admin" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Register as Admin:</label>
+                <input type="checkbox" id="is_admin" name="is_admin" onclick="toggleAdminCodeField()">
+
+                <!-- Admin Code input field, hidden initially -->
+                <div class="flex items-start flex-col justify-start" id="admin_code_field" style="display: none;">
+                    <label for="admin_code" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Admin Code:</label>
+                    <input type="text" id="admin_code" name="admin_code"
+                        class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm">
+                    Register
+                </button>
+                <!-- </form> -->
+
+                <div class="mt-4 text-center">
+                    <span class="text-sm text-gray-500 dark:text-gray-300">Already have an account? </span>
+                    <a href="{{ url_for('auth.auth_login') }}" class="text-blue-500 hover:text-blue-600">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script>
+
+    function toggleAdminCodeField() {
+        var adminCheckbox = document.getElementById('is_admin');
+        var adminCodeField = document.getElementById('admin_code_field');
+        if (adminCheckbox.checked) {
+            adminCodeField.style.display = 'block'; // Show the admin code field when checkbox is checked
+            document.getElementById('admin_code').required = true; // Make admin code required
+        } else {
+            adminCodeField.style.display = 'none';  // Hide the admin code field when checkbox is unchecked
+            document.getElementById('admin_code').required = false; // Remove required attribute
+        }
+    }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<!--Banner component -->
+<div class="bg-cover bg-center   h-auto text-white py-24 px-10 object-fill"
+    style="background-image: url(https://www.masikakoross.com/wp-content/uploads/2016/07/contact-top.jpg)">
+    <div class="md:w-full flex flex-col items-center justify-center md:mt-20">
+        <!-- <p class="font-bold text-sm uppercase">Services</p> -->
+        <p class="text-2xl md:text-3xl font-extrabold font-playfair-l">Legal Speak</p>
+        <p class="md:text-xl text-md mb-10 mt-4 leading-none font-poppins-b">
+            Discover our commitment to excellence and client satisfaction.
+        </p>
+        <!-- <button href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800"> -->
+
+        <!-- SVG Container -->
+        <div class="container mt-4 mx-auto max-w-7xl flex justify-center">
+            <svg fill="#000000" width="50px" height="50px" viewBox="0 0 24 24" id="down-arrow-circle"
+                data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
+                class="icon-container icon flat-color animate-bounce w-12 h-12" onclick="scrollToSection()">
+                <circle id="primary" cx="12" cy="12" r="10" style="fill: rgb(0, 0, 0);"></circle>
+                <path id="secondary"
+                    d="M14.14,13H13V7a1,1,0,0,0-2,0v6H9.86a1,1,0,0,0-.69,1.5l2.14,3.12a.82.82,0,0,0,1.38,0l2.14-3.12A1,1,0,0,0,14.14,13Z"
+                    style="fill: rgb(44, 169, 188);">
+                    Contact us
+                </path>
+
+            </svg>
+        </div>
+        <!-- </button> -->
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- legal section -->
+
+<div class="my-auto mx-auto bg-blue-950 rounded-lg">
+    <div class='py-10'>
+        <div
+            class="max-w-md mx-auto xl:max-w-5xl font-poppins-b lg:max-w-5xl md:max-w-2xl bg-gray-700 max-h-screen shadow-2xl flex-row rounded relative">
+            <div class="p-2 bg-blue-900  rounded-t-lg">
+                <h5 class="text-white text-2xl capitalize">Legal Speak</h5>
+            </div>
+            <div class="p-2 w-full h-full overflow-y-auto bg-gray-600 text-blue-100 rounded-b-lg">
+                <p class="text-justify py-2">
+                    HotSymbol is a simple and easy online tool to copy <a class="text-blue-300 hover:text-blue-400"
+                        href="https://www.hotsymbol.com/symbols" title="copy symbol">symbol</a>, text <a
+                        class="text-blue-300 hover:text-gray-400" href="https://www.hotsymbol.com/emojis"
+                        title="copy emoji">emoji</a> characters, and signs to Facebook posts, Instagram bio, blog
+                    posts, WhatsApp, Snapchat chat and comments, nicknames in games, or wherever else - these
+                    symbols work just about everywhere.
+                </p>
+                <p class="text-justify py-2">
+                    It often involves technical terms and phrases that can be challenging for non-lawyers to understand.
+                    While it may seem inaccessible to outsiders, legal speak is essential for ensuring accuracy and
+                    avoiding misunderstandings in legal documents, contracts, and court proceedings.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

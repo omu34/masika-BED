@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>auth Database</title>
+{% endblock %}
+{% block content %}
+<div class=" mt-6 mx-auto max-w-5xl">
+    <a class="-ml-0.5 text-xl  hover:bg-red-900 text-gray-50 rounded-lg m-4 bg-green-600 font-bold mb-4 px-3 py-2">
+        Messages
+    </a>
+    <div class="overflow-x-auto mt-3">
+        <table class="min-w-full bg-white border border-gray-200">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">ID</th>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">Full Name</th>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">Email</th>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">Message</th>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in list_messages %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ message.id }}</td>
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ message.name }}</td>
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ message.email }}</td>
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ message.texts }}</td>
+                    <td class="py-2 px-4 text-sm flex gap-4 flex-row">
+                        <form action="{{ url_for('auth.edit_message', id=message.id) }}" method="GET">
+                            <button type="submit" class="btn btn-primary w-1/2">Edit</button>
+                        </form>
+
+                        <form action="{{ url_for('auth.delete_message', id=message.id) }}" method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this message?');">
+                            <button type="submit"
+                                class="btn btn-danger w-1/2 text-red-600 hover:text-red-800 font-medium">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class=" mt-6 mx-auto max-w-5xl">
+    <a class="-ml-0.5 text-xl hover:bg-red-900 text-gray-50 rounded-lg m-4 bg-green-600 font-bold mb-4 px-3 py-2">
+        Users List
+    </a>
+    <div class="overflow-x-auto mt-3">
+        <table class="min-w-full bg-white border border-gray-200">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">ID</th>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">Full Name</th>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">Email</th>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">Is_Admin</th>
+                    <th class="py-2 px-4 border-b text-left text-sm font-medium text-gray-700">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users_list %}
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ user.id }}</td>
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ user.username }}</td>
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ user.email }}</td>
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ "Yes" if user.is_admin else "No" }}</td>
+                    <td class="py-2 px-4 text-sm flex gap-4 flex-row">
+                        <form action="{{ url_for('auth.edit_user', id=user.id) }}" method="GET">
+                            <button type="submit" class="btn btn-primary w-1/2">Edit</button>
+                        </form>
+
+                        <form action="{{ url_for('auth.delete_user', id=user.id) }}" method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this user?');">
+                            <button type="submit"
+                                class="btn btn-danger w-1/2 text-red-600 hover:text-red-800 font-medium">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="mt-6">
+            <a href="{{ url_for('views.home') }}">
+                <button
+                    class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    Home
+                </button>
+            </a>
+        </div>
+
+        <div class="mt-6">
+            <a href="{{ url_for('views.admin_page') }}" target="_blank">
+                <button
+                    class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    Go to Update RealTime Update of Site
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

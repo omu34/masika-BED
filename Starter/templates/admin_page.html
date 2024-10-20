@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Update Sections</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-6">
+    <div class="container mx-auto">
+        <!-- First Section: About Us and Banner Forms -->
+        <div class="grid lg:grid-cols-3 gap-6">
+            <!-- About Us Section -->
+            {% for about in about_pages %}
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h1 class="text-xl font-semibold mb-4">Update "About Us" Section</h1>
+                <form method="POST" enctype="multipart/form-data" class="space-y-4">
+                    <div>
+                        <label for="about_title" class="block text-gray-700">Title:</label>
+                        <input id="about_title" name="about_title" type="text" value="{{ title }}"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="about_content" class="block text-gray-700">Content:</label>
+                        <textarea id="about_content" name="about_content" rows="4"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500">{{ content }}</textarea>
+                    </div>
+                    <div>
+                        <label for="button_text" class="block text-gray-700">Button Text:</label>
+                        <input id="button_text" name="button_text" type="text" value="{{ button_text }}"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="button_link" class="block text-gray-700">Button Link:</label>
+                        <input id="button_link" name="button_link" type="text" value="{{ button_link }}"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="about_image" class="block text-gray-700">Upload Image:</label>
+                        <input id="about_image" name="about_image" type="file"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
+                    </div>
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                        Update Content
+                    </button>
+                </form>
+                {% if content %}
+                <p class="text-green-500 mt-4">Content was successfully updated!</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <!-- banner Section -->
+            {% for banner in banners %}
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h1 class="text-xl font-semibold mb-4">Update "banner" Section</h1>
+                <form method="POST" enctype="multipart/form-data" class="space-y-4">
+                    <div>
+                        <label for="banner_title" class="block text-gray-700">banner Title:</label>
+                        <input id="banner_title" name="banner_title" type="text" value="{{ banner.banner_title }}"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="banner_subtitle" class="block text-gray-700">Banner Description:</label>
+                        <textarea id="banner_subtitle" name="banner_subtitle" rows="4"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500">{{ banner.banner_subtitle }}</textarea>
+                    </div>
+                    <div>
+                        <label for="banner_button_text" class="block text-gray-700">banner Button Text:</label>
+                        <input id="banner_button_text" name="banner_button_text" type="text"
+                            value="{{ banner.banner_button_text }}"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="banner_button_link" class="block text-gray-700">Banner Button Link:</label>
+                        <input id="banner_button_link" name="banner_button_link" type="text"
+                            value="{{ banner.banner_button_link }}"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="banner_image" class="block text-gray-700">banner Background Image:</label>
+                        <input id="banner_image" name="banner_image" type="file"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
+                    </div>
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                        Update Content
+                    </button>
+                </form>
+                {% if content %}
+                <p class="text-green-500 mt-4">Content was successfully updated!</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <!-- Third Column (For Future Content or Another Section) -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h1 class="text-xl font-semibold mb-4">Another Section</h1>
+                <p class="text-gray-600">This is the third column for future updates or content.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+        <!-- Form to update banner content -->
+        <form action="{{ url_for('views.admin_page') }}" method="POST" enctype="multipart/form-data">
+            {% for i in range(1, 9) %}
+            <div class="banner-section mb-6">
+                <h2 class="text-2xl mb-2">Banner {{ i }}</h2>
+                <div class="mb-4">
+                    <label for="banner{{ i }}_title">Title</label>
+                    <input type="text" name="banner{{ i }}_title" id="banner{{ i }}_title_input"
+                        value="{{ banners['banner' ~ i].title }}" class="border p-2 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="banner{{ i }}_subtitle">Subtitle</label>
+                    <input type="text" name="banner{{ i }}_subtitle" id="banner{{ i }}_subtitle_input"
+                        value="{{ banners['banner' ~ i].subtitle }}" class="border p-2 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="banner{{ i }}_button_text">Button Text</label>
+                    <input type="text" name="banner{{ i }}_button_text" id="banner{{ i }}_button_text_input"
+                        value="{{ banners['banner' ~ i].button_text }}" class="border p-2 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="banner{{ i }}_button_link">Button Link</label>
+                    <input type="text" name="banner{{ i }}_button_link" id="banner{{ i }}_button_link_input"
+                        value="{{ banners['banner' ~ i].button_link }}" class="border p-2 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="banner{{ i }}_image">Banner Image</label>
+                    <input type="file" name="banner{{ i }}_image" class="block">
+                </div>
+                <div class="mb-4">
+                    <img id="banner{{ i }}_image" src="{{ banners['banner' ~ i].image }}" alt="Banner {{ i }} Image"
+                        class="max-w-xs">
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- About Us Section -->
+            <div class="about-section mb-6">
+                <h2 class="text-2xl mb-2">About Us</h2>
+                <div class="mb-4">
+                    <label for="about_title">Title</label>
+                    <input type="text" name="about_title" id="about_title_input" value="{{ about.title }}"
+                        class="border p-2 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="about_content">Content</label>
+                    <textarea name="about_content" id="about_content_input"
+                        class="border p-2 w-full">{{ about.content }}</textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="button_text">Button Text</label>
+                    <input type="text" name="button_text" id="about_button_text_input" value="{{ about.button_text }}"
+                        class="border p-2 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="button_link">Button Link</label>
+                    <input type="text" name="button_link" id="about_button_link_input" value="{{ about.button_link }}"
+                        class="border p-2 w-full">
+                </div>
+                <div class="mb-4">
+                    <label for="about_image">About Us Image</label>
+                    <input type="file" name="about_image" class="block">
+                </div>
+                <div class="mb-4">
+                    <img id="about_image" src="{{ about.image_url }}" alt="About Us Image" class="max-w-xs">
+                </div>
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- SocketIO Script -->
+    <script>
+        var socket = io();
+
+        // Listen for updates to each banner
+        for (let i = 1; i <= 8; i++) {
+            socket.on(`banner${i}_updated`, function (data) {
+                document.getElementById(`banner${i}_title_input`).value = data.title;
+                document.getElementById(`banner${i}_subtitle_input`).value = data.subtitle;
+                document.getElementById(`banner${i}_button_text_input`).value = data.button_text;
+                document.getElementById(`banner${i}_button_link_input`).value = data.button_link;
+                if (data.image) {
+                    document.getElementById(`banner${i}_image`).src = data.image;
+                }
+            });
+        }
+
+        // Listen for updates to the About Us section
+        socket.on('about_updated', function (data) {
+            document.getElementById('about_title_input').value = data.title;
+            document.getElementById('about_content_input').value = data.content;
+            document.getElementById('about_button_text_input').value = data.button_text;
+            document.getElementById('about_button_link_input').value = data.button_link;
+            if (data.image) {
+                document.getElementById('about_image').src = data.image;
+            }
+        });
+    </script>
+</body>
+
+</html>

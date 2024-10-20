@@ -1,0 +1,42 @@
+  .perspective-1000 {
+    perspective: 1000px;
+}
+
+.carousel {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(-300px);
+}
+
+.carousel-inner {
+    animation: rotate 20s infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.carousel-item {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    backface-visibility: hidden;
+}
+
+.carousel-item:nth-child(1) {
+    transform: rotateY(0deg) translateZ(300px);
+}
+
+.carousel-item:nth-child(2) {
+    transform: rotateY(120deg) translateZ(300px);
+}
+
+.carousel-item:nth-child(3) {
+    transform: rotateY(240deg) translateZ(300px);
+}
+  

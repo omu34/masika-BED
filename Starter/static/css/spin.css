@@ -1,0 +1,21 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveForward {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+#spinner {
+    animation: spin 2s linear infinite, moveForward 5s linear forwards;
+}

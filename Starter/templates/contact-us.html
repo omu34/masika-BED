@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<!--Banner component -->
+<div class="bg-cover bg-center   h-auto text-white py-24 px-10 object-fill"
+    style="background-image: url(static/images/contact-us.webp)">
+    <div class="md:w-full flex flex-col items-center justify-center md:mt-20">
+        <!-- <p class="font-bold text-sm uppercase">Services</p> -->
+        <!-- <p class="text-2xl md:text-3xl font-extrabold font-playfair-l">Contact Us</p> -->
+        <p class="md:text-xl text-md mb-10 mt-4 md:mt-8 leading-none font-poppins-b">
+            Discover our commitment to excellence and client satisfaction.
+        </p>
+
+        <!-- SVG Container -->
+        <div class="container mt-4 mx-auto max-w-7xl flex justify-center">
+            <svg fill="#000000" width="50px" height="50px" viewBox="0 0 24 24" id="down-arrow-circle"
+                data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
+                class="icon-container icon flat-color animate-bounce w-12 h-12" onclick="scrollToSection()">
+                <circle id="primary" cx="12" cy="12" r="10" style="fill: rgb(0, 0, 0);"></circle>
+                <path id="secondary"
+                    d="M14.14,13H13V7a1,1,0,0,0-2,0v6H9.86a1,1,0,0,0-.69,1.5l2.14,3.12a.82.82,0,0,0,1.38,0l2.14-3.12A1,1,0,0,0,14.14,13Z"
+                    style="fill: rgb(44, 169, 188);">
+                    Contact us
+                </path>
+
+            </svg>
+        </div>
+
+        <button href="#"
+            class="bg-purple-800 py-5 px-10 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">
+            Message Us <span class="ml-2 ">&#8594;</span>
+        </button>
+
+    </div>
+</div>
+<!-- Googlesearch -->
+<section class="bg-white  ">
+    <div class="max-w-7xl  mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8 h-screen-1/4">
+        <div class="max-w-2xl lg:max-w-4xl mx-auto text-center  md:mt-0 -mt-10">
+            <h2 class="md:text-3xl text-xl font-extrabold text-gray-900">Visit Our Location</h2>
+            <p class="mt-4 text-lg text-gray-500">We are located at The Hazina Towers 5th floor Wing A Monrovia street,
+                Utalii lane.</p>
+        </div>
+        <div class="mt-16 lg:mt-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
+                <div class="rounded-lg overflow-hidden">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11672.945750644447!2d-122.42107853750231!3d37.7730507907087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858070cc2fbd55%3A0xa71491d736f62d5c!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1619524992238!5m2!1sen!2sus"
+                        width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div>
+                    <div class="max-w-full mx-auto md:text-normal text-sm rounded-lg overflow-hidden">
+                        <div class="px-6 py-4">
+                            <h2 class="title-font font-bold text-red-900 tracking-widest text-xs">EMAIL</h2>
+                            <a href="mailto:info@masikakoross.com"
+                                class="text-red-500 leading-relaxed">info@masikakoross.com</a>
+                            <h2 class="title-font font-bold text-red-900 tracking-widest text-xs mt-4">PHONE</h2>
+                            <a href="tel:+254794698693" class="leading-relaxed">0794698693</a>
+                            <h2 class="title-font font-bold text-red-900 tracking-widest text-xs mt-4">
+                                PHONE
+                            </h2>
+                            <a href="tel:+254 20 2322100" class="leading-relaxed text-center">
+                                Office : +254 20 2322100
+                                Cell: 0794698693 / 0736167787
+
+                            </a>
+                        </div>
+                        <div class="border-t border-gray-200 px-6 py-4">
+                            <h3 class="text-lg font-medium text-gray-900">Hours</h3>
+                            <p class="mt-1 text-gray-600">Monday - Friday: 9am - 5pm</p>
+                            <p class="mt-1 text-gray-600">Saturday: 10am - 4pm</p>
+                            <p class="mt-1 text-gray-600">Sunday: Closed</p>
+                        </div>
+                        <div class="border-t border-gray-200 px-6 py-4">
+                            <h3 class="text-lg font-medium text-gray-900">Contact</h3>
+                            <p class="mt-1">
+                                Masika & Koross Advocates,
+                                P.O. Box 25126 - 00100
+                                Nairobi Kenya
+                            </p>
+                        </div>
+
+                        <div class="px-6 py-4 border-t border-gray-200 md:mb-0 mb-4">
+                            <h2 class="title-font font-bold text-red-900 tracking-widest text-xs">OFFICE ADDRESS
+                            </h2>
+                            <p class="mt-1">
+                                Hazina Towers, 5th floor, Wing A
+                                Monrovia street, Utalii lane
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<!--Banner component -->
+<div class="bg-cover bg-center   h-auto text-white py-24 px-10 object-fill"
+    style="background-image: url(static/images/criminal.jpg)">
+    <div class="md:w-full flex flex-col items-center justify-center md:mt-20">
+        <!-- <p class="font-bold text-sm uppercase">Services</p> -->
+        <p class="text-2xl md:text-3xl text-red-600 font-extrabold font-playfair-l">Criminal Law</p>
+        <p class="md:text-xl text-md mb-10 mt-4 leading-none font-poppins-b">
+            Discover our commitment to excellence and client satisfaction.
+        </p>
+        <!-- <button href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800"> -->
+
+        <!-- SVG Container -->
+        <div class="container mt-4 mx-auto max-w-7xl flex justify-center">
+            <svg fill="#000000" width="50px" height="50px" viewBox="0 0 24 24" id="down-arrow-circle"
+                data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
+                class="icon-container icon flat-color animate-bounce w-12 h-12" onclick="scrollToSection()">
+                <circle id="primary" cx="12" cy="12" r="10" style="fill: rgb(0, 0, 0);"></circle>
+                <path id="secondary"
+                    d="M14.14,13H13V7a1,1,0,0,0-2,0v6H9.86a1,1,0,0,0-.69,1.5l2.14,3.12a.82.82,0,0,0,1.38,0l2.14-3.12A1,1,0,0,0,14.14,13Z"
+                    style="fill: rgb(44, 169, 188);">
+                    Contact us
+                </path>
+
+            </svg>
+        </div>
+        <!-- </button> -->
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- criminal section -->
+<div class="sm:flex items-center max-w-7xl mx-auto">
+    <div class="sm:w-1/2 p-10">
+        <div class="image object-center text-center ">
+            <img class="h-24 md:h-72 bg-blue-500 rounded-lg p-1 " src="static/images/criminal.jpg" srcset="" alt="home">
+        </div>
+    </div>
+    <div class="sm:w-1/2 p-5 md:mb-0 mb-24">
+        <div class="text font">
+            <span class="text-gray-500 border-dotted border-b-2 border-indigo-600 uppercase">
+                Crime Law
+            </span>
+            <h2 class="my-4 md:text-3xl sm:text-2xl text-xl font-bold font-playfair-l ">About <span
+                    class="text-red-900">Criminal Law</span>
+            </h2>
+            <p class="text-gray-900 font-poppins-b">
+                At Masika & Koross Advocates, we have extended our legal expertise in matters family ranging from
+                marriage, adoption, divorce, maintenance, succession, domestic violence, reconciliation, estate
+                planning etc. if you or your family have a legal concern, please get in touch and let us find the
+                best way to resolve it. </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

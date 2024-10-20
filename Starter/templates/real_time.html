@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Navbar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- First Navbar -->
+    <div
+        class="flex md:gap-4 flex-col items-center lg:bg-transparent lg:mt-0 lg:p-0 md:p-4 md:pt-10 justify-between max-w-full md:max-w-7xl px-2 md:px-6 md:mt-0 mx-auto md:flex-row">
+
+        <!-- Social Media -->
+        <div class="z-10 md:ml-0 ml-0">
+            <ul
+                class="flex flex-row items-center space-x-4 px-6 py-2 md:py-0 rounded-lg md:justify-start justify-center">
+                <!-- Facebook -->
+                <li class="mt-2 lg:mt-0 md:-mt-2">
+                    <a href="{{ navbar_data.social_media.facebook }}" target="_blank" class="flex items-center">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="#4267B2"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20.5 10.9751C20.5 5.4551 16.02 0.975098 10.5 0.975098C4.98 0.975098 0.5 5.4551 0.5 10.9751C0.5 15.8151 3.94 19.8451 8.5 20.7751V13.9751H6.5V10.9751H8.5V8.4751C8.5 6.5451 10.07 4.9751 12 4.9751H14.5V7.9751H12.5C11.95 7.9751 11.5 8.4251 11.5 8.9751V10.9751H14.5V13.9751H11.5V20.9251C16.55 20.4251 20.5 16.1651 20.5 10.9751Z"
+                                fill="#4267B2"></path>
+                        </svg>
+                    </a>
+                </li>
+
+                <!-- LinkedIn -->
+                <li class="mt-2 lg:mt-0 md:-mt-2">
+                    <a href="{{ navbar_data.social_media.linkedin }}" target="_blank" class="flex items-center">
+                        <svg width="17" height="18" viewBox="0 0 17 18" fill="#e68523"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.9167 0.725098C15.4029 0.725098 15.8692 0.918252 16.213 1.26207C16.5568 1.60589 16.75 2.0722 16.75 2.55843V15.3918C16.75 15.878 16.5568 16.3443 16.213 16.6881C15.8692 17.0319 15.4029 17.2251 14.9167 17.2251H2.08333C1.5971 17.2251 1.13079 17.0319 0.786971 16.6881C0.443154 16.3443 0.25 15.878 0.25 15.3918V2.55843C0.25 2.0722 0.443154 1.60589 0.786971 1.26207C1.13079 0.918252 1.5971 0.725098 2.08333 0.725098H14.9167ZM14.4583 14.9334V10.0751C14.4583 9.28254 14.1435 8.52245 13.5831 7.96203C13.0226 7.40161 12.2626 7.08676 11.47 7.08676C10.6908 7.08676 9.78333 7.56343 9.34333 8.27843V7.26093H6.78583V14.9334H9.34333V10.4143C9.34333 9.70843 9.91167 9.13093 10.6175 9.13093C10.9579 9.13093 11.2843 9.26614 11.525 9.50681C11.7656 9.74748 11.9008 10.0739 11.9008 10.4143V14.9334H14.4583ZM3.80667 5.82176C4.2151 5.82176 4.60681 5.65952 4.89561 5.37071C5.18442 5.0819 5.34667 4.6902 5.34667 4.28176C5.34667 3.42926 4.65917 2.7326 3.80667 2.7326C3.3958 2.7326 3.00177 2.89581 2.71124 3.18634C2.42072 3.47686 2.2575 3.8709 2.2575 4.28176C2.2575 5.13426 2.95417 5.82176 3.80667 5.82176ZM5.08083 14.9334V7.26093H2.54167V14.9334H5.08083Z"
+                                fill="#e68523"></path>
+                        </svg>
+                    </a>
+                </li>
+
+                <!-- Twitter -->
+                <li class="mt-2 lg:mt-0 md:-mt-2">
+                    <a href="{{ navbar_data.social_media.twitter }}" target="_blank" class="flex items-center">
+                        <svg width="20" height="20" viewBox="0 0 21 20" fill="#000000"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.5 0.51642H6.41516L11.8827 7.87074L18.6884 0.3479L20.3055 0.375987L12.6889 8.92871L20.5 19.4335H14.5872L9.42665 12.5801L3.12245 19.6021H1.53117L8.6439 11.5783L0.5 0.51642ZM5.8574 1.60248H2.73342L15.2317 18.3194H18.2994L5.8574 1.60248Z"
+                                fill="#000000"></path>
+                        </svg>
+                    </a>
+                </li>
+
+                <!-- WhatsApp -->
+                <li class="mt-2 lg:mt-0 md:-mt-2">
+                    <a href="{{ navbar_data.social_media.whatsapp }}" target="_blank" class="flex items-center">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="#25D366"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.001 0.975098C15.524 0.975098 20.001 5.4521 20.001 10.9751C20.001 16.4981 15.524 20.9751 10.001 20.9751C8.23377 20.9779 6.49765 20.5103 4.97966 19.6191L0.0010376 20.9751L1.38844 16.0411C0.512961 14.5994 0.000366211 12.816 0.0010376 10.9751C0.0010376 5.4521 4.47804 0.975098 10.001 0.975098ZM4.47004 16.0871L4.76404 16.2731C6.03672 17.076 7.4904 17.5011 8.97104 17.5011C13.042 17.5011 16.501 14.0431 16.501 10.0011C16.501 5.9591 13.042 2.5011 8.97104 2.5011C4.89904 2.5011 1.50104 5.9591 1.50104 10.0011C1.50096 11.605 1.98691 13.1627 2.87904 14.4591L3.01604 14.6651L2.45704 16.5801L4.47004 16.0871ZM12.491 11.9311C12.152 11.785 11.814 11.6331 11.477 11.4781C10.9563 11.231 10.4306 10.9926 9.90104 10.7621C9.63804 10.6401 9.37304 10.6411 9.11204 10.7561C8.80804 10.8901 8.57804 11.0641 8.23804 11.0891C7.65504 11.1291 7.14904 10.8831 6.75604 10.4671C6.49904 10.1991 6.24604 9.9281 5.99604 9.6551C5.71904 9.3481 5.56304 9.0121 5.73604 8.5891C5.87204 8.2581 6.02604 7.9341 6.16904 7.6041C6.26404 7.3791 6.17004 7.2051 6.00104 7.0541C5.80004 6.8791 5.61104 6.6901 5.42904 6.4891C5.28704 6.3311 5.16404 6.1551 5.00304 6.0111C4.81704 5.8411 4.80304 5.6411 4.96204 5.4851C5.22504 5.2291 5.48104 4.9651 5.75404 4.7201C6.01904 4.4831 6.24304 4.5031 6.48604 4.6721C6.80504 4.9021 7.08704 5.1671 7.33404 5.4651C7.97804 6.2461 8.68104 6.9671 9.48804 7.5941C10.0371 8.0043 10.6316 8.34667 11.258 8.6161C11.529 8.7351 11.788 8.8871 12.056 8.9851C12.485 9.1391 12.863 9.3421 12.917 9.8161C12.979 10.3421 12.917 10.8651 12.917 11.4021C12.917 11.6181 12.785 11.7481 12.491 11.9311Z"
+                                fill="#25D366"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flex flex-col items-center max-w-full mx-auto">
+        <!-- Social Media Links Section -->
+        <div class="z-10">
+            <ul id="social-links" class="flex flex-row items-center space-x-4 px-6 py-2 rounded-lg justify-center">
+                <!-- Social media links will be populated dynamically here -->
+                <li id="facebook-link">
+                    <a href="{{ navbar_data.social_media.facebook }}" target="_blank">
+                        <svg width="21" height="21" fill="#4267B2" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20.5 10.9751C20.5 5.4551 16.02 0.975098 10.5 0.975098C4.98 0.975098 0.5 5.4551 0.5 10.9751C0.5 15.8151 3.94 19.8451 8.5 20.7751V13.9751H6.5V10.9751H8.5V8.4751C8.5 6.5451 10.07 4.9751 12 4.9751H14.5V7.9751H12.5C11.95 7.9751 11.5 8.4251 11.5 8.9751V10.9751H14.5V13.9751H11.5V20.9251C16.55 20.4251 20.5 16.1651 20.5 10.9751Z">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li id="linkedin-link">
+                    <a href="{{ navbar_data.social_media.linkedin }}" target="_blank">
+                        <svg width="17" height="18" fill="#e68523" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.9167 0.725098C15.4029 0.725098 15.8692 0.918252 16.213 1.26207C16.5568 1.60589 16.75 2.0722 16.75 2.55843V15.3918C16.75 15.878 16.5568 16.3443 16.213 16.6881C15.8692 17.0319 15.4029 17.2251 14.9167 17.2251H2.08333C1.5971 17.2251 1.13079 17.0319 0.786971 16.6881C0.443154 16.3443 0.25 15.878 0.25 15.3918V2.55843C0.25 2.0722 0.443154 1.60589 0.786971 1.26207C1.13079 0.918252 1.5971 0.725098 2.08333 0.725098H14.9167ZM14.4583 14.9334V10.0751C14.4583 9.28254 14.1435 8.52245 13.5831 7.96203C13.0226 7.40161 12.2626 7.08676 11.47 7.08676C10.6908 7.08676 9.78333 7.56343 9.34333 8.27843V7.26093H6.78583V14.9334H9.34333V10.4143C9.34333 9.70843 9.91167 9.13093 10.6175 9.13093C10.9579 9.13093 11.2843 9.26614 11.525 9.50681C11.7656 9.74748 11.9008 10.0739 11.9008 10.4143V14.9334H14.4583ZM3.80667 5.82176C4.2151 5.82176 4.60681 5.65952 4.89561 5.37071C5.18442 5.0819 5.34667 4.6902 5.34667 4.28176C5.34667 3.42926 4.65917 2.7326 3.80667 2.7326C3.3958 2.7326 3.00177 2.89581 2.71124 3.18634C2.42072 3.47686 2.2575 3.8709 2.2575 4.28176C2.2575 5.13426 2.95417 5.82176 3.80667 5.82176ZM5.08083 14.9334V7.26093H2.54167V14.9334H5.08083Z">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <!-- Additional social media icons here... -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const socket = io.connect('http://localhost:5000'); // Connect to SocketIO
+
+        // Listen for real-time navbar updates
+        socket.on('navbar_updated', function (data) {
+            // Update Facebook link
+            document.querySelector('#facebook-link a').href = data.social_media.facebook;
+
+            // Update LinkedIn link
+            document.querySelector('#linkedin-link a').href = data.social_media.linkedin;
+
+            // Similarly update other social media links...
+        });
+    </script>
+
+
+
+    <script>
+        var navbar_data = {};
+
+        function updateNavbar(data) {
+            navbar_data = data;
+            // Update the DOM elements with the new data
+            // ... (replace this with your DOM manipulation logic)
+        }
+
+        // SSE connection
+        var source = new EventSource('/navbar_data');
+        source.onmessage = function (event) {
+            navbar_data = JSON.parse(event.data);
+            updateNavbar(navbar_data);
+        };
+
+        // WebSocket connection
+        var socket = io();
+        socket.on('navbar_updated', updateNavbar);
+
+        // Example: Initial navbar rendering
+        updateNavbar(navbar_data);
+    </script>
+
+</body>
+
+</html>

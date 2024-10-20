@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>Add Message - Student Database</title>
+{% endblock %}
+{% block content %}
+<div class="flex justify-center items-center mx-auto max-w-5xl" style="height: 80vh;">
+    <div class="card p-6 w-full max-w-md">
+        <h2 class="text-center text-2xl font-semibold mb-6">Fill Out Form</h2>
+        <form method="POST" action="{{ url_for('views.add_message') }}">
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                <input type="text" id="name" name="name"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                <input type="email" id="email" name="email"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="texts" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea type="texts" id="texts" name="texts"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required>
+                </textarea>
+            </div>
+            <div class="mt-6">
+                <button type="submit"
+                    class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    Add message
+                </button>
+            </div>
+            <div class="mt-6">
+                <a href="{{ url_for('views.home') }}">
+                    <button 
+                        class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        Home
+                    </button>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,982 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>Home</title>
+{% endblock %}
+{% block content %}
+<!-- <center> -->
+    <!-- Banner component -->
+    <section class="">
+        <div class="swiper mySwiperSlides">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide relative w-full h-[300px] sm:h-[400px] lg:h-[550px] bg-cover bg-top" style="
+                  background-image: url('https://www.masikakoross.com/wp-content/uploads/2018/05/oie_LoZRjX2C0Svc.jpg {{ banner1_image }}');
+                ">
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                    <div class="text-white relative w-full h-full px-16 lg:px-64 py-10 sm:py-28 lg:py-48">
+                        <div class="flex flex-col items-center justify-center h-full gap-3 md:gap-6 md:mt-8 lg:mt-20">
+                            <h1 class="text-white text-xl font-bold sm:text-3xl lg:text-4xl">{{ banner1_title }}
+                                Our Team
+                            </h1>
+                            <div class="">
+                                <img src="https://www.masikakoross.com/wp-content/themes/law-and-justice/css/../img/balance-icon-small.png"
+                                    alt="" srcset="" />
+                            </div>
+                            <p class="text-white text-md font-bold sm:text-xl text-center">{{ banner1_subtitle }}
+                                Our team is dedicated to providing top-notch services
+                            </p>
+                            <!-- {% if session.get('loggedin') %} -->
+                            <a href="{{ url_for('pages.about') }}  {{ banner1_button_link }}"
+                                class="bg-purple-800 py-3 px-6 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">
+                                about us {{ banner1_button_text }} <span class="ml-2">&#8594;</span>
+                            </a>
+                            <!-- {% endif %} -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide relative w-full h-[300px] sm:h-[400px] lg:h-[550px] bg-cover bg-top" style="
+                  background-image: url('https://www.masikakoross.com/wp-content/uploads/2018/05/oie_YdLEhrPei1Va.jpg {{ banner2_image }}');
+                ">
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                    <div class="text-white relative w-full h-full px-16 lg:px-64 py-10 sm:py-28 lg:py-48">
+                        <div class="flex flex-col items-center justify-center h-full gap-3 md:gap-6 md:mt-8">
+                            <h1 class="text-white text-xl font-bold sm:text-3xl lg:text-4xl">{{ banner2_title }}
+                                Our Legal Experts
+                            </h1>
+                            <div class="">
+                                <img src="https://www.masikakoross.com/wp-content/themes/law-and-justice/css/../img/balance-icon-small.png"
+                                    alt="" srcset="" />
+                            </div>
+                            <p class="text-white text-md font-bold sm:text-xl text-center">{{ banner2_subtitle }}
+                                You deserve the best lawyers.
+                            </p>
+
+                            <a href="/legal {{ banner2_button_link }}"
+                                class="bg-purple-800 py-3 px-6 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">
+                                Explore {{ banner2_button_text }} <span class="ml-2">&#8594;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide relative w-full h-[300px] sm:h-[400px] lg:h-[550px] bg-cover bg-top" style="background-image: url('static/images/procurement.jpg {{ banner3_image }}'); ">
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                    <div class="text-white relative w-full h-full px-16 lg:px-64 py-10 sm:py-28 lg:py-48">
+                        <div class="flex flex-col items-center justify-center h-full gap-3 md:gap-6 md:mt-8">
+                            <h1 class="text-white text-xl font-bold sm:text-3xl lg:text-4xl">{{ banner3_title }}
+                                Property Procurement
+                            </h1>
+                            <div class="">
+                                <img src="https://www.masikakoross.com/wp-content/themes/law-and-justice/css/../img/balance-icon-small.png"
+                                    alt="" srcset="" />
+                            </div>
+                            <p class="text-white text-md font-bold sm:text-xl text-center">{{ banner3_subtitle }}
+                                We are experts in property procurement.
+                            </p>
+                            <a href="/procurement {{ banner3_button_link }}"
+                                class="bg-purple-800 py-3 px-6 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">
+                                Explore {{ banner3_button_text }} <span class="ml-2">&#8594;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide relative w-full h-[300px] sm:h-[400px] lg:h-[550px] bg-cover bg-top" style="
+                  background-image: url('https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Real-Estate.jpg {{ banner4_image }}');
+                ">
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                    <div class="text-white relative w-full h-full px-16 lg:px-64 py-10 sm:py-28 lg:py-48">
+                        <div class="flex flex-col items-center justify-center h-full gap-3 md:gap-6 md:mt-8">
+                            <h1 class="text-white text-xl font-bold sm:text-3xl lg:text-4xl">{{ banner4_title }}
+                                Home Ownership
+                            </h1>
+                            <div class="">
+                                <img src="https://www.masikakoross.com/wp-content/themes/law-and-justice/css/../img/balance-icon-small.png"
+                                    alt="" srcset="" />
+                            </div>
+                            <p class="text-white text-md font-bold sm:text-xl text-center">{{ banner4_subtitle }}
+                                We provide legal representation for home owning.
+                            </p>
+                            <a href="/family {{ banner4_button_link }}"
+                                class="bg-purple-800 py-3 px-6 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">
+                                Explore{{ banner4_button_text }}
+                                <span class="ml-2">&#8594;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide relative w-full h-[300px] sm:h-[400px] lg:h-[550px] bg-cover bg-top" style="
+                  background-image: url('https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Dispute-Resolution.jpg {{ banner5_image }}');
+                ">
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                    <div class="text-white relative w-full h-full px-16 lg:px-64 py-10 sm:py-28 lg:py-48">
+                        <div class="flex flex-col items-center justify-center h-full gap-3 md:gap-6 md:mt-8">
+                            <h1 class="text-white text-xl font-bold sm:text-3xl lg:text-4xl">{{ banner5_title }}
+                                Conflict Resolution
+                            </h1>
+                            <div class="">
+                                <img src="https://www.masikakoross.com/wp-content/themes/law-and-justice/css/../img/balance-icon-small.png"
+                                    alt="" srcset="" />
+                            </div>
+                            <p class="text-white text-md font-bold sm:text-xl text-center">{{ banner5_subtitle }}
+                                We handle cases of all sizes
+                            </p>
+                            <a href="/criminal {{ banner5_button_link }}"
+                                class="bg-purple-800 py-3 px-6 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">
+                                Explore {{ banner5_button_text }} <span class="ml-2">&#8594;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide relative w-full h-[300px] sm:h-[400px] lg:h-[550px] bg-cover bg-top"
+                    style="background-image: url('static/images/family.jpg  {{ banner6_image }}')">
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                    <div class="text-white relative w-full h-full px-16 lg:px-64 py-10 sm:py-28 lg:py-48">
+                        <div class="flex flex-col items-center justify-center h-full gap-3 md:gap-6 md:mt-8">
+                            <h1 class="text-white text-xl font-bold sm:text-3xl lg:text-4xl">{{ banner6_title }}
+                                Family Conflicts
+                            </h1>
+                            <div class="">
+                                <img src="https://www.masikakoross.com/wp-content/themes/law-and-justice/css/../img/balance-icon-small.png"
+                                    alt="" srcset="" />
+                            </div>
+                            <p class="text-white text-md font-bold sm:text-xl text-center">{{ banner6_subtitle }}
+                                You deserve the best lawyers for your family.
+                            </p>
+                            <a href="/about {{ banner6_button_link }}"
+                                class="bg-purple-800 py-3 px-6 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">
+                                Explore {{ banner6_button_text }} <span class="ml-2">&#8594;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide relative w-full h-[300px] sm:h-[400px] lg:h-[550px] bg-cover bg-top"
+                    style="background-image: url('static/images/environment.jpg {{ banner7_image }}')">
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                    <div class="text-white relative w-full h-full px-16 lg:px-64 py-10 sm:py-28 lg:py-48">
+                        <div class="flex flex-col items-center justify-center h-full gap-3 md:gap-6 md:mt-8">
+                            <h1 class="text-white text-xl font-bold sm:text-3xl lg:text-4xl">{{ banner7_title }}
+                                Land and Environment Law
+                            </h1>
+                            <div class="">
+                                <img src="https://www.masikakoross.com/wp-content/themes/law-and-justice/css/../img/balance-icon-small.png"
+                                    alt="" srcset="" />
+                            </div>
+                            <p class="text-white text-md font-bold sm:text-xl text-center">{{ banner7_subtitle }}
+                                We are experienced on land and environment matters.
+                            </p>
+                            <a href="/environment {{ banner7_button_link }}"
+                                class="bg-purple-800 py-3 px-6 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">
+                                Explore {{ banner7_button_text }} <span class="ml-2">&#8594;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation buttons -->
+            <div class="swiper-button-next block sm:hidden md:block">
+                <!-- <button>&#8594;</button>  -->
+                <!-- Next button -->
+            </div>
+            <div class="swiper-button-prev">
+                <!-- <button>&#8592;</button>  -->
+                <!-- Previous button -->
+            </div>
+        </div>
+    </section>
+    <!-- About Us Section -->
+    <section class="bg-white pb-4 mt-4 mb-10">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 items-center md:text-left text-center gap-8 mx-auto max-w-7xl py-16 sm:py-4 px-4 sm:px-6 lg:px-8 mb-10">
+            <div class="max-w-lg">
+                <h2 class="text-xl font-bold text-red-900 sm:text-2xl border-b-2 pb-1 px-2 rounded-md border-red-800 w-fit" id="about-title">
+                    {{ title }}  
+                     <span class="text-indigo-900">Advocates.</span>
+                </h2>
+                <p class="text-md mt-2 text-sm  text-gray-900 md:text-base font-poppins-b" id="about-us-text">
+                    {{content}}
+                </p>
+                <div class="mt-8">
+                    <a id="learn-more-link" href="{{ button_link }}"
+                        class="text-blue-500 hover:text-blue-600 font-medium">{{ button_text }} 
+                        <span class="ml-2">&#8594;</span></a>
+                </div>
+            </div>
+            <div class="mt-12 md:mt-0 z-0">
+                <img id="about-us-image" src="{{ image_url }}  " alt="About Us Image" class="rounded-lg shadow-md" />
+            </div>
+        </div>
+
+
+        
+    </section>
+
+    <!-- Areas of practice  -->
+    <div data-aos="fade-up" class="block sm:hidden md:block">
+        <section style="background-color: rgb(244, 249, 252)" class="lg:-mt-20 md:mt-2 sm:mt-16 -mt-16 pt-10 pb-10 ">
+            <div class="flex justify-start item-1 md:justify-center items-center flex-col md:py-4 ">
+                <h1
+                    class="text-xl font-bold text-red-900 sm:text-3xl mb-4 text-red-900 font-extrabold font-playfair-l w-fit pb-1 px-2 rounded-md border-b-2 border-red-800 text-center md:text-left">
+                    Our Proven
+                    <span class="text-indigo-900">Experience</span>
+                </h1>
+                <p class="mt-2 mb-4 text-gray-700 w-3/4 md:w-1/2 font-poppins-b text-center">
+                    Our proven expertise allows us to provide effective and efficient
+                    legal solutions to your specific needs.
+                </p>
+            </div>
+            <div class="h-screen-1/2 w-full flex items-center justify-center overflow-hidden ">
+                <div class="relative lg:w-[290px] lg:h-[290px] sm:w-[220px] sm:h-[220px] sm:w-[180px] sm:h-[180px] w-[100px] h-[100px] [transform-style:preserve-3d] animate-[rotate_30s_linear_infinite]"
+                    style="animation: rotate 30s linear infinite">
+                    <span style="--i: 1"
+                        class="absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(150px)]">
+                        <div
+                            class="bg-gray-200 hover:bg-gray-300 hover:text-white mt-8 md:mt-9 transition duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl rounded overflow-hidden shadow-md">
+                            <div class="py-4 px-4 sm:px-6 md:px-8 pb-4 md:mt-0 -mt-4">
+                                <a href="/procurement">
+                                    <h1
+                                        class="mb-0.5 text-xs sm:text-sm md:text-md font-medium md:font-playfair-l text-red-900">
+                                        Procurement Law
+                                    </h1>
+                                    <p class="md:font-poppins-b text-xs text-red-600 hover:text-red-600 font-medium">
+                                        explore
+                                        <span class="ml-0.5">&#8594;</span>
+                                    </p>
+
+                                    <!-- For Larger Screens: Show bigger image -->
+                                    <div class="hidden md:block">
+                                        <img src="static/images/procurement.jpg" class="md:w-48 w-32 rounded-lg" />
+                                        <hr class="mt-1" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                    <span style="--i: 2"
+                        class="absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(150px)]">
+                        <div
+                            class="bg-gray-200 hover:bg-gray-300 hover:text-white mt-8 md:mt-9 transition duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl rounded overflow-hidden shadow-md">
+                            <div class="py-4 px-4 sm:px-6 md:px-8 pb-4 md:mt-0 -mt-4">
+                                <a href="/family">
+                                    <h1
+                                        class="mb-0.5 text-xs sm:text-sm md:text-md font-medium md:font-playfair-l text-red-900">
+                                        Family Law
+                                    </h1>
+                                    <p
+                                        class="md:font-poppins-b text-xs text-red-600 hover:text-red-600 font-medium mt-4 md:mt-0">
+                                        explore
+                                        <span class="ml-0.5">&#8594;</span>
+                                    </p>
+
+                                    <!-- For Larger Screens: Show bigger image -->
+                                    <div class="hidden md:block">
+                                        <img src="static/images/family.jpg" class="md:w-48 w-32 rounded-lg" />
+                                        <hr class="mt-1" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                    <span style="--i: 3"
+                        class="absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(150px)]">
+                        <div
+                            class="bg-gray-200 hover:bg-gray-300 hover:text-white mt-8 md:mt-9 transition duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl rounded overflow-hidden shadow-md">
+                            <div class="py-4 px-4 sm:px-6 md:px-8 pb-4 md:mt-0 -mt-4">
+                                <a href="/arbitration">
+                                    <h1
+                                        class="mb-0.5 text-xs sm:text-sm md:text-md font-medium md:font-playfair-l text-red-900">
+                                        Arbitration Law
+                                    </h1>
+                                    <p class="md:font-poppins-b text-xs text-red-600 hover:text-red-600 font-medium">
+                                        explore
+                                        <span class="ml-0.5">&#8594;</span>
+                                    </p>
+
+                                    <!-- For Larger Screens: Show bigger image -->
+                                    <div class="hidden md:block">
+                                        <img src="https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Dispute-Resolution.jpg"
+                                            class="md:w-48 w-32 rounded-lg" />
+                                        <hr class="mt-1" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                    <span style="--i: 4"
+                        class="absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(150px)]">
+                        <div
+                            class="bg-gray-200 hover:bg-gray-300 hover:text-white mt-8 md:mt-9 transition duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl rounded overflow-hidden shadow-md">
+                            <div class="py-4 px-4 sm:px-6 md:px-8 pb-4 md:mt-0 -mt-4">
+                                <a href="/commercial">
+                                    <h1
+                                        class="mb-0.5 text-xs sm:text-sm md:text-md font-medium md:font-playfair-l text-red-900">
+                                        Commercial Law
+                                    </h1>
+                                    <p class="md:font-poppins-b text-xs text-red-600 hover:text-red-600 font-medium">
+                                        explore
+                                        <span class="ml-0.5">&#8594;</span>
+                                    </p>
+
+                                    <!-- For Larger Screens: Show bigger image -->
+                                    <div class="hidden md:block">
+                                        <img src="https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Corporate-Commercial.jpg"
+                                            class="md:w-48 w-32 rounded-lg" />
+                                        <hr class="mt-1" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                    <span style="--i: 5"
+                        class="absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(150px)]">
+                        <div
+                            class="bg-gray-200 hover:bg-gray-300 hover:text-white mt-8 md:mt-9 transition duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl rounded overflow-hidden shadow-md">
+                            <div class="py-4 px-4 sm:px-6 md:px-8 pb-4 md:mt-0 -mt-4">
+                                <a href="/interlectial">
+                                    <h1
+                                        class="mb-0.5 text-xs sm:text-sm md:text-md font-medium md:font-playfair-l text-red-900">
+                                        Interlectial Law
+                                    </h1>
+                                    <p class="md:font-poppins-b text-xs text-red-600 hover:text-red-600 font-medium">
+                                        explore
+                                        <span class="ml-0.5">&#8594;</span>
+                                    </p>
+
+                                    <!-- For Larger Screens: Show bigger image -->
+                                    <div class="hidden md:block">
+                                        <img src="https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Intellectual-Property-.jpg"
+                                            class="md:w-48 w-32 rounded-lg" />
+                                        <hr class="mt-1" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                    <span style="--i: 6"
+                        class="absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(150px)]">
+                        <div
+                            class="bg-gray-200 hover:bg-gray-300 hover:text-white mt-8 md:mt-9 transition duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl rounded overflow-hidden shadow-md">
+                            <div class="py-4 px-4 sm:px-6 md:px-8 pb-4 md:mt-0 -mt-4">
+                                <a href="/banking">
+                                    <h1
+                                        class="mb-0.5 text-xs sm:text-sm md:text-md font-medium md:font-playfair-l text-red-900">
+                                        Finance Law
+                                    </h1>
+                                    <p
+                                        class="md:font-poppins-b text-xs text-red-600 hover:text-red-600 font-medium mt-4 md:mt-0">
+                                        explore
+                                        <span class="ml-0.5">&#8594;</span>
+                                    </p>
+
+                                    <!-- For Larger Screens: Show bigger image -->
+                                    <div class="hidden md:block">
+                                        <img src="https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Financial-Services.jpg"
+                                            class="md:w-48 w-32 rounded-lg" />
+                                        <hr class="mt-1" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                    <span style="--i: 7"
+                        class="absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(150px)]">
+                        <div
+                            class="bg-gray-200 hover:bg-gray-300 hover:text-white mt-8 md:mt-9 transition duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl rounded overflow-hidden shadow-md">
+                            <div class="py-4 px-4 sm:px-6 md:px-8 pb-4 md:mt-0 -mt-4">
+                                <a href="/environment">
+                                    <h1
+                                        class="mb-0.5 text-xs sm:text-sm md:text-md font-medium md:font-playfair-l text-red-900">
+                                        Land Law
+                                    </h1>
+                                    <p
+                                        class="md:font-poppins-b text-xs text-red-600 hover:text-red-600 font-medium mt-4 md:mt-0">
+                                        explore
+                                        <span class="ml-0.5">&#8594;</span>
+                                    </p>
+
+                                    <!-- For Larger Screens: Show bigger image -->
+                                    <div class="hidden md:block">
+                                        <img src="static/images/environment.jpg" class="md:w-48 w-32 rounded-lg" />
+                                        <hr class="mt-1" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                    <span style="--i: 8"
+                        class="absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(150px)]">
+                        <div
+                            class="bg-gray-200 hover:bg-gray-300 hover:text-white mt-8 md:mt-9 transition duration-300 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl rounded overflow-hidden shadow-md">
+                            <div class="py-4 px-4 sm:px-6 md:px-8 pb-4 md:mt-0 -mt-4">
+                                <a href="/criminal">
+                                    <h1
+                                        class="mb-0.5 text-xs sm:text-sm md:text-md font-medium md:font-playfair-l text-red-900">
+                                        Criminal Law
+                                    </h1>
+                                    <p
+                                        class="md:font-poppins-b text-xs text-red-600 hover:text-red-600 font-medium mt-4 md:mt-0">
+                                        explore
+                                        <span class="ml-0.5">&#8594;</span>
+                                    </p>
+
+                                    <!-- For Larger Screens: Show bigger image -->
+                                    <div class="hidden md:block">
+                                        <img src="static/images/criminal.jpg" class="md:w-48 w-32 rounded-lg" />
+                                        <hr class="mt-1" />
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                    <!-- Repeat similar structure for other spans -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Newsletter -->
+    <div data-aos="fade-up" class="">
+        <div class="relative bg-gray-600 pt-4">
+            <div class="absolute inset-x-0 bottom-0">
+                <svg viewBox="0 0 224 12" fill="currentColor" class="w-full -mb-1 text-white"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z">
+                    </path>
+                </svg>
+            </div>
+            <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+                <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
+                    <h2
+                        class="mb-6 font-sans text-xl font-bold text-red-900 sm:text-3xl text-center tracking-tight sm:leading-none">
+                        Subscribe to our newsletter
+                    </h2>
+                    <p class="mb-6 text-base text-indigo-200 md:text-md">
+                        Our law firm offers expert legal services . With a team of skilled
+                        attorneys, we provide personalized guidance and strategic advice
+                        to ensure the best possible outcomes for our clients.
+                    </p>
+
+
+
+                    <form action="{{ url_for('newsletter.subscribe')}}" method="POST" id="subscribe-form"
+                        class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
+                        <input id="email-input" name="email" placeholder="Email" required type="email"
+                            class="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-deep-purple-900 focus:border-teal-accent-700 focus:outline-none focus:shadow-outline" />
+                        <button type="submit" id="change-button"
+                            class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-200 transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none">
+                            Subscribe
+                        </button>
+                    </form>
+
+
+
+
+
+                    <!-- <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
+                        <input id="email-input" placeholder="Email" required="email" type="email"
+                            class="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-deep-purple-900 focus:border-teal-accent-700 focus:outline-none focus:shadow-outline" />
+    
+                        <button type="submit" id="change-button"
+                            class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-200 transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none">
+                            Subscribe
+                        </button> -->
+
+                    <script>
+                        let button = document.getElementById("change-button");
+                        let colors = [
+                            "red",
+                            "blue",
+                            "green",
+                            "yellow",
+                            "pink",
+                            "purple",
+                            "gray",
+                        ]; //Add more colors from tailwind design pallete as per requirement
+
+                        function changeColor() {
+                            let color = colors[Math.floor(Math.random() * colors.length)];
+                            button.className = "";
+                            button.classList.add(
+                                "px-4",
+                                "py-2",
+                                "rounded-lg",
+                                "text-white",
+                                `bg-${color}-500`
+                            );
+                        }
+
+                        setInterval(() => {
+                            changeColor();
+                        }, 500); //Color change duration is 500 ms, you can adjust the duration.
+                    </script>
+                    <!-- </form> -->
+                    <p class="max-w-md mb-10 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-16">
+                        subscribe to inquire us
+                    </p>
+                    <a href="/" aria-label="Scroll down"
+                        class="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                            fill="currentColor">
+                            <path
+                                d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        (function () {
+            // Initialize EmailJS with your user ID
+            emailjs.init("service_v5d9hof"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+        })();
+
+        document
+            .getElementById("subscribe-form")
+            .addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get the email input value
+                var email = document.getElementById("email-input").value;
+
+                // Prepare the email params
+                var templateParams = {
+                    email: email,
+                };
+
+                // Send the email using EmailJS
+                emailjs
+                    .send("service_v5d9hof", "template_tmx9h6y", templateParams)
+                    .then(
+                        function (response) {
+                            alert("Email sent successfully! Thank you for subscribing.");
+                        },
+                        function (error) {
+                            alert("Failed to send email. Please try again later.");
+                        }
+                    );
+            });
+    </script>
+
+
+
+    <!-- Contact us -->
+    <div data-aos="fade-up" class="">
+        <section class="bg-white dark:bg-slate-800">
+            <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-8">
+                <div class="mb-4">
+                    <div class="mb-2 flex justify-start md:justify-center items-center flex-col">
+                        <h1
+                            class="text-xl font-bold text-red-900 sm:text-3xl mb-4 text-red-900 font-extrabold font-playfair-l w-fit pb-1 px-2 rounded-md border-b-2 border-red-800 text-center">
+                            Get in
+                            <span class="text-indigo-900">Touch</span>
+                        </h1>
+
+                        <p
+                            class="mx-auto max-w-3xl text-base sm:text-md md:text-xl text-center text-gray-600 dark:text-slate-400">
+                            We are located at The Hazina Towers 5th floor Wing A Monrovia street, Utalii lane..
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-stretch justify-center">
+                    <div class="grid gap-8 md:grid-cols-2">
+                        <div class="h-full pr-6 md:text-left text-center">
+                            <p
+                                class="mb-6 md:mb-10 md:ml-0 ml-2 text-base sm:text-md text-gray-600 dark:text-slate-400 text-center md:text-left">
+                                <!-- We are located at The Hazina Towers 5th floor Wing A Monrovia
+                                street, Utalii lane.. -->
+                            </p>
+                            <ul class="mb-3 md:mb-0 md:ml-0 ml-5 ">
+                                <li class="flex mb-4 md:mb-6 lg:mb-10">
+                                    <div
+                                        class="flex h-12 mt-4 w-12 sm:w-16 sm:h-16 items-center justify-center rounded bg-red-900 text-gray-50">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                            viewBox="0 0 24 24" fill="#995500" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="">
+                                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                                            <path
+                                                d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-4 mt-2">
+                                        <h3 class="mb-1 text-md font-medium leading-6 text-gray-900 dark:text-white">
+                                            Our Address
+                                        </h3>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                            1230 Maecenas Street Donec Road, New York, EEUU
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="flex mb-4 md:mb-6 lg:mb-10">
+                                    <div
+                                        class="flex h-12 mt-4 w-12 sm:w-16 sm:h-16 items-center justify-center rounded bg-red-900 text-gray-50">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                            viewBox="0 0 24 24" fill="#995500" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                                            <path
+                                                d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2">
+                                            </path>
+                                            <path d="M15 7a2 2 0 0 1 2 2"></path>
+                                            <path d="M15 3a6 6 0 0 1 6 6"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-4 mt-2">
+                                        <h3 class="mb-1 text-md font-medium leading-6 text-gray-900 dark:text-white">
+                                            Contact
+                                        </h3>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                            Mobile: +1 (123) 456-7890<br />Mail: tailnext@gmail.com
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="flex mb-4">
+                                    <div
+                                        class="flex h-12 mt-4 w-12 sm:w-16 sm:h-16 items-center justify-center rounded bg-red-900 text-gray-50">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="#995500" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                                            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                                            <path d="M12 7v5l3 3"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-4 mt-2">
+                                        <h3 class="mb-1 text-md font-medium leading-6 text-gray-900 dark:text-white">
+                                            Working hours
+                                        </h3>
+                                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-400">
+                                            Monday - Friday: 08:00 - 17:00<br />Saturday & Sunday:
+                                            08:00 - 12:00
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card h-fit max-w-6xl p-5 md:p-8" id="form">
+                            <h2 class="mb-4 text-2xl font-bold dark:text-white">
+                                Ready to Get Started?
+                            </h2>
+                            <form method="POST" action="{{ url_for('views.add_message') }}">
+                                <div class="mb-6">
+                                    <div class="mx-0 mb-1 sm:mb-4">
+                                        <label for="name" class="pb-1 text-xs uppercase tracking-wider"></label>
+                                        <input type="text" id="name" autocomplete="given-name" placeholder="Your name"
+                                            class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                                            name="name" />
+                                    </div>
+                                    <div class="mx-0 mb-1 sm:mb-4">
+                                        <label for="email" class="pb-1 text-xs uppercase tracking-wider"></label>
+                                        <input type="email" id="email" autocomplete="email"
+                                            placeholder="Your email address"
+                                            class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                                            name="email" />
+                                    </div>
+                                    <div class="mx-0 mb-1 sm:mb-2">
+                                        <label for="texts" class="pb-1 text-xs uppercase tracking-wider"></label>
+                                        <textarea id="texts" name="texts" cols="30" rows="4"
+                                            placeholder="Write your message..."
+                                            class="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"></textarea>
+                                    </div>
+                                </div>
+
+                                <button type="submit"
+                                    class="w-full bg-[#995500] hover:bg-gray-400 hover:text-gray-600 text-white px-6 py-3 font-xl rounded-md sm:mb-0 sm:px-4 sm:py-2">
+                                    Send Message
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- components -->
+    <div class="relative" style="background-color: rgb(244, 249, 252)">
+        <!-- counting tailwind css -->
+        <div data-aos="fade-up" class="">
+            <div id="countingSection"
+                class="sticky mb-1 top-0 mb-1 mt-1 h-screen-1/2 flex flex-col items-center justify-center sm:bg-gray-600 bg-no-repeat bg-cover bg-[url(static/images/counter.jpg)] ">
+                <!-- sticky top-1 -->
+                <div class="mb-2">
+                    <div class="pt-12 sm:pt-20 mx-auto max-w-7xl">
+                        <div class="flex items-center justify-center md:-mt-12 mb-8">
+                            <h1
+                                class="text-xl font-bold text-red-900 sm:text-3xl mb-4 text-red-900 font-extrabold font-playfair-l w-fit pb-1 px-2 rounded-md border-b-2 border-red-800 text-center md:text-left">
+                                We provide Quality
+                                <span class="text-indigo-900">Services</span>
+                            </h1>
+                        </div>
+
+                        <div class="pb-12 mt-8 sm:pb-16">
+                            <div class="relative">
+                                <div class="absolute inset-0 h-1/2"></div>
+                                <div class="relative px-4 mx-auto sm:px-6 lg:px-8">
+                                    <div class="max-w-7xl mx-auto">
+                                        <dl class="bg-transparent rounded-lg sm:grid sm:grid-cols-3 gap-4">
+                                            <div
+                                                class="flex flex-col p-6 text-center border-gray-100 dark:border-gray-700 sm:border-0">
+                                                <dt class="order-2 mt-2 uppercase text-md md:text-2xl text-yellow-600 font-bold font-poppins-b leading-6"
+                                                    id="item-1">
+                                                    Satisfied Clients
+                                                </dt>
+                                                <dd class="order-1 text-5xl font-extrabold font-poppins-b leading-none text-red-900"
+                                                    aria-describedby="item-1" id="starsCount">
+                                                    0
+                                                </dd>
+                                            </div>
+                                            <div
+                                                class="flex flex-col p-6 text-center border-gray-100 dark:border-gray-700 sm:border-0">
+                                                <dt
+                                                    class="order-2 mt-2 text-md md:text-2xl text-yellow-600 uppercase font-bold font-poppins-b leading-6">
+                                                    Successful cases
+                                                </dt>
+                                                <dd class="order-1 text-5xl font-extrabold leading-none font-poppins-b text-red-900"
+                                                    id="downloadsCount">
+                                                    0
+                                                </dd>
+                                            </div>
+                                            <div
+                                                class="flex flex-col p-6 text-center border-gray-100 dark:border-gray-700">
+                                                <dt
+                                                    class="order-2 mt-2 text-md md:text-2xl text-yellow-600 uppercase font-bold font-poppins-b leading-6">
+                                                    Jobs Done
+                                                </dt>
+                                                <dd class="order-1 text-5xl font-extrabold leading-none font-poppins-b text-red-900"
+                                                    id="sponsorsCount">
+                                                    0
+                                                </dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Masika & Koross Team -->
+        <div data-aos="fade-up" class="z-20 sticky top-0 mb-1 mt-1 h-screen-1/2">
+            <div style="background-color: rgb(247, 252, 255)"
+                class="overflow-x-hidden z-20 sticky top-0 mb-1 h-screen-1/8 flex flex-col items-center justify-center bg-purple-100">
+                <div class="pt-10 pb-10 md:pt-16 mx-auto w-full px-4 sm:px-6 md:px-8 max-w-7xl">
+                    <div class="text-center md:text-left">
+                        <h1
+                            class="text-xl font-bold text-red-900 sm:text-3xl mb-4 text-red-900 font-extrabold font-playfair-l w-fit pb-1 px-2 rounded-md border-b-2 border-red-800 text-center md:text-left">
+                            Masika & Koross
+                            <span class="text-indigo-900">Team</span>
+                        </h1>
+
+                        <p class="mt-3 max-w-2xl text-left text-sm sm:text-md md:text-md text-gray-500 sm:mt-4">
+                            Our team of skilled attorneys is dedicated to providing
+                            exceptional legal representation. With years of experience and a
+                            commitment to excellence, we are committed to achieving the best
+                            possible outcomes for our clients.
+                        </p>
+                    </div>
+
+                    <div x-data="swipeCards()" x-init="let isDown = false; let startX; let scrollLeft; $el.addEventListener('mousedown', (e) => {
+                                    isDown = true; startX = e.pageX - $el.offsetLeft; scrollLeft = $el.scrollLeft;
+                                   });
+                                    $el.addEventListener('mouseleave', () => {
+                                    isDown = false;
+                    });
+                                    $el.addEventListener('mouseup', () => {
+                                    isDown = false;
+                                    });
+                                    $el.addEventListener('mousemove', (e) => {
+                                    if (!isDown) return; e.preventDefault(); const x = e.pageX - $el.offsetLeft;
+                                    const walk = (x - startX) * 1;  $el.scrollLeft = scrollLeft - walk;
+                                    });"
+                        class="overflow-x-scroll scrollbar-hide mb-4 relative w-full mx-auto max-w-7xl"
+                        style="overflow-y: hidden">
+                        <div data-aos="" class="flex snap-x snap-mandatory md:gap-6 gap-10" style="width: max-content">
+                            <template x-for="card in cards" :key="card.id">
+                                <div
+                                    class="flex-none w-40 sm:w-48 snap-center bg-gray-200 rounded-lg shadow-md p-5 my-6 text-center transition-transform duration-500 transform ease-in-out hover:scale-110">
+                                    <img :src="card.image" alt="Team Member 1"
+                                        class="w-full h-auto rounded-full mb-4" />
+                                    <h3 class="text-md sm:text-xl font-semibold mb-2" x-text="card.title"></h3>
+                                    <p class="text-red-900 text-sm font-medium" x-text="card.description"></p>
+                                    <a :href="card.link">
+                                        <img src="static/images/email.png"
+                                            class="rounded-full h-8 border-2 hover:border-red-600" alt="" />
+                                    </a>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- featured articles section -->
+        <div
+            class="z-30 sticky top-0 h-auto mt-1 mb-1 bg-white flex flex-col items-center justify-center md:mt-0 -mt-24 z-0">
+            <div class="relative px-4 pt-8 pb-12 sm:px-6 lg:px-8 lg:pt-16 lg:pb-20 mr-2 ml-2 md:ml-0 md:mr-0">
+                <div class="absolute inset-0">
+                    <div class="h-1/3 bg-white sm:h-2/3"></div>
+                </div>
+                <div class="relative mx-auto max-w-7xl">
+                    <div class="text-left">
+                        <h1
+                            class="text-xl font-bold text-red-900 sm:text-3xl mb-4 text-red-900 font-extrabold font-playfair-l w-fit pb-1 px-2 rounded-md border-b-2 border-red-800 text-center md:text-left">
+                            Featured
+                            <span class="text-indigo-900">Articles</span>
+                        </h1>
+
+                        <!-- <p class="mt-3 max-w-2xl text-left text-sm md:text-md text-gray-500 sm:mt-4">
+                                Our expert attorneys provide informative pieces on a range of legal topics, from recent case
+                                law to
+                                practical advice. Stay up-to-date with the latest legal trends and gain valuable knowledge
+                                by exploring
+                                our featured articles.
+                            </p> -->
+                    </div>
+                    <div class="mx-auto mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-none">
+                        <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"
+                            class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                            <div class="flex-shrink-0">
+                                <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                                    src="static/images/procurement.jpg" alt="" />
+                            </div>
+                            <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-red-800">
+                                        <a href="about-us" class="font-playfair-b font-semibold hover:text-red-600">
+                                            read Article
+                                            <span class="ml-1">&#8594;</span>
+                                        </a>
+                                    </p>
+                                    <a href="#" class="mt-2 block">
+                                        <p class="text-xl font-semibold text-gray-900">
+                                            Best won procurement case
+                                        </p>
+                                        <p class="mt-3 text-base text-gray-500">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Architecto accusantium praesentium eius, ut atque fuga
+                                            culpa, similique sequi cum eos quis dolorum.
+                                        </p>
+                                    </a>
+                                </div>
+                                <div class="flex space-x-1 text-sm text-gray-500 mt-2">
+                                    <time datetime="2020-03-16">Mar 16, 2020</time>
+                                    <span aria-hidden="true">·</span>
+                                    <span>6 min read</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+                            class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                            <div class="flex-shrink-0">
+                                <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                                    src="https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Corporate-Commercial.jpg"
+                                    alt="" />
+                            </div>
+                            <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-indigo-600">
+                                        <a href="about-us"
+                                            class="font-playfair-b font-semibold text-red-800 hover:text-red-600">
+                                            view Video
+                                            <span class="ml-1">&#8594;</span>
+                                        </a>
+                                    </p>
+                                    <a href="#" class="mt-2 block">
+                                        <p class="text-xl font-semibold text-gray-900">
+                                            How we handle commercial and corprate cases
+                                        </p>
+                                        <p class="mt-3 text-base text-gray-500">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Velit facilis asperiores porro quaerat doloribus,
+                                            eveniet dolore. Adipisci tempora aut inventore optio
+                                            animi., tempore temporibus quo laudantium.
+                                        </p>
+                                    </a>
+                                </div>
+                                <div class="flex space-x-1 text-sm text-gray-500 mt-2">
+                                    <time datetime="2020-03-10">Mar 10, 2020</time>
+                                    <span aria-hidden="true">·</span>
+                                    <span>4 min read</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"
+                            class="flex flex-col hidden md:block overflow-hidden rounded-lg shadow-lg md:mb-0 mb-56">
+                            <div class="flex-shrink-0">
+                                <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                                    src="https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Nairobi-MMS.jpg"
+                                    alt="" />
+                            </div>
+                            <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-indigo-600">
+                                        <a href="about-us"
+                                            class="font-playfair-b font-semibold text-red-800 hover:text-red-600">
+                                            study
+                                            <span class="ml-1">&#8594;</span>
+                                        </a>
+                                    </p>
+                                    <a href="#" class="mt-2 block">
+                                        <p class="text-xl font-semibold text-gray-900">
+                                            This is how we secured our client home.
+                                        </p>
+                                        <p class="mt-3 text-base text-gray-500">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Sint harum rerum voluptatem quo recusandae magni placeat
+                                            saepe molestiae, sed excepturi cumque corporis
+                                            perferendis hic.
+                                        </p>
+                                    </a>
+                                </div>
+                                <div class="flex space-x-1 text-sm text-gray-500 mt-2">
+                                    <time datetime="2020-02-12">Feb 12, 2020</time>
+                                    <span aria-hidden="true">·</span>
+                                    <span>11 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- About Us Socketio -->
+        <script>
+            var socket = io();
+
+            // Listen for updated content from the server
+            socket.on('content_updated', function (data) {
+                document.getElementById('about-us-text').textContent = data.text;
+            });
+
+            socket.on('title_updated', function (data) {
+                document.getElementById('about-title').textContent = data.text + " Partner.";
+            });
+
+            socket.on('link_updated', function (data) {
+                document.getElementById('learn-more-link').href = data.text;
+            });
+
+            socket.on('image_updated', function (data) {
+                document.getElementById('about-us-image').src = data.url;
+            });
+        </script>
+
+
+        <center>
+{% endblock %}
