@@ -1,13 +1,23 @@
 {
     "cSpell.words": [
+        "aboutpage",
+        "aboutuspage",
         "authlib",
+        "backref",
         "Interlectial",
         "jsonify",
+        "Koross",
         "loggedin",
+        "Masika",
+        "onupdate",
         "psycopg",
         "realtimes",
+        "Socketio",
         "sqlalchemy",
         "superadmin",
-        "werkzeug"
+        "Unfeature",
+        "urandom",
+        "werkzeug",
+        "youtu"
     ]
 }

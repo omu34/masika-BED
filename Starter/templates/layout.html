@@ -128,7 +128,7 @@
                 </div>
 
                 <div
-                    class="toggle hidden    w-full md:w-auto  md:flex md:justify-start text-left  mt-5 md:mt-0 border-t-2 border-teal-900 md:border-none">
+                    class="toggle hidden  md:block  w-full md:w-auto  md:flex md:justify-start text-left  mt-5 md:mt-0 border-t-2 border-teal-900 md:border-none">
 
                     <a href="{{ url_for('views.home') }}"
                         class="block py-2 pl-3 pr-4 text-red-800 font-playfair-b text-sm md:text-md lg:text-lg font-medium md:font-bold  uppercase hover:underline  hover:text-red-800">Home
@@ -714,7 +714,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <!-- scroll top -->
     <div class="flex justify-start">
@@ -732,73 +732,73 @@
 
 
 
-    
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
 
-<script>
-    var socket = io();
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
 
-    // Dynamically listen for updates to each banner (up to 8 banners)
-    for (let i = 1; i <= 8; i++) {
-        socket.on(`banner${i}_updated`, function(data) {
-            document.getElementById(`banner${i}_title`).innerText = data.title;
-            document.getElementById(`banner${i}_subtitle`).innerText = data.subtitle;
-            document.getElementById(`banner${i}_button_link`).innerText = data.button_text;
-            document.getElementById(`banner${i}_button_link`).href = data.button_link;
-            
-            // Update the background image only if new image data is available
+    <script>
+        var socket = io();
+
+        // Dynamically listen for updates to each banner (up to 8 banners)
+        for (let i = 1; i <= 8; i++) {
+            socket.on(`banner${i}_updated`, function (data) {
+                document.getElementById(`banner${i}_title`).innerText = data.title;
+                document.getElementById(`banner${i}_subtitle`).innerText = data.subtitle;
+                document.getElementById(`banner${i}_button_link`).innerText = data.button_text;
+                document.getElementById(`banner${i}_button_link`).href = data.button_link;
+
+                // Update the background image only if new image data is available
+                if (data.image) {
+                    document.getElementById(`banner${i}`).style.backgroundImage = `url('${data.image}')`;
+                }
+            });
+        }
+
+        // Listen for updates to the "About Us" section
+        socket.on('about_updated', function (data) {
+            document.getElementById('about_title').innerText = data.title;
+            document.getElementById('about_content').innerText = data.content;
+            document.getElementById('about_button_link').innerText = data.button_text;
+            document.getElementById('about_button_link').href = data.button_link;
+
+            // Update the About Us image only if new image data is available
             if (data.image) {
-                document.getElementById(`banner${i}`).style.backgroundImage = `url('${data.image}')`;
+                document.getElementById('about_image').src = data.image;
             }
         });
-    }
-
-    // Listen for updates to the "About Us" section
-    socket.on('about_updated', function(data) {
-        document.getElementById('about_title').innerText = data.title;
-        document.getElementById('about_content').innerText = data.content;
-        document.getElementById('about_button_link').innerText = data.button_text;
-        document.getElementById('about_button_link').href = data.button_link;
-        
-        // Update the About Us image only if new image data is available
-        if (data.image) {
-            document.getElementById('about_image').src = data.image;
-        }
-    });
-</script>
+    </script>
 
 
 
-<script>
-    const socket = io();
+    <script>
+        const socket = io();
 
-    // Handle the content updates in real-time
-    socket.on('content_updated', function (data) {
-        document.getElementById('about-us-text').textContent = data.text;
-    });
+        // Handle the content updates in real-time
+        socket.on('content_updated', function (data) {
+            document.getElementById('about-us-text').textContent = data.text;
+        });
 
-    socket.on('title_updated', function (data) {
-        document.getElementById('about-title').textContent = data.text;
-    });
+        socket.on('title_updated', function (data) {
+            document.getElementById('about-title').textContent = data.text;
+        });
 
-    socket.on('button_text_updated', function (data) {
-        document.getElementById('learn-more-link').textContent = data.text;
-    });
+        socket.on('button_text_updated', function (data) {
+            document.getElementById('learn-more-link').textContent = data.text;
+        });
 
-    socket.on('button_link_updated', function (data) {
-        document.getElementById('learn-more-link').href = data.text;
-    });
+        socket.on('button_link_updated', function (data) {
+            document.getElementById('learn-more-link').href = data.text;
+        });
 
-    socket.on('image_updated', function (data) {
+        socket.on('image_updated', function (data) {
             console.log('Received image URL:', data.url);  // Log the received URL
             const timestamp = new Date().getTime();
             document.getElementById('about-us-image').src = data.url + '?t=' + timestamp;
         });
 
-</script>
+    </script>
 
 
 

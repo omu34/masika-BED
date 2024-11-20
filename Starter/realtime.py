@@ -1,22 +1,129 @@
 import os
-
-from flask import (Blueprint, current_app, redirect, render_template, request,
-                   url_for)
-from flask_socketio import emit
+import datetime
+import psycopg2
+import threading
+from flask import Blueprint, jsonify, request, redirect, url_for, jsonify, render_template, current_app
+from .models import Page, Section, Subsection, db
 from werkzeug.utils import secure_filename
+from flask_socketio import emit
+from Starter import socketio
+
 
 realtime = Blueprint('realtime', __name__)
 
-# Helper functions
+
+# Sample featured articles list (can be populated from the database or used as fallback)
+featured_articles = [
+    {
+        "title": "Best Won Procurement Case",
+        "description": "A deep dive into how we secured a procurement case...",
+        "read_time": "6 min read",
+        "image_url": "/static/images/procurement.jpg",
+        "url": "#",
+        "url_text": "Read More",
+        "updated_at": datetime.datetime.now().strftime("%b %d, %Y %H:%M"),
+        "youtube_id": None
+    }, 
+    {
+        "title": "How we handle commercial and corporate cases",
+        "description": "Corporate disputes can be complex and require a strategic approach...",
+        "read_time": "6 min read",
+        "image_url": "https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Corporate-Commercial.jpg",
+        "url": "#",
+        "url_text": "Read More",
+        "updated_at": datetime.datetime.now().strftime("%b %d, %Y %H:%M"),
+        "youtube_id": None
+    }, 
+    {
+        "title": "How we secured client home",
+        "description": "Client home secured successfully...",
+        "read_time": "6 min read",
+        "image_url": "/static/images/home.jpg",
+        "url": "#",
+        "url_text": "Read More",
+        "updated_at": datetime.datetime.now().strftime("%b %d, %Y %H:%M"),
+        "youtube_id": None
+    },
+    
+]
+
+
+realtime = Blueprint('realtime', __name__)
+
+# Database connection
+def get_db_connection():
+    conn = psycopg2.connect(
+        dbname=os.getenv('DB_NAME'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        host=os.getenv('DB_HOST'),
+        port=os.getenv('DB_PORT')
+    )
+    return conn
+
+# Function to listen for notifications
+def listen_for_changes():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("LISTEN pages_change;")
+    cursor.execute("LISTEN sections_change;")
+    while True:
+        conn.poll()
+        while conn.notifies:
+            notify = conn.notifies.pop(0)
+            data = fetch_updated_data()
+            socketio.emit('page_update', data)
+
+# Start listening in a new thread
+listener_thread = threading.Thread(target=listen_for_changes)
+listener_thread.start()
+
+# Function to fetch updated data from the database
+
+def fetch_updated_data():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT s.id AS section_id, s.title AS section_title, s.image_url AS section_image,
+               ss.title AS subsection_title, ss.description, ss.image_url AS subsection_image
+        FROM sections s
+        LEFT JOIN subsections ss ON ss.section_id = s.id;
+    """)
+    sections_data = cursor.fetchall()
+    structured_data = {
+        'sections': [
+            {
+                'id': row[0],
+                'title': row[1],
+                'image_url': row[2],
+                'subsections': [{'title': row[3], 'description': row[4], 'image_url': row[5]}]
+            } for row in sections_data
+        ]
+    }
+    cursor.close()
+    conn.close()
+    return structured_data
+
+# SocketIO Events
+@socketio.on('connect')
+def handle_connect():
+    emit('message', {'data': 'Connected to the server!'})
+    print('Client connected')
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('Client disconnected')
+
+
+# Helper: Check allowed file types
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 
 def allowed_file(filename):
-    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
-def handle_image_upload(file, upload_folder):
-    """Handles image upload, saves the file, and returns the file path."""
+# Helper: Handle image upload
+def handle_image_upload(file, upload_folder='static/uploads'):
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file_path = os.path.join(upload_folder, filename)
@@ -25,117 +132,50 @@ def handle_image_upload(file, upload_folder):
     return None
 
 
-def emit_updates(update_type, content):
-    """Broadcasts updates via socket.io."""
-    emit(update_type, content)
-
-# Admin page route
 
 
-@realtime.route('/admin_page', methods=['GET', 'POST'])
-def admin_page():
-    # Get current banner data and about page data (this could be pulled from a database in production)
-    banners = get_banner_data()
-    about_pages = get_about_data()
+# server.py
 
-    if request.method == 'POST':
-        # Update banner content
-        for i in range(1, 9):
-            title = request.form.get(f'banner{i}_title')
-            subtitle = request.form.get(f'banner{i}_subtitle')
-            button_text = request.form.get(f'banner{i}_button_text')
-            button_link = request.form.get(f'banner{i}_button_link')
-            image = request.files.get(f'banner{i}_image')
+# Route to render the homepage with featured articles
+@realtime.route("/")
+def client():
+    return render_template('home.html', articles=featured_articles[-3:])
 
-            if image:
-                image_url = handle_image_upload(
-                    image, current_app.config['UPLOAD_FOLDER'])
-                banners[f'banner{i}']['image'] = image_url
-            banners[f'banner{i}'].update({
-                'title': title,
-                'subtitle': subtitle,
-                'button_text': button_text,
-                'button_link': button_link
-            })
+# Add this to server.py
+@socketio.on('feature_article')
+def feature_article(data):
+    # Process the received data from the admin
+    youtube_id = get_youtube_id(data['url'])
+    image_url = data['image_url']
 
-            # Emit updates via socket.io for each banner
-            emit_updates(f'banner{i}_updated', {
-                'title': title,
-                'subtitle': subtitle,
-                'button_text': button_text,
-                'button_link': button_link,
-                'image': banners[f'banner{i}'].get('image')
-            })
-
-        # Update About Us section
-        about_title = request.form.get('about_title')
-        about_content = request.form.get('about_content')
-        about_button_text = request.form.get('button_text')
-        about_button_link = request.form.get('button_link')
-        about_image = request.files.get('about_image')
-
-        if about_image:
-            about_pages['image_url'] = handle_image_upload(
-                about_image, current_app.config['UPLOAD_FOLDER'])
-
-        about_pages.update({
-            'title': about_title,
-            'content': about_content,
-            'button_text': about_button_text,
-            'button_link': about_button_link
-        })
-
-        # Emit updates via socket.io for About Us
-        emit_updates('about_updated', {
-            'title': about_title,
-            'content': about_content,
-            'button_text': about_button_text,
-            'button_link': about_button_link,
-            'image': about_pages['image_url']
-        })
-
-        # Save updated data (in production, save to the database)
-        save_banner_data(banners)
-        save_about_data(about_pages)
-
-        # Redirect to refresh the page
-        return redirect(url_for('realtime.admin_page'))
-
-    # Render the admin page with the current banner and about us content
-    return render_template('admin_page.html', banners=banners, about_pages=about_pages)
-
-# Data handlers (for simplicity, using in-memory dictionaries. Replace with DB calls in production)
-
-
-def get_banner_data():
-    """Simulate getting banner data. In production, fetch this from the database."""
-    return {
-        f'banner{i}': {
-            'title': f'Banner {i} Title',
-            'subtitle': f'Banner {i} Subtitle',
-            'button_text': f'Banner {i} Button',
-            'button_link': f'/banner{i}_link',
-            'image': f'/static/uploads/banner{i}.jpg'
-        } for i in range(1, 9)
+    # Create the new article object
+    article = {
+        "title": data['title'],
+        "description": data['description'],
+        "image_url": image_url,
+        "updated_at": datetime.datetime.now().strftime("%b %d, %Y %H:%M"),
+        "read_time": data['read_time'],
+        "url": data['url'],
+        "url_text": data['url_text'],
+        "youtube_id": youtube_id
     }
 
+    # Add new article to the featured_articles list (use a persistent store like a database in production)
+    featured_articles.append(article)
 
-def get_about_data():
-    """Simulate getting about page data. In production, fetch this from the database."""
-    return {
-        'title': 'About Us Title',
-        'content': 'This is the about us content.',
-        'button_text': 'Learn More',
-        'button_link': '/about_us_link',
-        'image_url': '/static/uploads/about_us.jpg'
-    }
+    # Emit updated list of the last 3 articles to all clients (admin and front-end)
+    emit('update_articles', featured_articles[-3:], broadcast=True)
 
 
-def save_banner_data(banners):
-    """Simulate saving banner data. Replace this with actual DB save logic."""
-    print("Saving banner data:", banners)
+# Helper function to extract YouTube video ID from a URL
+def get_youtube_id(url):
+    if "youtube.com" in url or "youtu.be" in url:
+        if "v=" in url:
+            return url.split("v=")[1].split("&")[0]
+        elif "youtu.be" in url:
+            return url.split("/")[-1]
+    return None
 
 
-def save_about_data(about_pages):
-    """Simulate saving about page data. Replace this with actual DB save logic."""
-    print("Saving about page data:", about_pages)
+
+

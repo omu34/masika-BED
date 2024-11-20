@@ -1,11 +1,12 @@
 import os
 
+from flask_mail import Mail, Message
+from Starter import mail
 import psycopg2.extras
 from flask import (Blueprint, flash, redirect, render_template, request,
                    session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from flask_mail import Mail, Message
 
 auth = Blueprint('auth', __name__)
 
@@ -75,14 +76,14 @@ def auth_register():
             # Send confirmation email
             msg = Message('Account creation successful', recipients=[email])
             msg.body = f'Thank you for registering with us, {username}!'
-            Mail.send(msg)
+            mail.send(msg)
 
             # Notify superadmin if necessary
             if is_admin:
                 admin_msg = Message('New Admin Registration',
                                     recipients=[SUPER_ADMIN_EMAIL])
                 admin_msg.body = f'New Admin registered: {username} ({email})'
-                Mail.send(admin_msg)
+                mail.send(admin_msg)
 
             flash('You are ready to go! You can now log in.')
             return redirect(url_for('auth.auth_login'))
@@ -136,13 +137,13 @@ def auth_login():
                 # Send email notification to the user
                 msg = Message('Login Notification', recipients=[user['email']])
                 msg.body = f'You have successfully logged in, {user["email"]}!'
-                Mail.send(msg)
+                mail.send(msg)
 
                 # Notify super-admin about the login
                 admin_msg = Message('User Logged In', recipients=[
                                     SUPER_ADMIN_EMAIL])
                 admin_msg.body = f'User {user["email"]} has logged in.'
-                Mail.send(admin_msg)
+                mail.send(admin_msg)
 
                 # Redirect to the home page after successful login
                 return redirect(url_for('views.home'))
@@ -171,10 +172,13 @@ def auth_logout():
         # flash('An error occurred during logout.')
         return redirect(url_for('auth.auth_login'))
 
+# Admin
+
 
 @auth.route('/admin_dashboard')
 def admin_dashboard():
     """handles admin dashboard"""
+
     if session.get('loggedin') and session.get('is_admin'):
         conn = get_db_connection()
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -187,14 +191,23 @@ def admin_dashboard():
         cur.execute("SELECT * FROM messages")
         list_messages = cur.fetchall()
 
+        # Fetch all subscribers from the database
+        cur.execute("SELECT * FROM subscribers")
+        list_subscribers = cur.fetchall()
+
+        # Fetch all articles from the database
+        cur.execute("SELECT * FROM featured_articles")
+        list_articles = cur.fetchall()
+
         cur.close()
         conn.close()
 
         # Pass both users_list and list_messages to the template
-        return render_template('admin_dashboard.html', users_list=users_list, list_messages=list_messages)
+        return render_template('admin_dashboard.html', users_list=users_list, list_messages=list_messages, list_articles=list_articles, list_subscribers=list_subscribers)
     else:
         flash('Unauthorized access!')
         return redirect(url_for('views.home'))
+
 
 
 # users
@@ -255,60 +268,3 @@ def delete_user(id):
         return redirect(url_for('views.home'))
 
 
-# messages
-@auth.route('/edit_message/<int:id>', methods=['GET', 'POST'])
-def edit_message(id):
-    """handles edit message"""
-    if session.get('loggedin') and session.get('is_admin'):
-        conn = get_db_connection()
-        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-
-        if request.method == 'POST':
-            # Get form data
-            texts = request.form['texts']
-
-            # Update the message in the database
-            cur.execute(
-                "UPDATE messages SET texts = %s WHERE id = %s", (texts, id))
-            conn.commit()
-
-            flash('Message updated successfully!')
-            return redirect(url_for('auth.admin_dashboard'))
-
-        # If GET request, fetch the message details
-        cur.execute("SELECT * FROM messages WHERE id = %s", (id,))
-        message = cur.fetchone()
-
-        cur.close()
-        conn.close()
-
-        return render_template('message_edit.html', message=message)
-    else:
-        flash('Unauthorized access!')
-        return redirect(url_for('views.home'))
-
-
-@auth.route('/delete_message/<int:id>', methods=['POST'])
-def delete_message(id):
-    """handles delete message"""
-    if session.get('loggedin') and session.get('is_admin'):
-        conn = get_db_connection()
-        cur = conn.cursor()
-
-        try:
-            # Delete user from the database
-            cur.execute("DELETE FROM messages WHERE id = %s", (id,))
-            conn.commit()
-
-            flash('message deleted successfully.', 'success')
-        except Exception as e:
-            conn.rollback()
-            flash(f'Error deleting message: {str(e)}', 'danger')
-        finally:
-            cur.close()
-            conn.close()
-
-        return redirect(url_for('auth.admin_dashboard'))
-    else:
-        flash('Unauthorized access!')
-        return redirect(url_for('views.home'))

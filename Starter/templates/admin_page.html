@@ -4,207 +4,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Update Sections</title>
+    <title>Admin Page Management</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+    <script src="/static/scripts.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 min-h-screen p-6">
-    <div class="container mx-auto">
-        <!-- First Section: About Us and Banner Forms -->
-        <div class="grid lg:grid-cols-3 gap-6">
-            <!-- About Us Section -->
-            {% for about in about_pages %}
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h1 class="text-xl font-semibold mb-4">Update "About Us" Section</h1>
-                <form method="POST" enctype="multipart/form-data" class="space-y-4">
-                    <div>
-                        <label for="about_title" class="block text-gray-700">Title:</label>
-                        <input id="about_title" name="about_title" type="text" value="{{ title }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
-                    </div>
-                    <div>
-                        <label for="about_content" class="block text-gray-700">Content:</label>
-                        <textarea id="about_content" name="about_content" rows="4"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500">{{ content }}</textarea>
-                    </div>
-                    <div>
-                        <label for="button_text" class="block text-gray-700">Button Text:</label>
-                        <input id="button_text" name="button_text" type="text" value="{{ button_text }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
-                    </div>
-                    <div>
-                        <label for="button_link" class="block text-gray-700">Button Link:</label>
-                        <input id="button_link" name="button_link" type="text" value="{{ button_link }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
-                    </div>
-                    <div>
-                        <label for="about_image" class="block text-gray-700">Upload Image:</label>
-                        <input id="about_image" name="about_image" type="file"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
-                    </div>
-                    <button type="submit"
-                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
-                        Update Content
-                    </button>
-                </form>
-                {% if content %}
-                <p class="text-green-500 mt-4">Content was successfully updated!</p>
-                {% endif %}
-            </div>
-            {% endfor %}
+<body>
 
-            <!-- banner Section -->
-            {% for banner in banners %}
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h1 class="text-xl font-semibold mb-4">Update "banner" Section</h1>
-                <form method="POST" enctype="multipart/form-data" class="space-y-4">
-                    <div>
-                        <label for="banner_title" class="block text-gray-700">banner Title:</label>
-                        <input id="banner_title" name="banner_title" type="text" value="{{ banner.banner_title }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
-                    </div>
-                    <div>
-                        <label for="banner_subtitle" class="block text-gray-700">Banner Description:</label>
-                        <textarea id="banner_subtitle" name="banner_subtitle" rows="4"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500">{{ banner.banner_subtitle }}</textarea>
-                    </div>
-                    <div>
-                        <label for="banner_button_text" class="block text-gray-700">banner Button Text:</label>
-                        <input id="banner_button_text" name="banner_button_text" type="text"
-                            value="{{ banner.banner_button_text }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
-                    </div>
-                    <div>
-                        <label for="banner_button_link" class="block text-gray-700">Banner Button Link:</label>
-                        <input id="banner_button_link" name="banner_button_link" type="text"
-                            value="{{ banner.banner_button_link }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
-                    </div>
-                    <div>
-                        <label for="banner_image" class="block text-gray-700">banner Background Image:</label>
-                        <input id="banner_image" name="banner_image" type="file"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" />
-                    </div>
-                    <button type="submit"
-                        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
-                        Update Content
-                    </button>
-                </form>
-                {% if content %}
-                <p class="text-green-500 mt-4">Content was successfully updated!</p>
-                {% endif %}
-            </div>
-            {% endfor %}
+    <div>
+        <div class="max-w-3xl mx-auto py-12">
+            <h1 class="text-3xl font-bold text-gray-800 mb-8">Feature a New Article</h1>
+            <form id="featureArticleForm" class="bg-white p-6 rounded-lg shadow-md">
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700 font-bold mb-2">Title</label>
+                    <input type="text" id="title" class="w-full p-3 border rounded" required>
+                </div>
 
-            <!-- Third Column (For Future Content or Another Section) -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h1 class="text-xl font-semibold mb-4">Another Section</h1>
-                <p class="text-gray-600">This is the third column for future updates or content.</p>
+                <div class="mb-4">
+                    <label for="description" class="block text-gray-700 font-bold mb-2">Description</label>
+                    <textarea id="description" class="w-full p-3 border rounded" rows="4" required></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label for="image" class="block text-gray-700 font-bold mb-2">Image (optional)</label>
+                    <input type="file" id="image" class="w-full">
+                </div>
+
+                <div class="mb-4">
+                    <label for="url" class="block text-gray-700 font-bold mb-2">Article URL or YouTube URL</label>
+                    <input type="url" id="url" class="w-full p-3 border rounded" required>
+                </div>
+
+                <div class="mb-4">
+                    <label for="urlText" class="block text-gray-700 font-bold mb-2">Link Text</label>
+                    <input type="text" id="urlText" class="w-full p-3 border rounded" value="Read More">
+                </div>
+
+                <div class="mb-4">
+                    <label for="readTime" class="block text-gray-700 font-bold mb-2">Read Time (e.g., "5 min
+                        read")</label>
+                    <input type="text" id="readTime" class="w-full p-3 border rounded" required>
+                </div>
+
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded mt-4">Feature Article</button>
+            </form>
+        </div>
+
+
+    </div>
+
+    <div class="mx-auto max-w-3xl">
+        <div class="flex justify-center items-center">
+            <h1
+                class="text-2xl font-bold mb-4 text-center text-red-900 font-playfair-l w-fit pb-1 px-2 rounded-md border-b-2 border-red-800">
+                Manage Pages
+            </h1>
+        </div>
+
+        <!-- Section to Add/Edit Page -->
+        <form id="pageForm" method="POST" action="/admin/update_page" enctype="multipart/form-data"
+            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <input type="hidden" id="page_id" name="page_id">
+
+            <div class="mb-4">
+                <label for="slug" class="block text-gray-700 text-sm font-bold mb-2">Page Slug</label>
+                <input type="text" id="slug" name="slug" placeholder="Page slug" required
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Page Title</label>
+                <input type="text" id="title" name="title" placeholder="Page title"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <h3 class="text-lg font-semibold mb-4">Sections</h3>
+
+            <div id="sectionsContainer" class="mb-6 space-y-4">
+                <!-- Section Fields will be dynamically added here -->
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button type="button" onclick="addSection()"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Add Section
+                </button>
+                <button type="submit"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Save Page
+                </button>
+            </div>
+        </form>
+
+        <!-- Section for Real-Time Preview -->
+        <div id="livePreview" class="bg-gray-100 p-6 rounded-lg shadow-md mt-8">
+            <h2 class="text-xl font-bold mb-4">Live Preview</h2>
+            <div id="previewContent" class="text-gray-800">
+                <!-- Live preview content will appear here -->
             </div>
         </div>
+
+        <!-- Section to List All Pages -->
+        <h2 class="text-xl font-bold mt-8">Existing Pages</h2>
+        <ul id="pagesList" class="list-disc pl-5 mt-4 space-y-2">
+            <!-- Dynamically filled by JavaScript -->
+        </ul>
     </div>
-
-
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
-        <!-- Form to update banner content -->
-        <form action="{{ url_for('views.admin_page') }}" method="POST" enctype="multipart/form-data">
-            {% for i in range(1, 9) %}
-            <div class="banner-section mb-6">
-                <h2 class="text-2xl mb-2">Banner {{ i }}</h2>
-                <div class="mb-4">
-                    <label for="banner{{ i }}_title">Title</label>
-                    <input type="text" name="banner{{ i }}_title" id="banner{{ i }}_title_input"
-                        value="{{ banners['banner' ~ i].title }}" class="border p-2 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="banner{{ i }}_subtitle">Subtitle</label>
-                    <input type="text" name="banner{{ i }}_subtitle" id="banner{{ i }}_subtitle_input"
-                        value="{{ banners['banner' ~ i].subtitle }}" class="border p-2 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="banner{{ i }}_button_text">Button Text</label>
-                    <input type="text" name="banner{{ i }}_button_text" id="banner{{ i }}_button_text_input"
-                        value="{{ banners['banner' ~ i].button_text }}" class="border p-2 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="banner{{ i }}_button_link">Button Link</label>
-                    <input type="text" name="banner{{ i }}_button_link" id="banner{{ i }}_button_link_input"
-                        value="{{ banners['banner' ~ i].button_link }}" class="border p-2 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="banner{{ i }}_image">Banner Image</label>
-                    <input type="file" name="banner{{ i }}_image" class="block">
-                </div>
-                <div class="mb-4">
-                    <img id="banner{{ i }}_image" src="{{ banners['banner' ~ i].image }}" alt="Banner {{ i }} Image"
-                        class="max-w-xs">
-                </div>
-            </div>
-            {% endfor %}
-
-            <!-- About Us Section -->
-            <div class="about-section mb-6">
-                <h2 class="text-2xl mb-2">About Us</h2>
-                <div class="mb-4">
-                    <label for="about_title">Title</label>
-                    <input type="text" name="about_title" id="about_title_input" value="{{ about.title }}"
-                        class="border p-2 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="about_content">Content</label>
-                    <textarea name="about_content" id="about_content_input"
-                        class="border p-2 w-full">{{ about.content }}</textarea>
-                </div>
-                <div class="mb-4">
-                    <label for="button_text">Button Text</label>
-                    <input type="text" name="button_text" id="about_button_text_input" value="{{ about.button_text }}"
-                        class="border p-2 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="button_link">Button Link</label>
-                    <input type="text" name="button_link" id="about_button_link_input" value="{{ about.button_link }}"
-                        class="border p-2 w-full">
-                </div>
-                <div class="mb-4">
-                    <label for="about_image">About Us Image</label>
-                    <input type="file" name="about_image" class="block">
-                </div>
-                <div class="mb-4">
-                    <img id="about_image" src="{{ about.image_url }}" alt="About Us Image" class="max-w-xs">
-                </div>
-            </div>
-
-            <button type="submit" class="bg-blue-500 text-white p-2 rounded">Save Changes</button>
-        </form>
-    </div>
-
-    <!-- SocketIO Script -->
+    <!-- Pages Sections script -->
     <script>
-        var socket = io();
+        const socket = io();
+        let sectionCount = 0;
 
-        // Listen for updates to each banner
-        for (let i = 1; i <= 8; i++) {
-            socket.on(`banner${i}_updated`, function (data) {
-                document.getElementById(`banner${i}_title_input`).value = data.title;
-                document.getElementById(`banner${i}_subtitle_input`).value = data.subtitle;
-                document.getElementById(`banner${i}_button_text_input`).value = data.button_text;
-                document.getElementById(`banner${i}_button_link_input`).value = data.button_link;
-                if (data.image) {
-                    document.getElementById(`banner${i}_image`).src = data.image;
-                }
-            });
+        function addSection() {
+            sectionCount++;
+            const sectionHTML = `
+        <div id="section${sectionCount}" class="section bg-gray-50 p-4 rounded-md mt-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Section Title</label>
+                <input type="text" id="sectionTitle${sectionCount}" name="sections[${sectionCount}][title]" placeholder="Section title"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Section Description</label>
+                <textarea id="sectionDescription${sectionCount}" name="sections[${sectionCount}][description]" placeholder="Section description"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Upload Section Image</label>
+                <input type="file" id="sectionImage${sectionCount}" name="sections[${sectionCount}][image]"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div id="subsectionsContainer${sectionCount}" class="mb-6 space-y-4">
+                <!-- Subsection fields will be dynamically added here -->
+            </div>
+            <button type="button" onclick="addSubsection(${sectionCount})"
+                class="bg-blue-300 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Add Subsection
+            </button>
+            <button type="button" class="text-red-500" onclick="removeSection(${sectionCount})">Remove Section</button>
+        </div>`;
+            document.getElementById('sectionsContainer').insertAdjacentHTML('beforeend', sectionHTML);
+            updateLivePreview();
         }
 
-        // Listen for updates to the About Us section
-        socket.on('about_updated', function (data) {
-            document.getElementById('about_title_input').value = data.title;
-            document.getElementById('about_content_input').value = data.content;
-            document.getElementById('about_button_text_input').value = data.button_text;
-            document.getElementById('about_button_link_input').value = data.button_link;
-            if (data.image) {
-                document.getElementById('about_image').src = data.image;
-            }
+        function addSubsection(sectionId) {
+            const subsectionCount = document.querySelectorAll(`#subsectionsContainer${sectionId} .subsection`).length + 1;
+            const subsectionHTML = `
+                <div id="subsection${sectionId}_${subsectionCount}" class="subsection bg-gray-100 p-4 rounded-md mt-4">
+                    <label class="block text-gray-600 text-sm font-bold mb-2">Subsection Title</label>
+                    <input type="text" id="subsectionTitle${sectionId}_${subsectionCount}" name="sections[${sectionId}][subsections][${subsectionCount}][title]" placeholder="Subsection title"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline">
+                    <label class="block text-gray-600 text-sm font-bold mb-2">Subsection Description</label>
+                    <textarea id="subsectionDescription${sectionId}_${subsectionCount}" name="sections[${sectionId}][subsections][${subsectionCount}][description]" placeholder="Subsection description"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    <label class="block text-gray-600 text-sm font-bold mb-2">Upload Subsection Image</label>
+                    <input type="file" id="subsectionImage${sectionId}_${subsectionCount}" name="sections[${sectionId}][subsections][${subsectionCount}][image]"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline">
+                    <button type="button" class="text-red-500 mt-2" onclick="removeSubsection(${sectionId}, ${subsectionCount})">Remove Subsection</button>
+                </div>`;
+            document.getElementById(`subsectionsContainer${sectionId}`).insertAdjacentHTML('beforeend', subsectionHTML);
+            updateLivePreview();
+        }
+
+        function removeSection(sectionId) {
+            document.getElementById(`section${sectionId}`).remove();
+            updateLivePreview();
+        }
+
+        function removeSubsection(sectionId, subsectionId) {
+            document.getElementById(`subsection${sectionId}_${subsectionId}`).remove();
+            updateLivePreview();
+        }
+
+        function updateLivePreview() {
+            const title = document.getElementById('title').value;
+            let previewHTML = `<h1 class="text-2xl font-bold mb-2">${title}</h1>`;
+            const sections = document.querySelectorAll('.section');
+
+            const pageData = { title: title, sections: [] };
+
+            sections.forEach((section, index) => {
+                const sectionTitle = document.getElementById(`sectionTitle${index + 1}`).value;
+                const sectionImage = document.getElementById(`sectionImage${index + 1}`).files[0];
+                const sectionData = {
+                    title: sectionTitle,
+                    image_url: sectionImage ? URL.createObjectURL(sectionImage) : '',
+                    subsections: []
+                };
+
+                previewHTML += `<div class="section-preview bg-gray-200 p-4 mb-4"><h2 class="font-bold text-lg mb-2">${sectionTitle}</h2>`;
+                const subsections = document.querySelectorAll(`#section${index + 1} .subsection`);
+
+                subsections.forEach((subsection, subIndex) => {
+                    const subsectionTitle = document.getElementById(`subsectionTitle${index + 1}_${subIndex + 1}`).value;
+                    const subsectionDescription = document.getElementById(`subsectionDescription${index + 1}_${subIndex + 1}`).value;
+                    const subsectionImage = document.getElementById(`subsectionImage${index + 1}_${subIndex + 1}`).files[0];
+
+                    const subsectionData = {
+                        title: subsectionTitle,
+                        description: subsectionDescription,
+                        image_url: subsectionImage ? URL.createObjectURL(subsectionImage) : ''
+                    };
+                    sectionData.subsections.push(subsectionData);
+
+                    previewHTML += `
+                        <div class="subsection-preview bg-gray-300 p-3 rounded mb-2">
+                            <h3 class="font-semibold">${subsectionTitle}</h3>
+                            <p>${subsectionDescription}</p>
+                            ${subsectionImage ? `<img src="${URL.createObjectURL(subsectionImage)}" class="w-32 h-32 mt-2 object-cover">` : ''}
+                        </div>`;
+                });
+                pageData.sections.push(sectionData);
+                previewHTML += `</div>`;
+            });
+
+            document.getElementById('previewContent').innerHTML = previewHTML;
+            socket.emit('preview_update', pageData);
+        }
+
+        document.getElementById('pageForm').addEventListener('input', updateLivePreview);
+        document.getElementById('pageForm').addEventListener('change', updateLivePreview);
+    </script>
+
+
+
+    <!-- JavaScript to handle featured articles submission with Socket.IO -->
+    <script>
+        const socket = io();
+
+        document.getElementById('featureArticleForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const imageFile = document.getElementById('image').files[0];
+            const url = document.getElementById('url').value;
+            const urlText = document.getElementById('urlText').value;
+            const readTime = document.getElementById('readTime').value;
+
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            if (imageFile) formData.append('image', imageFile);
+            formData.append('url', url);
+            formData.append('urlText', urlText);
+            formData.append('readTime', readTime);
+
+            // Emit article data to the server via Socket.IO
+            socket.emit('feature_article', {
+                title,
+                description,
+                image_url: imageFile ? URL.createObjectURL(imageFile) : null,
+                url,
+                url_text: urlText,
+                read_time: readTime
+            });
+
+            // Reset form fields
+            event.target.reset();
+            alert('Article featured successfully!');
         });
     </script>
 </body>

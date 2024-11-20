@@ -1,9 +1,5 @@
 import os
 from dotenv import load_dotenv
-
-# Load environment variables from the .env file
-# load_dotenv()
-
 # Load environment variables from .env file
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
@@ -23,8 +19,7 @@ class Config:
     # SQL configuration
     SECRET_KEY = os.urandom(24)
     SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False  # Avoid warning
-    
+    SQLALCHEMY_TRACK_MODIFICATIONS = False  # Avoid warning    
     ADMIN_SECRET_CODE = os.getenv('ADMIN_SECRET_CODE')
     SUPER_ADMIN_EMAIL = os.getenv('SUPER_ADMIN_EMAIL')
     dbname=os.getenv('DB_NAME'),
