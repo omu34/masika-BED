@@ -1,10 +1,11 @@
+import traceback
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 import psycopg2.extras
 import os
 from .models import FeaturedArticle, db
 from flask_mail import Message
 from Starter import mail
-
+import re
 
 
 views = Blueprint("views", __name__)
@@ -22,6 +23,47 @@ def get_db_connection():
         port=os.getenv('DB_PORT')
     )
     return conn
+
+
+def is_valid_email(email):
+    """Validates the format of an email address."""
+    email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    return re.match(email_regex, email) is not None
+
+
+def email_to_admin(email):
+    try:
+        admin_email = "bernardomuse22@gmail.com"  # Replace with admin email
+        msg = Message(
+            subject="New Subscription Received",
+            recipients=[admin_email],
+            body=f"""
+                You have received a new subscription:
+                Email: {email}
+            """
+        )
+        mail.send(msg)
+        print("Email sent to admin successfully.")
+    except Exception as e:
+        print(f"Failed to send email to admin: {str(e)}")
+
+
+def email_to_client(email):
+    try:
+        msg = Message(
+            subject="Thank You for Subscribing",
+            recipients=[email],
+            body=f"""
+            Hi {email},
+            Thank you for subscribing to us. We have received your subscription and will keep you updated.
+            Best Regards,
+            Masika and Koross Advocates
+            """
+        )
+        mail.send(msg)
+        print("Email sent to client successfully.")
+    except Exception as e:
+        print(f"Failed to send email to client: {str(e)}")
 
 
 @views.route("/")
@@ -51,9 +93,6 @@ def admins():
     if "loggedin" in session:
         return render_template("admin_dashboard.html", email=session["email"])
     return redirect(url_for("admin.admin_login"))
-
-
-
 
 
 @views.route("/add_message", methods=["POST"])
@@ -100,7 +139,7 @@ def add_message():
 # Helper function to send an email to the admin
 def send_email_to_admin(name, phone_number, email, texts):
     try:
-        admin_email = "admin@example.com"  # Replace with admin email
+        admin_email = "bernardomuse22@gmail"  # Replace with admin email
         msg = Message(
             subject="New Message Received",
             recipients=[admin_email],
@@ -141,45 +180,58 @@ def send_email_to_client(name, email):
 
 @views.route("/edit/<int:id>", methods=["GET", "POST"])
 def get_message(id):
-    conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-    if request.method == "POST":
-        name = request.form["name"]
-        phone_number = request.form["phone_number"]
-        email = request.form["email"]
-        texts = request.form["texts"]
+        if request.method == "POST":
+            name = request.form["name"]
+            phone_number = request.form["phone_number"]
+            email = request.form["email"]
+            texts = request.form["texts"]
+            # Validate input
+            if not name or not phone_number or not email or not texts:
+                flash("All fields required.")
+                return redirect(url_for("views.get_message", id=id))
 
-        try:
-            cur.execute(
-                """
+            try:
+                cur.execute(
+                    """
                 UPDATE messages
-                SET fullname = %s, phone_number = %s,email = %s, texts = %s
+                SET name = %s, phone_number = %s, email = %s, texts = %s
                 WHERE id = %s
-            """,
-                (name, phone_number, email, texts, id),
-            )
-            conn.commit()
-            flash("message updated successfully!")
-            return redirect(url_for("views.message"))
-        except Exception as e:
-            conn.rollback()
-            flash(f"Error: {str(e)}")
-        finally:
+                """,
+                    (name, phone_number, email, texts, id),
+                )
+                conn.commit()
+                flash("Message updated successfully!")
+                return redirect(url_for("auth.admin_dashboard"))
+            except Exception as e:
+                conn.rollback()
+                flash(f"Error: {str(e)}")
+                return redirect(url_for("views.get_message", id=id))
+
+        # Fetch message details for GET request
+        cur.execute("SELECT * FROM messages WHERE id = %s", (id,))
+        message = cur.fetchone()
+
+    except Exception as e:
+        flash(f"Error fetching message: {str(e)}")
+        message = None  # Fallback in case of an error
+    finally:
+        # Ensure resources are properly closed
+        if 'cur' in locals() and cur:
             cur.close()
+        if 'conn' in locals() and conn:
             conn.close()
-
-    cur.execute("SELECT * FROM messages WHERE id = %s", (id,))
-    message = cur.fetchone()
-    cur.close()
-    conn.close()
-
     return render_template("edit_message.html", message=message)
 
 
 @views.route("/update_message/<id>", methods=["POST"])
 def update_message(id):
     if request.method == "POST":
+        conn = None  # Declare connection in the outer scope
+        cur = None  # Declare cursor in the outer scope
         try:
             name = request.form.get("name")
             phone_number = request.form.get("phone_number")
@@ -188,10 +240,12 @@ def update_message(id):
 
             if not (name and phone_number and email and texts):
                 flash("Missing required fields!")
-                return redirect(url_for("views.message"))
+                return redirect(url_for("views.add_message"))
 
             conn = get_db_connection()
             cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+            # Update the message in the database
             cur.execute(
                 """
                 UPDATE students
@@ -200,17 +254,23 @@ def update_message(id):
                     email = %s,
                     texts = %s
                 WHERE id = %s
-            """,
+                """,
                 (name, phone_number, email, texts, id),
             )
             conn.commit()
-            cur.close()
-            conn.close()
             flash("Message Updated Successfully")
-            return redirect(url_for("views.message"))
         except Exception as e:
-            conn.rollback()
+            # Rollback transaction if the connection exists
+            if conn:
+                conn.rollback()
             flash(f"Error: {str(e)}")
+        finally:
+            # Ensure resources are always closed
+            if cur:
+                cur.close()
+            if conn:
+                conn.close()
+        return redirect(url_for("auth.admin_dashboard"))
 
 
 @views.route("/delete/<id>", methods=["POST", "GET"])
@@ -223,121 +283,132 @@ def delete_message(id):
         cur.close()
         conn.close()
         flash("Message Removed Successfully")
-        return redirect(url_for("views.message"))
+        return redirect(url_for("auth.admin_dashboard"))
     except Exception as e:
         flash(f"Error: {str(e)}")
-        return redirect(url_for("views.message"))
+        return redirect(url_for("views.add_message"))
 
 
-@views.route("/add_subscriber", methods=["GET", "POST"])
+# Define the route
+
+
+@views.route("/add_subscriber", methods=["POST"])
 def add_subscriber():
-    if request.method == "POST":
-        email = request.form["email"]
+    
+    email = request.form.get("email", "").strip()
 
-        # Save to the database
-        conn = get_db_connection()
-        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    # Debugging
+    print(f"Email received: {email}")
 
-        try:
-            cur.execute(
-                "INSERT INTO subscribers (email) VALUES (%s)",
-                (email,)  # Ensure this is passed as a tuple
-            )
-            conn.commit()
+    # Validate email
+    if not email:
+        flash("Email is required.")
+        return redirect(url_for("views.home"))
 
-            # Send email to the subscriber
-            subscriber_message = Message(
-                subject="Subscription Confirmation",
-                recipients=[email],  # Client's email
-                body=f"Thank you for subscribing to our service, {email}!\n\nWe're excited to have you with us!"
-            )
-            mail.send(subscriber_message)
+    try:
+        # Insert email into the database
+        with get_db_connection() as conn:
+            with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+                cur.execute(
+                    "INSERT INTO subscribers (email) VALUES (%s)", (email,)
+                )
+                conn.commit()
 
-            # Send email notification to the admin
-            admin_email = 'bernardomuse22@gmail.com'  # Replace with the admin's email
-            admin_message = Message(
-                subject="New Subscriber",
-                recipients=[admin_email],  # Admin's email
-                body=f"A new subscriber has joined:\n\nEmail: {email}"
-            )
-            mail.send(admin_message)
+        # Send emails
+        email_to_admin(email)
+        email_to_client(email)
 
-            flash("Subscriber added successfully and emails sent!")
-            return redirect(url_for("views.home"))
-        except Exception as e:
-            conn.rollback()
-            flash(f"Error: {str(e)}")
-        finally:
-            cur.close()
-            conn.close()
-
-    return render_template("home.html")
+        flash("You subscribed successfully! A confirmation email has been sent.")
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        flash("An error occurred while subscribing. Please try again.")
+    return redirect(url_for("views.home"))
 
 
 @views.route("/edit/<int:id>", methods=["GET", "POST"])
 def get_subscriber(id):
-    conn = get_db_connection()
-    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
+        if request.method == "POST":
+            email = request.form["email"]
+
+            # Validate input
+            if not email:
+                flash("Email is required.")
+                return redirect(url_for("views.get_subscriber", id=id))
+
+            try:
+                cur.execute(
+                    """
+                    UPDATE subscribers
+                    SET email = %s
+                    WHERE id = %s
+                    """,
+                    (email, id),
+                )
+                conn.commit()
+                flash("Subscriber updated successfully!")
+                return redirect(url_for("auth.admin_dashboard"))
+            except Exception as e:
+                conn.rollback()
+                flash(f"Error: {str(e)}")
+                return redirect(url_for("views.get_subscriber", id=id))
+
+        # Fetch subscriber details for GET request
+        cur.execute("SELECT * FROM subscribers WHERE id = %s", (id,))
+        subscriber = cur.fetchone()
+
+    except Exception as e:
+        flash(f"Error fetching subscriber: {str(e)}")
+        subscriber = None  # Fallback in case of an error
+    finally:
+        # Ensure resources are properly closed
+        if 'cur' in locals() and cur:
+            cur.close()
+        if 'conn' in locals() and conn:
+            conn.close()
+
+    return render_template("edit_subscriber.html", subscriber=subscriber)
+
+
+@views.route("/update_subscriber/<int:id>", methods=["POST"])
+def update_subscriber(id):
     if request.method == "POST":
-        email = request.form["email"]
+        email = request.form.get("email")
+
+        if not email:
+            flash("Email is required!")
+            return redirect(url_for("views.subscriber"))
 
         try:
+            conn = get_db_connection()
+            cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+            # Update the subscriber
             cur.execute(
                 """
                 UPDATE subscribers
                 SET email = %s
                 WHERE id = %s
-            """,
+                """,
                 (email, id),
             )
             conn.commit()
-            flash("subscriber updated successfully!")
-            return redirect(url_for("views.subscriber"))
+            flash("Subscriber updated successfully!")
         except Exception as e:
-            conn.rollback()
+            if conn:
+                conn.rollback()  # Rollback if there is an error
             flash(f"Error: {str(e)}")
         finally:
-            cur.close()
-            conn.close()
+            # Ensure resources are properly closed
+            if 'cur' in locals() and cur:
+                cur.close()
+            if 'conn' in locals() and conn:
+                conn.close()
 
-    cur.execute("SELECT * FROM subscribers WHERE id = %s", (id,))
-    subscriber = cur.fetchone()
-    cur.close()
-    conn.close()
-
-    return render_template("edit_subscriber.html", subscriber=subscriber)
-
-
-@views.route("/update_subscriber/<id>", methods=["POST"])
-def update_subscriber(id):
-    if request.method == "POST":
-        try:
-            email = request.form.get("email")
-
-            if not (email):
-                flash("Missing required fields!")
-                return redirect(url_for("views.subscriber"))
-
-            conn = get_db_connection()
-            cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-            cur.execute(
-                """
-                UPDATE students
-                SET 
-                    email = %s
-                WHERE id = %s
-            """,
-                (email, id),
-            )
-            conn.commit()
-            cur.close()
-            conn.close()
-            flash("subscriber Updated Successfully")
-            return redirect(url_for("views.subscriber"))
-        except Exception as e:
-            conn.rollback()
-            flash(f"Error: {str(e)}")
+        return redirect(url_for("auth.admin_dashboard"))
 
 
 @views.route("/delete/<id>", methods=["POST", "GET"])
@@ -350,35 +421,9 @@ def delete_subscriber(id):
         cur.close()
         conn.close()
         flash("subscriber Removed Successfully")
-        return redirect(url_for("views.subscriber"))
+        return redirect(url_for("auth.admin_dashboard"))
     except Exception as e:
         flash(f"Error: {str(e)}")
-        return redirect(url_for("views.subscriber"))
+        return redirect(url_for("views.add_subscriber"))
 
 
-
-
-
-
-@views.route("/admin", methods=["GET", "POST"])
-def admin_panel():
-    if not session.get("is_admin"):
-        flash("Access denied! Admins only.", "danger")
-        return redirect(url_for("featured_articles_section"))
-
-    if request.method == "POST":
-        article_id = request.form.get("article_id")
-        article = FeaturedArticle.query.get(article_id)
-        if article:
-            article.is_featured = not article.is_featured
-            db.session.commit()
-        return redirect(url_for("admin_panel"))
-
-    articles = FeaturedArticle.query.all()
-    return render_template("admin_panel.html", articles=articles)
-
-# Featured articles section
-@views.route("/featured_articles")
-def featured_articles_section():
-    articles = FeaturedArticle.query.filter_by(is_featured=True).all()
-    return render_template("featured_articles.html", articles=articles)

@@ -479,8 +479,8 @@
 
                 <form action="{{ url_for('views.add_subscriber')}}" method="POST" id="subscribe-form"
                     class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
-                    <input id="email-input" name="email" placeholder="Email" required type="email"
-                        class="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-deep-purple-900 focus:border-teal-accent-700 focus:outline-none focus:shadow-outline" />
+                    <input id="email" name="email" placeholder="Email" required type="email"
+                        class="flex-grow w-full h-12 px-4 mb-3 text-black transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-deep-purple-900 focus:border-teal-accent-700 focus:outline-none focus:shadow-outline" />
                     <button type="submit" id="change-button"
                         class="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-200 transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none">
                         Subscribe
@@ -839,7 +839,7 @@
     </div>
 
     <!-- featured articles section -->
-    <!-- <div
+    <div
             class="z-30 sticky top-0 h-auto mt-1 mb-1 bg-white flex flex-col items-center justify-center md:mt-0 -mt-24 z-0">
             <div class="relative px-4 pt-8 pb-12 sm:px-6 lg:px-8 lg:pt-16 lg:pb-20 mr-2 ml-2 md:ml-0 md:mr-0">
                 <div class="absolute inset-0">
@@ -961,66 +961,34 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div> 
 
-
-
-    <section class="bg-slate-100 z-40">
-        <div
-            class="sticky bg-slate-100 md:top-0 top-20 h-screen z-40 flex flex-col items-center justify-center md:mt-0 z-0">
-            <div class="relative px-6 pt-4 pb-4 bg-slate-100 lg:px-8 lg:pt-4 rounded-lg lg:pb-2 mx-auto max-w-7xl">
-                <div class="relative">
-
-                    <div class="text-left">
-                        <h1
-                            class="text-xl font-bold text-red-900 sm:text-3xl mb-4 text-red-900 font-extrabold bell-bold w-fit pb-1 px-2 rounded-md border-b-2 border-red-800 text-center md:text-left">
-                            Featured <span class="text-indigo-900">Articles</span>
-                        </h1>
-                    </div>
-                    <div class="mx-auto mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-none" id="articles">
-                        {% for article in articles %}
-                        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg article">
-                            <div class="flex-shrink-0">
-                                <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
-                                    src="{{ article.image_url }}" alt="{{ article.title }}" />
-                            </div>
-                            <div class="flex flex-1 flex-col justify-between bg-white p-6">
-                                <div class="flex-1">
-                                    <p class="text-sm font-medium text-red-800">
-                                        <a href="{{ article.url }}" class="bell-bold font-semibold hover:text-red-600">
-                                            {{ article.url_text }} <span class="ml-1">&#8594;</span>
-                                        </a>
-                                    </p>
-                                    <a href="#" class="mt-2 block">
-                                        <p class="text-xl font-bold bell-bold text-gray-900">
-                                            {{article.title }}
-                                        </p>
-                                        <p
-                                            class="mt-4 text-sm md:text-md tracking-wide text-gray-900 md:text-base bell font-medium">
-                                            {{ article.description }}
-                                        </p>
-                                    </a>
-                                </div>
-                                <div class="flex space-x-1 text-sm bell font-medium text-gray-500 mt-2">
-                                    <time datetime="${article.updated_at}">Last Modified:${article.updated_at}</time>
-                                    <span aria-hidden="true">·</span>
-                                    <span>{{ article.read_time }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
+    <div id="articles" class="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-none">
+        {% for article in articles %}
+        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg article">
+            <div class="flex-shrink-0">
+                {% if article.youtube_id %}
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/{{ article.youtube_id }}"
+                    frameborder="0" allowfullscreen></iframe>
+                {% else %}
+                <img class="h-48 w-full object-cover" src="{{ article.image_url }}" alt="{{ article.title }}" />
+                {% endif %}
+            </div>
+            <div class="p-6 bg-white flex-1 flex flex-col justify-between">
+                <h2 class="text-xl font-bold text-gray-900">{{ article.title }}</h2>
+                <p class="mt-4 text-gray-900">{{ article.description }}</p>
+                <p class="mt-2 text-gray-500">Last Modified: {{ article.updated_at }}</p>
+                <a href="{{ article.url }}" class="mt-2 text-indigo-600">{{ article.url_text }}</a>
             </div>
         </div>
-    </section>
+        {% endfor %}
+    </div>
 
 
     <!-- Script to handle real-time article updates -->
     <script>
         const socket = io();
         const articlesContainer = document.getElementById('articles');
-
         socket.on('update_articles', (articles) => {
             articlesContainer.innerHTML = ''; // Clear previous content
             articles.forEach(article => {
@@ -1045,5 +1013,8 @@
     </script>
 
 
-    
+
+
+
+
     {% endblock %}

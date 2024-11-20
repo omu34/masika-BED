@@ -97,6 +97,8 @@ class AboutUs(db.Model):
         return f"<AboutUs {self.title}>"
     
     # Featured Article
+
+
 class FeaturedArticle(db.Model):
     __tablename__ = 'featured_articles'
 
@@ -109,7 +111,7 @@ class FeaturedArticle(db.Model):
     read_time = db.Column(db.String(50))
     youtube_id = db.Column(db.String(20))
     updated_at = db.Column(
-    db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+        db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     def __repr__(self):
         return f"<FeaturedArticle {self.title}>"

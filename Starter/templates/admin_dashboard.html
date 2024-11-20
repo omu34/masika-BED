@@ -32,7 +32,7 @@
                     <td class="py-2 px-4 text-sm text-gray-600">{{ message.created_at }}</td>
 
                     <td class="py-2 px-4 text-sm flex gap-4 flex-row">
-                        <form action="{{ url_for('views.edit_message', id=message.id) }}" method="GET">
+                        <form action="{{ url_for('views.get_message', id=message.id) }}" method="GET">
                             <button type="submit" class="btn btn-primary w-1/2">Edit</button>
                         </form>
 
@@ -70,7 +70,7 @@
                     <td class="py-2 px-4 text-sm text-gray-600">{{ subscriber.email }}</td>
                     <td class="py-2 px-4 text-sm text-gray-600">{{subscriber.created_at}}</td>
                     <td class="py-2 px-4 text-sm flex gap-4 flex-row">
-                        <form action="{{ url_for('views.edit_subscriber', id=subscriber.id) }}" method="GET">
+                        <form action="{{ url_for('views.get_subscriber', id=subscriber.id) }}" method="GET">
                             <button type="submit" class="btn btn-primary w-1/2">Edit</button>
                         </form>
 
@@ -108,9 +108,9 @@
                 <tr class="border-b hover:bg-gray-50">
                     <td class="py-2 px-4 text-sm text-gray-600">{{ user.id }}</td>
                     <td class="py-2 px-4 text-sm text-gray-600">{{ user.username }}</td>
-                    <td class="py-2 px-4 text-sm text-gray-600">{{ user.email }}</td>
-                    <td class="py-2 px-4 text-sm text-gray-600">{{subscriber.created_at}}</td>
+                    <td class="py-2 px-4 text-sm text-gray-600">{{ user.email }}</td>                    
                     <td class="py-2 px-4 text-sm text-gray-600">{{ "Yes" if user.is_admin else "No" }}</td>
+                    <td class="py-2 px-4 text-sm text-gray-600">{{user.created_at}}</td>
                     <td class="py-2 px-4 text-sm flex gap-4 flex-row">
                         <form action="{{ url_for('auth.edit_user', id=user.id) }}" method="GET">
                             <button type="submit" class="btn btn-primary w-1/2">Edit</button>
