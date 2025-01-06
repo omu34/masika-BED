@@ -95,16 +95,15 @@ def blog():
     return render_template('blog.html')
 
 # Socket.IO event for client connection
-
-
 @socketio.on('connect')
 def handle_connect():
-    """Send the latest articles to the client."""
+    """Send the latest two articles of each type to the client."""
     featured_articles = {}
     for article_type in VALID_ARTICLE_TYPES:
         articles = (
             FeaturedArticle.query.filter_by(type=article_type)
             .order_by(FeaturedArticle.id.desc())
+            .limit(2)  # Fetch only the last 2 articles
             .all()
         )
         featured_articles[article_type] = [
@@ -120,6 +119,31 @@ def handle_connect():
             for article in articles
         ]
     emit('initial_data', featured_articles)
+
+
+# @socketio.on('connect')
+# def handle_connect():
+#     """Send the latest articles to the client."""
+#     featured_articles = {}
+#     for article_type in VALID_ARTICLE_TYPES:
+#         articles = (
+#             FeaturedArticle.query.filter_by(type=article_type)
+#             .order_by(FeaturedArticle.id.desc())
+#             .all()
+#         )
+#         featured_articles[article_type] = [
+#             {
+#                 "id": article.id,
+#                 "title": article.title,
+#                 "description": article.description,
+#                 "link": article.link,
+#                 "time_featured": article.time_featured,
+#                 "time_to_read": article.time_to_read,
+#                 "is_featured": article.is_featured,
+#             }
+#             for article in articles
+#         ]
+#     emit('initial_data', featured_articles)
 
 # Update Articles
 
