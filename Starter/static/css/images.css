@@ -1,0 +1,9 @@
+.image {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 0.5rem;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}

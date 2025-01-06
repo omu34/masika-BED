@@ -1,110 +1,245 @@
-# server.py
-
 import os
-import datetime
-from flask import Blueprint, render_template
-from werkzeug.utils import secure_filename
+import time
+from flask import Blueprint, current_app, request, jsonify, render_template, send_from_directory, url_for
 from flask_socketio import emit
-from Starter import socketio
-
-# Sample featured articles list (can be populated from the database or used as fallback)
-featured_articles = [
-    {
-        "title": "Best Won Procurement Case",
-        "description": "A deep dive into how we secured a procurement case...",
-        "read_time": "6 min read",
-        "image_url": "/static/images/procurement.jpg",
-        "url": "#",
-        "url_text": "Read More",
-        "updated_at": datetime.datetime.now().strftime("%b %d, %Y %H:%M"),
-        "youtube_id": None
-    },
-
-    {
-        "title": "How we handle commercial and corporate cases",
-        "description": "Discover our strategic approach to complex commercial and corporate disputes...",
-        "read_time": "6 min read",
-        "image_url": "https://mmsadvocates.co.ke/wp-content/uploads/2023/05/Corporate-Commercial.jpg",
-        "url": "#",
-        "url_text": "Read More",
-        "updated_at": datetime.datetime.now().strftime("%b %d, %Y %H:%M"),
-        "youtube_id": None
-    },
-
-    {
-        "title": "This is how we secured our client home",
-        "description": "Witness the journey of securing a dream home...",
-        "read_time": "6 min read",
-        "image_url": "/static/images/home.jpg",
-        "url": "#",
-        "url_text": "Read More",
-        "updated_at": datetime.datetime.now().strftime("%b %d, %Y %H:%M"),
-        "youtube_id": None
-    }
-
-
-
-]
+from werkzeug.utils import secure_filename
+from .models import db, FeaturedArticle
+from . import socketio
 
 articles = Blueprint('articles', __name__)
 
+VALID_ARTICLE_TYPES = ["news", "videos", "gallery"]
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'mp4', 'webm', 'ogg', 'svg', 'webp', 'wav', 'ogg', 'mp3' }
+
 
 def allowed_file(filename):
-    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def handle_image_upload(file, upload_folder='static/uploads'):
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(upload_folder, filename)
-        file.save(file_path)
-        return f'/static/uploads/{filename}'
+# Helper function to validate article data
+
+
+def validate_article_data(title, description, time_to_read):
+    """Validate article data before adding."""
+    if not title or not description:
+        return "Title and description are required."
+    if time_to_read and not time_to_read.isdigit():
+        return "Time to read must be a numeric value."
     return None
 
-# Route to render the homepage with featured articles
+# Save uploaded files
 
 
-@articles.route("/")
-def client():
-    return render_template('home.html', featured_articles=featured_articles[-3:])
+def save_file(file, folder):
+    """Save file and return its URL."""
+    filename = secure_filename(file.filename)
+    upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], folder)
+    os.makedirs(upload_path, exist_ok=True)
+    file.save(os.path.join(upload_path, filename))
+    return url_for('articles.uploaded_file', folder=folder, filename=filename, _external=True)
 
-# Route to handle new articles with real-time updates
-
-
-@socketio.on('feature_article')
-def feature_article(data):
-    youtube_id = get_youtube_id(data['url'])
-    image_url = data['image_url']
-
-    # Save uploaded image if provided
-    if 'image' in data:
-        file = data['image']
-        image_url = handle_image_upload(file)
-
-    # Add new article to featured_articles list
-    article = {
-        "title": data['title'],
-        "description": data['description'],
-        "image_url": image_url,
-        "updated_at": datetime.datetime.now().strftime("%b %d, %Y %H:%M"),
-        "read_time": data['read_time'],
-        "url": data['url'],
-        "url_text": data['url_text'],
-        "youtube_id": youtube_id
-    }
-    featured_articles.append(article)
-
-    # Emit updated list of the last 3 articles to all connected clients
-    emit('update_articles', featured_articles[-3:], broadcast=True)
-
-# Helper function to extract YouTube video ID from a URL
+# Serve uploaded files
 
 
-def get_youtube_id(url):
-    if "youtube.com" in url or "youtu.be" in url:
-        if "v=" in url:
-            return url.split("v=")[1].split("&")[0]
-        elif "youtu.be" in url:
-            return url.split("/")[-1]
-    return None
+@articles.route('/uploads/<folder>/<filename>')
+def uploaded_file(folder, filename):
+    """Serve uploaded files."""
+    upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], folder)
+    if os.path.exists(os.path.join(upload_path, filename)):
+        return send_from_directory(upload_path, filename)
+    
+    
+    return "File not found", 404
+
+
+@articles.route('/articles', methods=['POST'])
+
+
+def upload_article():
+    try:
+        # Get form data
+        title = request.form['title']
+        description = request.form['description']
+        article_type = request.form['article_type']
+        file = request.files.get('file')
+
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+        else:
+            return jsonify({'error': 'Invalid file type'}), 400
+
+        # Add article to the database
+        article_id = len(articles) + 1
+        article = {
+            'id': article_id,
+            'title': title,
+            'description': description,
+            'type': article_type,
+            'file': filename,  # Save only filename, not full path
+            'is_featured': False,
+        }
+        articles.append(article)
+
+        return jsonify({'message': 'Article uploaded successfully', 'article': article}), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
+# Directing saves to client
+
+
+@articles.route('/blog')
+def blog():
+    """Render the homepage."""
+    return render_template('blog.html')
+
+# Socket.IO event for client connection
+
+
+@socketio.on('connect')
+def handle_connect():
+    """Send the latest articles to the client."""
+    featured_articles = {}
+    for article_type in VALID_ARTICLE_TYPES:
+        articles = (
+            FeaturedArticle.query.filter_by(type=article_type)
+            .order_by(FeaturedArticle.id.desc())
+            .all()
+        )
+        featured_articles[article_type] = [
+            {
+                "id": article.id,
+                "title": article.title,
+                "description": article.description,
+                "link": article.link,
+                "time_featured": article.time_featured,
+                "time_to_read": article.time_to_read,
+                "is_featured": article.is_featured,
+            }
+            for article in articles
+        ]
+    emit('initial_data', featured_articles)
+
+# Update Articles
+
+
+@articles.route('/articles/update-article/<article_type>', methods=['POST'])
+def update_article(article_type):
+    """Add or update an article."""
+    if article_type not in VALID_ARTICLE_TYPES:
+        return jsonify({"error": "Invalid article type"}), 400
+
+    title = request.form.get('title')
+    description = request.form.get('description')
+    time_to_read = request.form.get('time_to_read', "N/A")
+    link = request.form.get('link')
+    file = request.files.get('file')
+
+    # Validate data
+    error = validate_article_data(title, description, time_to_read)
+    if error:
+        return jsonify({"error": error}), 400
+
+    # Handle file upload or link
+    file_url = save_file(file, article_type) if file else link
+
+    # Create and save the article
+    article = FeaturedArticle(
+        type=article_type,
+        title=title,
+        description=description,
+        link=file_url,
+        time_featured=time.strftime('%Y-%m-%d %H:%M:%S'),
+        time_to_read=time_to_read,
+        is_featured=False,
+    )
+    db.session.add(article)
+    db.session.commit()
+
+    # Notify all clients
+    socketio.emit('update_featured', {
+        "type": article_type,
+        "data": {
+            "id": article.id,
+            "title": article.title,
+            "description": article.description,
+            "link": article.link,
+            "time_featured": article.time_featured,
+            "time_to_read": article.time_to_read,
+            "is_featured": article.is_featured,
+        }
+    })
+    return jsonify({"message": f"Article added to {article_type}!"}), 200
+
+# Toggling Articles
+
+
+@articles.route('/articles/toggle-featured/<article_type>/<int:article_id>', methods=['POST'])
+def toggle_featured(article_type, article_id):
+    """Toggle the 'featured' status of an article."""
+    if article_type not in VALID_ARTICLE_TYPES:
+        return jsonify({"error": "Invalid article type"}), 400
+
+    article = FeaturedArticle.query.filter_by(
+        id=article_id, type=article_type).first()
+    if not article:
+        return jsonify({"error": "Article not found"}), 404
+
+    data = request.json
+    is_featured = data.get('isFeatured', False)
+    article.is_featured = is_featured
+    db.session.commit()
+
+    # Notify all clients
+    socketio.emit('update_featured', {
+        "type": article_type,
+        "data": {
+            "id": article.id,
+            "title": article.title,
+            "description": article.description,
+            "link": article.link,
+            "time_featured": article.time_featured,
+            "time_to_read": article.time_to_read,
+            "is_featured": article.is_featured,
+        }
+    })
+    return jsonify({"message": "Feature status updated!"}), 200
+
+# Delete Articles
+
+
+@articles.route('/articles/delete-article/<article_type>/<int:article_id>', methods=['DELETE'])
+def delete_article(article_type, article_id):
+    """Delete an article."""
+    if article_type not in VALID_ARTICLE_TYPES:
+        return jsonify({"error": "Invalid article type"}), 400
+
+    article = FeaturedArticle.query.filter_by(
+        id=article_id, type=article_type).first()
+    if not article:
+        return jsonify({"error": "Article not found"}), 404
+
+    db.session.delete(article)
+    db.session.commit()
+
+    # Notify all clients
+    articles = (
+        FeaturedArticle.query.filter_by(type=article_type)
+        .order_by(FeaturedArticle.id.desc())
+        .all()
+    )
+    serialized_articles = [
+        {
+            "id": art.id,
+            "title": art.title,
+            "description": art.description,
+            "link": art.link,
+            "time_featured": art.time_featured,
+            "time_to_read": art.time_to_read,
+            "is_featured": art.is_featured,
+        }
+        for art in articles
+    ]
+    socketio.emit('initial_data', {article_type: serialized_articles})
+    return jsonify({"message": "Article deleted successfully!"}), 200

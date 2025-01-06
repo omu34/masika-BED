@@ -4,15 +4,13 @@
 
 {% block content %}
 <!--Banner component -->
-<div class="bg-cover bg-center   h-auto text-white py-24 px-10 object-fill"
-    style="background-image: url(https://www.masikakoross.com/wp-content/uploads/2016/07/contact-top.jpg)">
+<div class="bg-cover bg-center mt-1  h-auto text-white py-24 px-10 object-fill"
+    style="background-image: url(../static/images/contact-top.webp)">
     <div class="md:w-full flex flex-col items-center justify-center md:mt-20">
-        <!-- <p class="font-bold text-sm uppercase">Services</p> -->
-        <p class="text-2xl md:text-3xl font-extrabold font-playfair-l">Legal Speak</p>
-        <p class="md:text-xl text-md mb-10 mt-4 leading-none font-poppins-b">
+        <h1 class="text-center   bell-bold font-bold text-2xl lg:text-4xl  text-white ">Legal Speak</h1>
+        <p class="text-md bell font-bold sm:text-xl md:text-2xl text-center">
             Discover our commitment to excellence and client satisfaction.
         </p>
-        <!-- <button href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800"> -->
 
         <!-- SVG Container -->
         <div class="container mt-4 mx-auto max-w-7xl flex justify-center">
@@ -36,35 +34,161 @@
 
 
 
-
-
-
-
 <!-- legal section -->
 
-<div class="my-auto mx-auto bg-blue-950 rounded-lg">
+<div class="my-auto mx-auto bg-blue-950 rounded-lg mt-0.5 mb-1">
     <div class='py-10'>
         <div
             class="max-w-md mx-auto xl:max-w-5xl font-poppins-b lg:max-w-5xl md:max-w-2xl bg-gray-700 max-h-screen shadow-2xl flex-row rounded relative">
             <div class="p-2 bg-blue-900  rounded-t-lg">
-                <h5 class="text-white text-2xl capitalize">Legal Speak</h5>
+                <h5 class="text-white text-2xl capitalize font-extrabold bell-bold">Legal Speak</h5>
             </div>
             <div class="p-2 w-full h-full overflow-y-auto bg-gray-600 text-blue-100 rounded-b-lg">
-                <p class="text-justify py-2">
-                    HotSymbol is a simple and easy online tool to copy <a class="text-blue-300 hover:text-blue-400"
-                        href="https://www.hotsymbol.com/symbols" title="copy symbol">symbol</a>, text <a
-                        class="text-blue-300 hover:text-gray-400" href="https://www.hotsymbol.com/emojis"
-                        title="copy emoji">emoji</a> characters, and signs to Facebook posts, Instagram bio, blog
-                    posts, WhatsApp, Snapchat chat and comments, nicknames in games, or wherever else - these
-                    symbols work just about everywhere.
+                <p class="text-justify py-2 font-bold bell">
+                    At Masika and Koross, we uphold the principle of the <a class="text-blue-300 hover:text-blue-400"
+                        href="http://www.kenyalaw.org/kl/index.php?id=398" title="copy symbol">rule of law.</a>, Every
+                    legal action we undertake
+                    is guided by this
+                    fundamental principle, ensuring fairness, justice, and accountability in all our endeavors.
                 </p>
-                <p class="text-justify py-2">
-                    It often involves technical terms and phrases that can be challenging for non-lawyers to understand.
-                    While it may seem inaccessible to outsiders, legal speak is essential for ensuring accuracy and
-                    avoiding misunderstandings in legal documents, contracts, and court proceedings.
+                <p class="text-justify py-2 font-bold bell">
+                    It often involves technical terms and phrases that can be challenging for non-lawyers to
+                    understand. While it may seem inaccessible to outsiders, legal speak is essential for ensuring
+                    accuracy and avoiding misunderstandings in legal documents, contracts, and court proceedings.
                 </p>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+
+
+
+
+
+<!-- components -->
+<div class="relative ">
+    <!-- featured articles section -->
+    <section data-aos="fade-up" data-aos-duration="1000" class="z-20 sticky top-0 "
+        style="background-color: rgb(244, 249, 252)">
+        <div class=" mb-1 mt-1 md:mb-4 py-8  lg:py-16 mx-auto max-w-7xl w-full px-4 sm:px-6 md:px-8 ">
+            <div class="">
+                <h2
+                    class="w-fit text-3xl font-bold  bell-bold text-[#d13642] sm:text-4xl   md:text-4xl  pb-1 px-2 mb-4 pb-1 px-2 rounded-md border-b-2 border-red-800 text-center md:text-left">
+                    Featured
+                    <span class="text-indigo-900">Articles</span>
+                </h2>
+            </div>
+            <div class="mx-auto mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-none">
+                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                            src="../static/images/procurements.webp" alt="" />
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-[#d13642]">
+                                <a href="{{ url_for('pages.blog') }}"
+                                    class="bell-regular font-medium hover:text-red-600">
+                                    read More
+                                    <span class="ml-1">&#8594;</span>
+                                </a>
+                            </p>
+                            <a href="#" class="mt-2 block">
+                                <p class="text-xl font-bold bell-bold text-gray-900">
+                                    Best won procurement case
+                                </p>
+                                <p
+                                    class="mt-4 text-sm md:text-md tracking-wide text-gray-900 md:text-base bell font-medium">
+                                    Our firm successfully defended a high-stakes procurement case, securing
+                                    a favorable outcome for our client and setting a
+                                    precedent in the industry.
+                                </p>
+                            </a>
+                        </div>
+                        <div class="flex space-x-1 text-sm  bell font-medium text-gray-500 mt-2">
+                            <time datetime="2020-03-16">Mar 16, 2020</time>
+                            <span aria-hidden="true">·</span>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                            src="../static/images/Corporate-Commercial.webp" alt="" />
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-indigo-600">
+                                <a href="{{ url_for('pages.blog') }}"
+                                    class="bell-regular font-medium text-[#d13642] hover:text-red-600">
+                                    read More
+                                    <span class="ml-1">&#8594;</span>
+                                </a>
+                            </p>
+                            <a href="#" class="mt-2 block">
+                                <p class="text-xl bell-bold font-bold text-gray-900">
+                                    How we handle commercial and corporate cases
+                                </p>
+                                <p
+                                    class="mt-4 text-sm md:text-md tracking-wide text-gray-900 md:text-base bell font-medium">
+                                    Discover our strategic approach to complex commercial and corporate
+                                    disputes. Learn how our expert team navigates legal
+                                    challenges, protects client interests, and delivers tailored solutions.
+                                </p>
+                            </a>
+                        </div>
+                        <div class="flex space-x-1 bell font-medium text-sm text-gray-500 mt-2">
+                            <time datetime="2020-03-10">Mar 10, 2020</time>
+                            <span aria-hidden="true">·</span>
+                            <span>4 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col hidden md:block overflow-hidden rounded-lg shadow-lg md:mb-0 mb-56">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                            src="../static/images/home.webp" alt="" />
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-indigo-600">
+                                <a href="{{ url_for('pages.blog') }}"
+                                    class="bell-regular font-medium text-[#d13642] hover:text-red-600">
+                                    read More
+                                    <span class="ml-1">&#8594;</span>
+                                </a>
+                            </p>
+                            <a href="#" class="mt-2 block">
+                                <p class="text-xl bell-bold font-bold text-gray-900">
+                                    This is how we secured our client home.
+                                </p>
+                                <p
+                                    class="mt-4 text-sm md:text-md tracking-wide text-gray-900 md:text-base bell font-medium">
+                                    Witness the journey of securing a dream home. Explore our comprehensive
+                                    legal process, from initial consultation to
+                                    closing day, ensuring a smooth and successful transaction.
+                                </p>
+                            </a>
+                        </div>
+                        <div class="flex space-x-1 bell font-medium text-sm text-gray-500 mt-2">
+                            <time datetime="2020-02-12">Feb 12, 2020</time>
+                            <span aria-hidden="true">·</span>
+                            <span>11 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    {% endblock %}

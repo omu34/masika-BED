@@ -4,6 +4,10 @@
         "aboutuspage",
         "authlib",
         "backref",
+        "bernardomuse",
+        "blogpage",
+        "dotenv",
+        "Hazina",
         "Interlectial",
         "jsonify",
         "Koross",
@@ -16,6 +20,7 @@
         "sqlalchemy",
         "superadmin",
         "Unfeature",
+        "unfeatured",
         "urandom",
         "werkzeug",
         "youtu"

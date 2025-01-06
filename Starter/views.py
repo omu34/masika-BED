@@ -1,10 +1,9 @@
-import traceback
+from flask import Blueprint, request, flash, redirect, url_for, render_template
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 import psycopg2.extras
 import os
-from .models import FeaturedArticle, db
 from flask_mail import Message
-from Starter import mail
+from . import mail
 import re
 
 
@@ -24,16 +23,16 @@ def get_db_connection():
     )
     return conn
 
-
+#Helper function to validate email
 def is_valid_email(email):
     """Validates the format of an email address."""
     email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
     return re.match(email_regex, email) is not None
 
-
-def email_to_admin(email):
+# Subscriber Helper function to send an email to the admin
+def subscriber_email_to_admin(email):
     try:
-        admin_email = "bernardomuse22@gmail.com"  # Replace with admin email
+        admin_email = "bernardomuse22@gmail.com"  
         msg = Message(
             subject="New Subscription Received",
             recipients=[admin_email],
@@ -48,7 +47,8 @@ def email_to_admin(email):
         print(f"Failed to send email to admin: {str(e)}")
 
 
-def email_to_client(email):
+#Subscriber Helper function to send an email to the client
+def subscriber_email_to_client(email):
     try:
         msg = Message(
             subject="Thank You for Subscribing",
@@ -65,6 +65,48 @@ def email_to_client(email):
     except Exception as e:
         print(f"Failed to send email to client: {str(e)}")
 
+#Message Helper function to send an email to the admin
+def send_email_to_admin(name, phone_number, email, texts):
+    try:
+        admin_email = "skmasika@gmail"  
+        msg = Message(
+            subject="New Message Received",
+            recipients=[admin_email],
+            body=f"""
+                You have received a new message:
+                Name: {name}
+                Phone Number: {phone_number}
+                Email: {email}
+                Message: {texts}
+            """
+        )
+        mail.send(msg)
+        print("Email sent to admin successfully.")
+    except Exception as e:
+        print(f"Failed to send email to admin: {e}")
+
+
+# Message  Helper function to send an email to the client
+def send_email_to_client(name, email):
+    try:
+        msg = Message(
+            subject="Thank You for Contacting Us",
+            recipients=[email],
+            body=f"""
+                Hi {name},
+
+                Thank you for reaching out to us. We have received your message and will get back to you shortly.
+
+                Best Regards,
+                Masika and Koross Advocates
+            """
+        )
+        mail.send(msg)
+        print("Email sent to client successfully.")
+    except Exception as e:
+        print(f"Failed to send email to client: {e}")
+        
+        
 
 @views.route("/")
 def index():
@@ -94,7 +136,7 @@ def admins():
         return render_template("admin_dashboard.html", email=session["email"])
     return redirect(url_for("admin.admin_login"))
 
-
+#Message Routes
 @views.route("/add_message", methods=["POST"])
 def add_message():
     if request.method == "POST":
@@ -135,47 +177,6 @@ def add_message():
             return redirect(url_for("views.home"))
     return render_template("home.html")
 
-
-# Helper function to send an email to the admin
-def send_email_to_admin(name, phone_number, email, texts):
-    try:
-        admin_email = "bernardomuse22@gmail"  # Replace with admin email
-        msg = Message(
-            subject="New Message Received",
-            recipients=[admin_email],
-            body=f"""
-                You have received a new message:
-                Name: {name}
-                Phone Number: {phone_number}
-                Email: {email}
-                Message: {texts}
-            """
-        )
-        mail.send(msg)
-        print("Email sent to admin successfully.")
-    except Exception as e:
-        print(f"Failed to send email to admin: {e}")
-
-
-# Helper function to send an email to the client
-def send_email_to_client(name, email):
-    try:
-        msg = Message(
-            subject="Thank You for Contacting Us",
-            recipients=[email],
-            body=f"""
-                Hi {name},
-
-                Thank you for reaching out to us. We have received your message and will get back to you shortly.
-
-                Best Regards,
-                Masika and Koross Advocates
-            """
-        )
-        mail.send(msg)
-        print("Email sent to client successfully.")
-    except Exception as e:
-        print(f"Failed to send email to client: {e}")
 
 
 @views.route("/edit/<int:id>", methods=["GET", "POST"])
@@ -289,12 +290,10 @@ def delete_message(id):
         return redirect(url_for("views.add_message"))
 
 
-# Define the route
-
 
 @views.route("/add_subscriber", methods=["POST"])
 def add_subscriber():
-    
+
     email = request.form.get("email", "").strip()
 
     # Debugging
@@ -310,13 +309,12 @@ def add_subscriber():
         with get_db_connection() as conn:
             with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
                 cur.execute(
-                    "INSERT INTO subscribers (email) VALUES (%s)", (email,)
-                )
+                    "INSERT INTO subscribers (email) VALUES (%s)", (email,))
                 conn.commit()
 
         # Send emails
-        email_to_admin(email)
-        email_to_client(email)
+        subscriber_email_to_admin(email)
+        subscriber_email_to_client(email)
 
         flash("You subscribed successfully! A confirmation email has been sent.")
     except Exception as e:
@@ -411,19 +409,63 @@ def update_subscriber(id):
         return redirect(url_for("auth.admin_dashboard"))
 
 
-@views.route("/delete/<id>", methods=["POST", "GET"])
+@views.route('/delete_subscriber/<int:id>', methods=['POST'])
 def delete_subscriber(id):
+    """handles delete subscriber"""
+    print(f"Attempting to delete subscriber with ID: {id}")
+
     try:
+
         conn = get_db_connection()
-        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur = conn.cursor()
+
+        # Delete the user from the database
         cur.execute("DELETE FROM subscribers WHERE id = %s", (id,))
         conn.commit()
+
         cur.close()
         conn.close()
-        flash("subscriber Removed Successfully")
-        return redirect(url_for("auth.admin_dashboard"))
+
+        flash('subscriber deleted successfully!')
+        return redirect(url_for('auth.admin_dashboard'))
     except Exception as e:
         flash(f"Error: {str(e)}")
         return redirect(url_for("views.add_subscriber"))
+    return conn
+
+
+@views.route('/subscribe', methods=['POST'])
+def subscribe():
+    if request.method == 'POST':
+        user_email = request.form['email']  # Get the email entered by the user
+        try:
+            # Send an email to the user
+            msg_to_user = Message(
+                'Subscription Successful',
+                recipients=[user_email]  # The email entered by the user
+            )
+            msg_to_user.body = f"Thank you for subscribing to our newsletter, {user_email}!"
+            mail.send(msg_to_user)
+
+            # Send an email to the admin
+            msg_to_admin = Message(
+                'New Subscription Alert',
+                # Admin's email address
+                recipients=['bernardomuse22@gmail.com']
+            )
+            msg_to_admin.body = f"New subscription from: {user_email}"
+            mail.send(msg_to_admin)
+
+            flash('You have successfully subscribed to the newsletter!', 'success')
+        except Exception as e:
+            flash(f'An error occurred: {str(e)}', 'danger')
+        # Redirect to the homepage or another page
+        return redirect(url_for('views.home'))
+
+    
+
+
+
+
 
 

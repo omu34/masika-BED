@@ -1,134 +1,304 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% block head %}
+<title>Featured Articles Updates</title>
+{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page Management</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
-    <script src="/static/scripts.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+{% block content %}
 
-<body>
-
-    <div class="max-w-3xl mx-auto py-12">
-        <h1 class="text-3xl font-bold text-gray-800 mb-8">Feature a New Article</h1>
-        <form id="featureArticleForm" class="bg-white p-6 rounded-lg shadow-md">
-            <div class="mb-4">
-                <label for="title" class="block text-gray-700 font-bold mb-2">Title</label>
-                <input type="text" id="title" class="w-full p-3 border rounded" required>
-            </div>
-
-            <div class="mb-4">
-                <label for="description" class="block text-gray-700 font-bold mb-2">Description</label>
-                <textarea id="description" class="w-full p-3 border rounded" rows="4" required></textarea>
-            </div>
-
-            <div class="mb-4">
-                <label for="image" class="block text-gray-700 font-bold mb-2">Image (optional)</label>
-                <input type="file" id="image" class="w-full">
-            </div>
-
-            <div class="mb-4">
-                <label for="url" class="block text-gray-700 font-bold mb-2">Article URL or YouTube URL</label>
-                <input type="url" id="url" class="w-full p-3 border rounded" required>
-            </div>
-
-            <div class="mb-4">
-                <label for="urlText" class="block text-gray-700 font-bold mb-2">Link Text</label>
-                <input type="text" id="urlText" class="w-full p-3 border rounded" value="Read More">
-            </div>
-
-            <div class="mb-4">
-                <label for="readTime" class="block text-gray-700 font-bold mb-2">Read Time (e.g., "5 min read")</label>
-                <input type="text" id="readTime" class="w-full p-3 border rounded" required>
-            </div>
-
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded mt-4">Feature Article</button>
-        </form>
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold mb-4 bell-bold">Existing Articles</h2>
+    <div id="existing-articles" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Articles will be dynamically loaded here -->
     </div>
+</div>
 
+<div class="bg-white p-6 rounded-lg shadow-md max-w-5xl mx-auto">
+    <form id="article-form" class="mt-6 max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg space-y-4"
+        enctype="multipart/form-data">
+        
+            <div>
+                <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                <input type="text" name="title" id="title" placeholder="Title" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+            </div>
+        
+            <div>
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <textarea name="description" id="description" placeholder="Description" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+            </div>
+        
+            <div>
+                <label for="link" class="block text-sm font-medium text-gray-700">Link (optional)</label>
+                <input type="text" name="link" id="link" placeholder="Link (optional)"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                <div id="link-preview" class="mt-2 hidden"></div>
+            </div>
+        
+            <div>
+                <label for="file" class="block text-sm font-medium text-gray-700">Upload File</label>
+                <input type="file" name="file" id="file"
+                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border file:border-gray-300 file:text-sm file:font-semibold file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100"
+                    onchange="handleFileUpload(this)" />
+                <div id="file-preview" class="mt-2 hidden"></div>
+            </div>
+        
+            <div>
+                <label for="time_to_read" class="block text-sm font-medium text-gray-700">Read Time (optional)</label>
+                <input type="integer" name="time_to_read" id="time_to_read" placeholder="Read Time (optional)"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+            </div>
+        
+            
+        <div>
+            <label for="article-type" class="block text-sm bell-bold font-medium">Article Type</label>
+            <select id="article-type" name="article_type"
+                class="w-full bell-regular text-red-600 border-red-800 rounded-lg shadow-sm">
+                <option value="news">News</option>
+                <option value="videos">Videos</option>
+                <option value="gallery">Gallery</option>
+            </select>
+        </div>
 
-    <!-- JavaScript to handle article submission with Socket.IO -->
-    <script>
-        const socket = io();
+        <div class="text-center">
+            <button type="submit"
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Add Article
+            </button>
+        </div>
+    </form>
+</div>
 
-        document.getElementById('featureArticleForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
+<script>
+    const socket = io();
 
-            const title = document.getElementById('title').value;
-            const description = document.getElementById('description').value;
-            const imageFile = document.getElementById('image').files[0];
-            const url = document.getElementById('url').value;
-            const urlText = document.getElementById('urlText').value;
-            const readTime = document.getElementById('readTime').value;
+    socket.on('initial_data', (data) => displayArticles(data));
 
-            // Prepare form data
-            const formData = new FormData();
-            formData.append('title', title);
-            formData.append('description', description);
-            if (imageFile) formData.append('image', imageFile);
-            formData.append('url', url);
-            formData.append('urlText', urlText);
-            formData.append('readTime', readTime);
+    socket.on('update_featured', ({ type, data }) => {
+        const section = document.getElementById(`section-${type}`);
+        if (section) {
+            section.innerHTML = '';
+            displayArticles({ [type]: [data] });
+        }
+    });
 
-            // Emit article data to the server via Socket.IO
-            socket.emit('feature_article', {
-                title,
-                description,
-                image_url: imageFile ? URL.createObjectURL(imageFile) : null,
-                url,
-                url_text: urlText,
-                read_time: readTime
+    document.getElementById('article-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const articleType = formData.get('article_type');
+        console.log(`Submitting article type: ${articleType}`);  // Debugging line
+
+        try {
+            const response = await fetch(`/articles/update-article/${articleType}`, {
+                method: 'POST',
+                body: formData,
             });
 
-            // Reset form fields
-            event.target.reset();
-            alert('Article featured successfully!');
-        });
-    </script>
+            if (response.ok) {
+                form.reset();
+                document.getElementById('link-preview').classList.add('hidden'); // Hide preview
+                document.getElementById('file-preview').classList.add('hidden'); // Hide preview
+                alert('Article added!');
+            } else {
+                const error = await response.json();
+                alert(error.error || 'Error occurred');
+            }
+        } catch (error) {
+            alert('An unexpected error occurred.');
+            console.error(error);
+        }
+    });
 
+    async function toggleFeatured(type, id, isFeatured) {
+        try {
+            const response = await fetch(`/articles/toggle-featured/${type}/${id}`, {
+                method: 'POST',
+                body: JSON.stringify({ isFeatured }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            if (!response.ok) alert('Failed to toggle featured status');
+        } catch (error) {
+            alert('An unexpected error occurred.');
+            console.error(error);
+        }
+    }
 
-    <!-- JavaScript to handle featured articles submission with Socket.IO -->
-    <script>
-        const socket = io();
+    async function deleteArticle(type, id) {
+        try {
+            const response = await fetch(`/articles/delete-article/${type}/${id}`, {
+                method: 'DELETE',
+            });
+            if (!response.ok) alert('Failed to delete');
+        } catch (error) {
+            alert('An unexpected error occurred.');
+            console.error(error);
+        }
+    }
 
-        document.getElementById('featureArticleForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
+    function displayArticles(data) {
+        const container = document.getElementById('existing-articles');
+        container.innerHTML = '';
 
-            const title = document.getElementById('title').value;
-            const description = document.getElementById('description').value;
-            const imageFile = document.getElementById('image').files[0];
-            const url = document.getElementById('url').value;
-            const urlText = document.getElementById('urlText').value;
-            const readTime = document.getElementById('readTime').value;
+        for (const [type, articles] of Object.entries(data)) {
+            const section = document.createElement('div');
+            section.id = `section-${type}`;
+            section.innerHTML = `<h3>${type.toUpperCase()}</h3>`;
 
-            // Prepare form data
-            const formData = new FormData();
-            formData.append('title', title);
-            formData.append('description', description);
-            if (imageFile) formData.append('image', imageFile);
-            formData.append('url', url);
-            formData.append('urlText', urlText);
-            formData.append('readTime', readTime);
+            articles.forEach(article => {
+                section.innerHTML += `
+                              <div class="border p-4">
+                                <h4>${article.title}</h4>
+                                <p>${article.description}</p>
+                                <div>
+                                  ${article.link ? getMediaPreview(article.link) : ''}
+                                  <button class="mt-4 px-4 py-2 bg-green-500 text-white hover:bg-green-700 rounded-lg" onclick="toggleFeatured('${type}', ${article.id}, true)">Feature</button>
+                                  <button class="mt-4 px-4 py-2 bg-yellow-500 text-white hover:bg-yellow-700 rounded-lg" onclick="toggleFeatured('${type}', ${article.id}, false)">Unfeature</button>
+                                  <button class="mt-4 px-4 py-2 bg-red-500 text-white hover:bg-red-700 rounded-lg" onclick="deleteArticle('${type}', ${article.id})">Delete</button>
+                                </div>
+                              </div>
+                            `;
+            });
+            container.append(section);
+        }
+    }
 
-            // Emit article data to the server via Socket.IO
-            socket.emit('feature_article', {
-                title,
-                description,
-                image_url: imageFile ? URL.createObjectURL(imageFile) : null,
-                url,
-                url_text: urlText,
-                read_time: readTime
+    document.getElementById('link').addEventListener('input', (event) => {
+        const linkPreview = document.getElementById('link-preview');
+        const link = event.target.value;
+        linkPreview.innerHTML = link ? getMediaPreview(link) : '';
+        linkPreview.classList.toggle('hidden', !link);
+    });
+
+    function handleFileUpload(input) {
+        const filePreview = document.getElementById('file-preview');
+        filePreview.innerHTML = '';
+        filePreview.classList.add('hidden');
+
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                if (file.type.startsWith('image/')) {
+                    filePreview.innerHTML = `<img src="${e.target.result}" alt="File Preview" class="width="360" height="150"">`;
+                } else if (file.type.startsWith('video/')) {
+                    filePreview.innerHTML = `<video src="${e.target.result}" controls class="width="360" height="205""></video>`;
+                } else {
+                    filePreview.textContent = "Unsupported file type";
+                }
+                filePreview.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function getMediaPreview(url) {
+        if (url.match(/\.(jpeg|jpg|gif|png)$/i)) {
+            return `<img src="${url}" alt="Link Preview" class="width="360" height="205"">`;
+        } else if (url.match(/\.(mp4|webm|ogg)$/i) || url.includes("youtube.com") || url.includes("vimeo.com")) {
+            if (url.includes("youtube.com")) {
+                const urlParams = new URL(url).searchParams;
+                const videoId = urlParams.get('v');
+                return `<iframe width="360" height="205"  src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+            }
+            if (url.includes("vimeo.com")) {
+                const videoId = url.split('/').pop();
+                return `<iframe src="https://player.vimeo.com/video/${videoId}" width="360" height="205"  frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+            }
+            return `<video src="${url}" controls class="width="360" height="205""></video>`;
+        } else {
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer">Link</a>`;
+        }
+    }
+</script>
+
+<!-- <script>
+    const socket = io();
+
+    socket.on('initial_data', (data) => displayArticles(data));
+
+    socket.on('update_featured', ({ type, data }) => {
+        const section = document.getElementById(`section-${type}`);
+        if (section) {
+            section.innerHTML = '';
+            displayArticles({ [type]: [data] });
+        }
+    });
+
+    document.getElementById('article-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const articleType = formData.get('article_type');
+
+        try {
+            const response = await fetch(`/articles/update-article/${articleType}`, {
+                method: 'POST',
+                body: formData,
             });
 
-            // Reset form fields
-            event.target.reset();
-            alert('Article featured successfully!');
-        });
-    </script>
-</body>
+            if (response.ok) {
+                form.reset();
+                alert('Article added!');
+            } else {
+                const error = await response.json();
+                alert(error.error || 'Error occurred');
+            }
+        } catch (error) {
+            alert('An unexpected error occurred.');
+            console.error(error);
+        }
+    });
 
-</html>
+    function displayArticles(data) {
+        const container = document.getElementById('existing-articles');
+        container.innerHTML = '';
+
+        for (const [type, articles] of Object.entries(data)) {
+            articles.forEach(article => {
+                container.innerHTML += `
+                    <div class="bg-white border rounded-lg shadow p-4 flex flex-col items-start justify-between h-full">
+                        <div>
+                            <h3 class="text-lg font-bold">${article.title}</h3>
+                            <p class="text-sm text-gray-600">${article.description}</p>
+                        </div>
+                        <div class="w-full mt-4">
+                            ${article.link ? getMediaPreview(article.link) : ''}
+                        </div>
+                        <div class="mt-4 flex gap-2">
+                            <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="toggleFeatured('${type}', ${article.id}, true)">Feature</button>
+                            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="deleteArticle('${type}', ${article.id})">Delete</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+    }
+
+    function getMediaPreview(url) {
+        if (url.match(/\.(jpeg|jpg|gif|png)$/i)) {
+            return `<img src="${url}" alt="Image Preview" class="w-full h-48 object-cover rounded">`;
+        } else if (url.includes("youtube.com") || url.includes("vimeo.com")) {
+            const videoId = url.includes("youtube.com")
+                ? new URL(url).searchParams.get("v")
+                : url.split("/").pop();
+            const videoUrl = url.includes("youtube.com")
+                ? `https://www.youtube.com/embed/${videoId}`
+                : `https://player.vimeo.com/video/${videoId}`;
+            return `<iframe src="${videoUrl}" class="w-full h-48 rounded" frameborder="0" allowfullscreen></iframe>`;
+        } else {
+            return `<a href="${url}" target="_blank" class="text-blue-500 underline">View Content</a>`;
+        }
+    }
+</script> -->
+
+{% endblock %}
+
+
+
+
+
+

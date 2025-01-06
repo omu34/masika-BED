@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, url_for, session, jsonify
-from Starter import oauth  # Make sure to import oauth from where it's initialized
+from . import oauth  # Make sure to import oauth from where it's initialized
 
 googles = Blueprint("googles", __name__)
 

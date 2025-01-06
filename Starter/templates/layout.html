@@ -7,136 +7,104 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>{% block title %}Masika $ Koross Advocates {% endblock %}</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
-    <link rel="stylesheet" href="static/css/slider.css" />
-    <link rel="stylesheet" href="banner-slider.css" />
-    <link rel="stylesheet" href="static/css/continious-slider.css" />
-    <link rel="stylesheet" href="static/css/footer-accordion.css" />
-    <link rel="stylesheet" href="static/css/area-practice.css" />
-    <link rel="stylesheet" href="static/css/nav-bg-changer.css" />
-    <link rel="stylesheet" href="static/css/scroll-to-top.css" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/slider.css" />
+    <link rel="stylesheet" href="../static/css/area-practice.css" />
+    <link rel="stylesheet" href="../static/css/scroll-to-top.css" />
+    <link rel="stylesheet" href="../static/css/nav-bar.css" />
+    <link rel="stylesheet" href="../static/css/output.css">
+    <link rel="stylesheet" href="../static/css/articles.css">
+
+
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" rel="stylesheet" />
     <!-- coop -->
-    <!-- <link rel="stylesheet" href="static/css/app.css" /> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&amp;display=swap" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/font.css" />
+    <link rel="stylesheet" href="../static/stylesheet.css" />
+
     <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.7.5/dist/socket.io.min.js"></script>
 </head>
 
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden bell-regular">
     <!-- First Navbar -->
     <div
-        class="flex md:gap-4 flex-col items-center lg:bg-transparent lg:mt-0 lg:p-0 md:p-4 md:pt-10 justify-between max-w-full md:max-w-7xl px-2 md:px-6 md:mt-0 mx-auto md:flex-row">
-        <!-- Social Media -->
-        <div class="z-10 md:ml-0 ml-0">
-            <ul
-                class="flex flex-row items-center space-x-4 px-6 py-2 md:py-0 rounded-lg md:justify-start justify-center">
-                <li class="mt-2 lg:mt-0 md:-mt-2">
-                    <a href="https://www.facebook.com/bernard.emoyo/" target="_blank" class="flex items-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="#4267B2"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M20.5 10.9751C20.5 5.4551 16.02 0.975098 10.5 0.975098C4.98 0.975098 0.5 5.4551 0.5 10.9751C0.5 15.8151 3.94 19.8451 8.5 20.7751V13.9751H6.5V10.9751H8.5V8.4751C8.5 6.5451 10.07 4.9751 12 4.9751H14.5V7.9751H12.5C11.95 7.9751 11.5 8.4251 11.5 8.9751V10.9751H14.5V13.9751H11.5V20.9251C16.55 20.4251 20.5 16.1651 20.5 10.9751Z"
-                                fill="#4267B2"></path>
-                        </svg>
-                    </a>
-                </li>
-                <li class="mt-2 lg:mt-0 md:-mt-2">
-                    <a href="https://linkedin.com/in/bernard-rygss-8a25121b3/" target="_blank"
-                        class="flex items-center">
-                        <svg width="17" height="18" viewBox="0 0 17 18" fill="#e68523"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M14.9167 0.725098C15.4029 0.725098 15.8692 0.918252 16.213 1.26207C16.5568 1.60589 16.75 2.0722 16.75 2.55843V15.3918C16.75 15.878 16.5568 16.3443 16.213 16.6881C15.8692 17.0319 15.4029 17.2251 14.9167 17.2251H2.08333C1.5971 17.2251 1.13079 17.0319 0.786971 16.6881C0.443154 16.3443 0.25 15.878 0.25 15.3918V2.55843C0.25 2.0722 0.443154 1.60589 0.786971 1.26207C1.13079 0.918252 1.5971 0.725098 2.08333 0.725098H14.9167ZM14.4583 14.9334V10.0751C14.4583 9.28254 14.1435 8.52245 13.5831 7.96203C13.0226 7.40161 12.2626 7.08676 11.47 7.08676C10.6908 7.08676 9.78333 7.56343 9.34333 8.27843V7.26093H6.78583V14.9334H9.34333V10.4143C9.34333 9.70843 9.91167 9.13093 10.6175 9.13093C10.9579 9.13093 11.2843 9.26614 11.525 9.50681C11.7656 9.74748 11.9008 10.0739 11.9008 10.4143V14.9334H14.4583ZM3.80667 5.82176C4.2151 5.82176 4.60681 5.65952 4.89561 5.37071C5.18442 5.0819 5.34667 4.6902 5.34667 4.28176C5.34667 3.42926 4.65917 2.7326 3.80667 2.7326C3.3958 2.7326 3.00177 2.89581 2.71124 3.18634C2.42072 3.47686 2.2575 3.8709 2.2575 4.28176C2.2575 5.13426 2.95417 5.82176 3.80667 5.82176ZM5.08083 14.9334V7.26093H2.54167V14.9334H5.08083Z"
-                                fill="#e68523"></path>
-                        </svg>
-                    </a>
-                </li>
-                <li class="mt-2 lg:mt-0 md:-mt-2">
-                    <a href="https://twitter.com/@bernard_omuse5" target="_blank" class="flex items-center">
-                        <svg width="20" height="20" viewBox="0 0 21 20" fill="#000000"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M0.5 0.51642H6.41516L11.8827 7.87074L18.6884 0.3479L20.3055 0.375987L12.6889 8.92871L20.5 19.4335H14.5872L9.42665 12.5801L3.12245 19.6021H1.53117L8.6439 11.5783L0.5 0.51642ZM5.8574 1.60248H2.73342L15.2317 18.3194H18.2994L5.8574 1.60248Z"
-                                fill="#00000"></path>
-                        </svg>
-                    </a>
-                </li>
-                <li class="mt-2 lg:mt-0 md:-mt-2">
-                    <a href="https://whatsapp.com/bernard omuse/" target="_blank" class="flex items-center">
-                        <svg width="20" height="21" viewBox="0 0 20 21" fill="#25D366"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10.001 0.975098C15.524 0.975098 20.001 5.4521 20.001 10.9751C20.001 16.4981 15.524 20.9751 10.001 20.9751C8.23377 20.9779 6.49765 20.5103 4.97099 19.6201L0.00499063 20.9751L1.35699 16.0071C0.466084 14.48 -0.00196181 12.7431 0.000990443 10.9751C0.000990443 5.4521 4.47799 0.975098 10.001 0.975098ZM6.59299 6.2751L6.39299 6.2831C6.26351 6.29098 6.13697 6.325 6.02099 6.3831C5.91251 6.44453 5.81349 6.52132 5.72699 6.6111C5.60699 6.7241 5.53899 6.8221 5.46599 6.9171C5.09611 7.398 4.89696 7.98841 4.89999 8.5951C4.90199 9.0851 5.02999 9.5621 5.22999 10.0081C5.63899 10.9101 6.31199 11.8651 7.19999 12.7501C7.41399 12.9631 7.62399 13.1771 7.84999 13.3761C8.95338 14.3476 10.2682 15.0481 11.69 15.4221L12.258 15.4671C12.755 15.5031 13.304 15.3901 13.737 15.1581C14.065 14.9771 14.3802 14.7654 14.683 14.5251C15.029 14.2271 15.308 13.8621 15.49 13.4561C15.558 13.2941 15.577 13.1451 15.578 12.9841C15.575 12.8541 15.552 12.7091 15.473 12.5831C15.431 12.5211 15.379 12.4681 15.319 12.4251L14.122 11.4331C13.9397 11.2813 13.7175 11.2043 13.489 11.2167C13.2606 11.2291 13.0462 11.3296 12.894 11.4941L12.433 11.9841C12.369 12.0501 12.296 12.1151 12.213 12.1681C12.066 12.2571 11.866 12.3041 11.613 12.2041C11.129 12.0201 10.645 11.7331 10.241 11.4171C9.68688 10.9713 9.21028 10.4327 8.83799 9.8331C8.73699 9.6761 8.63399 9.5191 8.52899 9.3561C8.46799 9.2611 8.42399 9.1691 8.41299 9.0411C8.38999 8.7701 8.56399 8.5421 8.78899 8.3911C8.86188 8.3475 8.92293 8.28712 8.96799 8.2151L9.46999 7.5411C9.57057 7.4156 9.63927 7.26495 9.66848 7.10365C9.6977 6.94235 9.68664 6.77695 9.63699 6.6201C9.59299 6.4691 9.54499 6.3211 9.47099 6.1881L8.52299 4.5751C8.46699 4.4731 8.39299 4.3901 8.27899 4.3171C8.2045 4.26761 8.12259 4.22723 8.03599 4.1961C7.95199 4.1671 7.84999 4.1621 7.76299 4.1631H6.59199L6.59299 6.2751Z"
-                                fill="#25D366"></path>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
+        class="flex flex-col md:flex-row items-center gap-4 lg:mt-0 lg:p-2 p-2 md:p-6 md:pt-10 justify-between max-w-full md:max-w-7xl px-2 md:px-6 mx-auto">
+
+        <!-- Logo Section -->
+        <div class=" mb-1.5 md:mb-0">
+            <a href="{{ url_for('views.index') }}" class="flex items-center justify-center md:justify-start">
+                <img width="397" height="47" src="../../static/images/m-logo.svg" alt="Masika Koross Logo"
+                    class="max-w-[480px] md:max-w-[580px] lg:max-w-[690px] rounded-lg transition-transform duration-500 transform ease-in-out hover:scale-110">
+            </a>
         </div>
 
-        <div class="grid grid-cols-2 gap-4 z-10 md:justify-between justify-self-start md:ml-4 ml-14 lg:mt-0 md:-mt-2">
-            <a href="tel:0794698693" style="font-style: italic" target="_blank"
-                class="-ml-14 md:ml-0 md:text-lg text-xs text-red-800 font-bold hover:underline text-italic font-poppins-b"><span
-                    class="mr-1 text-red-600">cell:</span>0794698693
+
+
+        <!-- Contact Buttons -->
+        <div
+            class=" flex  flex-row items-center justify-center md:justify-end gap-1 sm:gap-10 md:gap-2 mx-auto max-w-xs md:max-w-2xl md:mr-0 mr-10 -mt-8 md:mt-0 sm:-mr-2 sm:-ml-8 md:ml-0 ">
+            <!-- Email Us Button -->
+            <a href="mailto:info@masikakoross.com" target="_blank" class="w-full md:w-auto text-center ">
+                <button
+                    class="block md:mr-2 py-2 px-3  md:px-5 shadow-lg bell ease-in-out duration-500 hover:bg-white hover:text-[#d13642] uppercase font-bold text-white rounded bg-red-700">
+                    Email Us
+                </button>
             </a>
-            <a href="mailto:info@masikakoross.com" style="font-style: italic" target="_blank"
-                class="md:ml-0 -ml-16 md:text-lg text-xs text-red-800 font-bold hover:underline text-italic font-poppins-b">
-                <span class="mr-1 text-red-600">mail:</span>info@masikakoross.com
+
+            <!-- Call Us Section -->
+            <a href="tel:0794698693" target="_blank"
+                class="flex flex-row items-center justify-center gap-2 md:gap-4 text-[#d13642] hover:text-red-500 ">
+                <!-- Call Button -->
+                <button class="border-2 border-red-700 rounded-full p-2 flex-shrink-0 ml-2">
+                    <img class="h-6 w-6 md:w-8 md:h-8" src="../../static/images/icon-call-calling.svg" alt="Call Icon">
+                </button>
+                <!-- Call Details -->
+                <div class="text-left">
+                    <p class="text-md lg:text-xl bell-italic font-bold text-[#d13642] bell hover:text-[#d13642]">
+                        0794698693</p>
+                    <h6
+                        class="text-xs md:text-md bell-italic lg:text-lg font-medium text-text-[#d13642] uppercase hover:text-[#d13642]">
+                        Legal Speaks
+                    </h6>
+                </div>
             </a>
         </div>
     </div>
 
 
     <!--Second Navbar  -->
-    <header class="top-0 inset-x-0 z-[9999] bg-gray-300 sticky rounded-b-xl">
-        <div class="   ">
-
+    <second-navbar>
+        <div class=" w-full sticky top-0 rounded-t-md   inset-x-0 z-[9999]  bg-blue-100">
             <nav
-                class="flex flex-wrap items-center md:p-2  justify-between z-[9999] w-full  mx-auto max-w-7xl md:font-bold font-sm text-sm md:text-lg  ">
-
-                <!-- Logo Section -->
-                <a href="/" class="flex items-center hidden lg:block ">
-                    <img width="280" height="47"
-                        src="https://www.masikakoross.com/wp-content/uploads/2022/02/cropped-rsz_mk_letterhead_1-removebg-preview.png"
-                        class="custom-logo   pl-1 pr-1 rounded-lg transition-transform duration-500 transform ease-in-out hover:scale-110"
-                        alt="https://www.masikakoross.com/wp-content/uploads/2022/02/cropped-rsz_mk_letterhead_1-removebg-preview.png">
-                </a>
-
-                <div class="flex md:hidden ">
-                    <button id="hamburger">
-                        <img class="toggle block"
+                class="flex flex-wrap items-center bell-regular font-bold max-w-xl sm:max-w-7xl mx-auto justify-between z-[9999] space-y-4 md:space-y-0">
+                <!-- Hamburger Menu Button -->
+                <div class="flex md:hidden">
+                    <button id="hamburger" class="relative z-30">
+                        <img class="hamburger-icon toggle block"
                             src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png" width="48"
                             height="48" />
-                        <img class="toggle hidden"
+                        <img class="close-icon toggle hidden"
                             src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png" width="48"
                             height="48" />
                     </button>
                 </div>
-
-                <div
-                    class="toggle hidden  md:block  w-full md:w-auto  md:flex md:justify-start text-left  mt-5 md:mt-0 border-t-2 border-teal-900 md:border-none">
-
+                <!-- Navbar -->
+                <div id="menu"
+                    class="toggle hidden md:flex flex-wrap   justify-center gap-x-4 p-0.5 w-full text-[#d13642] bell-regular font-medium uppercase mt-5 md:mt-0">
                     <a href="{{ url_for('views.home') }}"
-                        class="block py-2 pl-3 pr-4 text-red-800 font-playfair-b text-sm md:text-md lg:text-lg font-medium md:font-bold  uppercase hover:underline  hover:text-red-800">Home
+                        class="block py-2 pl-3 bell-regular  md:text-lg text-sm pr-4 text-[#d13642] uppercase    hover:underline  hover:text-[#d13642]">
+                        Home
                     </a>
-
-                    <div id="bouton" class="relative group mt-2  md:justify-between justify-end z-20">
+                    <div id="bouton" class="relative group mt-2 z-20">
+                        <!-- Button -->
                         <button
-                            class="flex items-center ml-2 md:ml-0 text-red-800 font-playfair-b text-sm md:text-md lg:text-lg  uppercase hover:underline  hover:text-red-800 ">
+                            class="flex items-center ml-2 md:ml-0 bell-regular md:text-lg text-sm uppercase hover:text-[#d13642] relative z-30">
                             Areas Of Practice
                             <span class="ml-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#CB4154" viewBox="0 0 24 24"
@@ -147,230 +115,201 @@
                                 </svg>
                             </span>
                         </button>
+                        <!-- Dropdown Content -->
                         <div
-                            class="absolute  pl-4 pr-4 top-full bg-red-900 rounded-lg flex flex-col opacity-0 group-hover:opacity-100 transition-opacity  w-56 md:w-96 hidden group-hover:block">
-                            <div
-                                class="relative flex justify-between  items-center py-2 hover:bg-blue-900 border-dotted border-b  border-stone-200">
-                                <a href="/procurement"
-                                    class="rounded-md font-medium text-sm md:text-md   text-white hover:shadow-md">Procurement
-                                    Law</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center mt-1 py-3 hover:bg-blue-900 border-dotted border-b border-stone-200">
-                                <a href="/arbitration"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Arbitration
-                                    and
-                                    ADR</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="https://conveyance"
-                                    class="rounded-md font-medium text-sm md:text-md   text-white hover:shadow-md">Conveyance
-                                    and
-                                    Securities</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/family"
-                                    class="rounded-md font-medium text-sm md:text-md   text-white hover:shadow-md">Family
-                                    Law</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/constitutional"
-                                    class="rounded-md font-medium text-sm md:text-md   text-white hover:shadow-md">Constitutional
-                                    and
-                                    Administrative Law</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/election"
-                                    class="rounded-md font-medium text-sm md:text-md  sm:text-md md:text-md text-white hover:shadow-md">Election
-                                    Law and
-                                    Practice</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/commercial"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Commercial
-                                    and
-                                    Corporate Practice</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/banking"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Banking
-                                    and
-                                    Finance Law</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/employment"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Employment
-                                    and
-                                    Labour Law</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/environment"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Environment
-                                    and
-                                    Land Law</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/health"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Health
-                                    Law</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/interlectial"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Intellectual
-                                    Property (IP)</a>
-                            </div>
-                            <div
-                                class="relative flex justify-between items-center hover:bg-blue-900 py-3 border-dotted border-b border-stone-200">
-                                <a href="/tax"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Tax
-                                    Law</a>
-                            </div>
-                            <div class="relative flex justify-between items-center hover:bg-blue-900 py-3 ">
-                                <a href="/criminal"
-                                    class="rounded-md font-medium text-sm md:text-md  text-white hover:shadow-md">Criminal
-                                    Law</a>
-                            </div>
+                            class="absolute bell-regular  top-full left-0 bg-purple-50  text-gray-700 md:-ml-4 ml-2.5 shadow-lg rounded-md grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 w-[24rem] md:w-[32rem] lg:w-[48rem] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+                            <!-- Practice Areas -->
+                            <a href="{{ url_for('pages.procurement') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Procurement Law
+                            </a>
+                            <a href="{{ url_for('pages.arbitration') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Arbitration and ADR
+                            </a>
+                            <a href="{{ url_for('pages.conveyance') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Conveyance and Securities
+                            </a>
+                            <a href="{{ url_for('pages.family') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Family Law
+                            </a>
+                            <a href="{{ url_for('pages.constitutional') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Constitutional and Administrative Law
+                            </a>
+                            <a href="{{ url_for('pages.election') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Election Law and Practice
+                            </a>
+                            <a href="{{ url_for('pages.commercial') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Commercial and Corporate Practice
+                            </a>
+                            <a href="{{ url_for('pages.banking') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Banking and Finance Law
+                            </a>
+                            <a href="{{ url_for('pages.employment') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Employment and Labour Law
+                            </a>
+                            <a href="{{ url_for('pages.environment') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Environment and Land Law
+                            </a>
+                            <a href="{{ url_for('pages.health') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Health Law
+                            </a>
+                            <a href="{{ url_for('pages.interlectial') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Interlectial Property (IP)
+                            </a>
+                            <a href="{{ url_for('pages.tax') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Tax Law
+                            </a>
+                            <a href="{{ url_for('pages.criminal') }}"
+                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Criminal Law
+                            </a>
                         </div>
                     </div>
-
                     <a href="{{ url_for('pages.about') }}"
-                        class="block py-2 pl-3 pr-4 text-red-800 font-playfair-b text-sm md:text-md lg:text-lg  uppercase hover:underline  hover:text-red-800">About
+                        class="block py-2 pl-3 bell-regular  md:text-md text-sm pr-4 text-[#d13642] uppercase    hover:underline  hover:text-[#d13642]">About
                         Us
                     </a>
-                    <a href="/legal"
-                        class="block py-2 pl-3 pr-4 text-red-800 font-playfair-b text-sm md:text-md lg:text-lg uppercase hover:underline  hover:text-red-800">Legal
+                    <a href="{{ url_for('pages.legal') }}"
+                        class="block py-2 pl-3 pr-4   md:text-lg text-sm bell-regular   uppercase  hover:underline  hover:text-[#d13642]">Legal
                         Speak
                     </a>
-                    <a href="/contact-us"
-                        class="block py-2 pl-3 pr-4 text-red-800 font-playfair-b  text-sm md:text-md lg:text-lg uppercase hover:underline  hover:text-red-800">Contact
+                    <a href="{{ url_for('pages.blog') }}"
+                        class="block py-2 pl-3 pr-4   md:text-lg text-sm bell-regular   uppercase  hover:underline  hover:text-[#d13642]">Blog
                     </a>
-                    <a href="/auth_login"
-                        class="block py-2 pl-3 pr-4 block md:hidden text-red-800 font-playfair-b  text-sm md:text-md lg:text-lg uppercase hover:underline  hover:text-red-800">
+                    <a href="{{ url_for('pages.contact_us') }}"
+                        class="block py-2 pl-3 bell-regular  md:text-lg text-sm pr-4 text-[#d13642] uppercase    hover:underline  hover:text-[#d13642]">Contact
+                        us
+                    </a>
+                    <a href="{{ url_for('auth.auth_register') }}"
+                        class="md:hidden block py-2 pl-3 bell-regular  md:text-lg text-sm pr-4 text-[#d13642] uppercase    hover:underline  hover:text-[#d13642]">
                         Sign In?
                     </a>
-                    <a href="/auth_logout"
-                        class="block py-2 pl-3 pr-4 block md:hidden text-red-800 font-playfair-b  text-sm md:text-md lg:text-lg uppercase hover:underline  hover:text-red-800">
+                    <a href="{{ url_for('auth.auth_logout') }}"
+                        class=" md:hidden block py-2 pl-3 bell-regular  md:text-lg text-sm pr-4 text-[#d13642] uppercase    hover:underline  hover:text-[#d13642]">
                         Sign Out?
                     </a>
-
-                </div>
-
-
-                <div class="rounded-xl toggle">
-                    <div class="flex justify-center block items-center text-sm md:text-md lg:text-lg font-medium">
-                        <!-- If user is logged in and is an admin -->
-                        {% if session.get('loggedin') and session.get('is_admin') %}
-
-                        <button id="openContactForm"
-                            class="toggle font-playfair-b  hover:text-white hidden md:flex w-full md:w-auto px-2.5 py-1  text-left bg-red-700 hover:bg-red-950 text-white rounded-full">
-                            Admin! {{ session.get('email') }}
-                        </button>
-
-                        <!-- Only show this button if the current URL is not the admin dashboard -->
-                        {% if request.path != url_for('auth.admin_dashboard') %}
-                        <a href="{{ url_for('auth.admin_dashboard') }}" class="md:ml-3 ml-">
-                            <?xml version="1.0" encoding="iso-8859-1"?>
-                            <svg class="animate-pulse" height="20px" width="20px" version="1.1" id="Layer_1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                viewBox="0 0 512 512" xml:space="preserve">
-                                <path style="fill:#FFFFFF;"
-                                    d="M256,504C119.248,504,8,392.752,8,256S119.248,8,256,8s248,111.248,248,248S392.752,504,256,504z" />
-                                <path style="fill:#8AD5DD;"
-                                    d="M256,16c132.336,0,240,107.664,240,240S388.336,496,256,496S16,388.336,16,256S123.664,16,256,16
-                                                                        	 M256,0C114.608,0,0,114.608,0,256c0,141.376,114.608,256,256,256s256-114.624,256-256C512,114.608,397.392,0,256,0L256,0z" />
-                                <polygon style="fill:#DB2B42;" points="214.656,95.936 378.016,256 214.656,416.064 165.856,366.096 278.208,256 165.856,145.904 
-                                                                        	" />
-                            </svg>
-
-                        </a>
-                        {% endif %}
-                        <!-- Modal for logout -->
-                        <div id="contactFormModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
-                            <div class="flex items-center justify-center min-h-screen">
-                                <div class="bg-gray-300 w-1/4 p-6 rounded shadow-md">
-                                    <div class="flex justify-end">
-                                        <!-- Close Button -->
-                                        <button id="closeContactForm" class="text-[#950] hover:text-red-500 mb-4">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <a href="/auth_logout"
-                                        class="flex justify-center items-center text-md text-xl rounded-xl font-bold mb-4 bg-[#950] text-white font-bold py-2 px-4 rounded hover:bg-red-600">
-                                        Logout?
-                                    </a>
+                    <!-- This form uses the form backend service FabForm.io --->
+                    <!-- <div class=" hidden md:block md:flex justify-start">
+                        <div class="flex justify-center items-center" id="navItems">
+                            Trigger Button
+                            <span class="group">
+                                <button
+                                    class='block  md:text-lg text-sm  hover:text-[#d13642] text-md uppercase  bell font-bold text-[#d13642]'
+                                    href="{{ url_for('pages.blog') }}" onclick="scrollToSection('section1')">Blog</button>
+                                <div
+                                    class="w-0 group-hover:w-full h-0.5 bg-red-600 ease-in-out duration-500 rounded-xs">
                                 </div>
-                            </div>
+                            </span>
                         </div>
-
-                        {% elif session.get('loggedin') %}
-                        <!-- For non-admin logged-in users -->
-                        <button id="openContactForm"
-                            class="toggle font-playfair-b font-bold hover:text-white hidden md:flex w-full md:w-auto px-4 py-2 md:px-8 text-left bg-gray-600 hover:bg-red-950 text-white rounded-full">
-                            Hi! {{ session.get('email') }}
-                        </button>
-
-                        <div id="contactFormModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
-                            <div class="flex items-center justify-center min-h-screen">
-                                <div class="bg-gray-300 w-1/4 p-6 rounded shadow-md">
-                                    <div class="flex justify-end">
-                                        <button id="closeContactForm" class="text-[#950] hover:text-red-500 mb-4">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <a href="/auth_logout"
-                                        class="text-2xl flex justify-center items-center rounded-xl font-bold mb-4 bg-[#950] text-white font-bold py-2 px-4 rounded hover:bg-red-600">
-                                        Logout?
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {% else %}
-                        <!-- If not logged in -->
-                        <a href="auth_login" class="mr-2">
-                            <button id="accessAccountButton"
-                                class="toggle font-playfair-b  hover:text-white  md:flex w-full md:w-auto px-2 py-1  text-left bg-gray-600 hover:bg-red-950 text-white rounded-full">
-                                Access Your Account
+                    </div> -->
+                    <div class="rounded-xl toggle pl-1">
+                        <div
+                            class="flex justify-center  items-center bell-regular  text-sm md:text-md lg:text-lg font-medium">
+                            <!-- If user is logged in and is an admin -->
+                            {% if session.get('loggedin') and session.get('is_admin') %}
+                            
+                            <button id="openContactForm"
+                                class="toggle text-md bell  m-1 hover:text-white  md:flex w-full md:w-auto px-2 py-1  text-left bg-red-800 hover:bg-red-900 text-white rounded-md">
+                                Admin! {{ session.get('email') }}
                             </button>
-                        </a>
-                        {% endif %}
+                            <!-- Only show this button if the current URL is not the admin dashboard -->
+                            {% if request.path != url_for('auth.admin_dashboard') %}
+                            <a href="{{ url_for('auth.admin_dashboard') }}" class="md:ml-3">
+                                <!-- <?xml version="1.0" encoding="iso-8859-1"?> -->
+                                <svg class="animate-pulse" height="20px" width="20px" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 512 512" xml:space="preserve">
+                                    <path style="fill:#FFFFFF;"
+                                        d="M256,504C119.248,504,8,392.752,8,256S119.248,8,256,8s248,111.248,248,248S392.752,504,256,504z" />
+                                    <path style="fill:#8AD5DD;"
+                                        d="M256,16c132.336,0,240,107.664,240,240S388.336,496,256,496S16,388.336,16,256S123.664,16,256,16
+                                                                        	 M256,0C114.608,0,0,114.608,0,256c0,141.376,114.608,256,256,256s256-114.624,256-256C512,114.608,397.392,0,256,0L256,0z" />
+                                    <polygon style="fill:#DB2B42;" points="214.656,95.936 378.016,256 214.656,416.064 165.856,366.096 278.208,256 165.856,145.904 
+                                                                        	" />
+                                </svg>
+
+                            </a>
+                            {% endif %}
+                            <!-- Modal for logout -->
+                            <div id="contactFormModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+                                <div class="flex items-center justify-center min-h-screen">
+                                    <div class="bg-gray-300 w-1/4 p-6 rounded shadow-md">
+                                        <div class="flex justify-end">
+                                            <!-- Close Button -->
+                                            <button id="closeContactForm" class="text-[#950] hover:text-red-500 mb-4">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <a href="{{ url_for('auth.auth_logout') }}"
+                                            class="flex justify-center items-center bell text-md rounded-xl font-medium mb-4 bg-[#950] text-white  py-2 px-4 hover:bg-red-600">
+                                            Logout?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% elif session.get('loggedin') %}
+                            
+                            <button id="openContactForm"
+                                class="toggle text-md bell  m-1 hover:text-white  md:flex w-full md:w-auto px-2 py-1  text-left bg-red-800 hover:bg-red-900 text-white rounded-md">
+                                Hi! {{ session.get('email') }}
+                            </button>
+
+                            <div id="contactFormModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+                                <div class="flex items-center justify-center min-h-screen">
+                                    <div class="bg-gray-300 w-1/4 p-6 rounded shadow-md">
+                                        <div class="flex justify-end">
+                                            <button id="closeContactForm" class="text-[#950] hover:text-red-500 mb-4">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <a href="{{ url_for('auth.auth_logout') }}"
+                                            class=" text-md flex bell justify-center items-center rounded-xl font-bold mb-4 bg-[#950] text-white font-bold py-2 px-4 rounded hover:bg-red-600">
+                                            Logout?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% else %}
+                            <!-- If not logged in -->
+                            <a href="{{ url_for('auth.auth_login') }}" class="mr-2">
+                                <button id="accessAccountButton"
+                                    class="toggle text-md bell  m-1 hover:text-white  md:flex w-full md:w-auto px-2 py-1  text-left bg-red-800 hover:bg-red-900 text-white rounded-md">
+                                    Access your Account
+                                </button>
+                            </a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </nav>
         </div>
-    </header>
-
-    <script>
-        document.getElementById("hamburger").onclick = function toggleMenu() {
-            const navToggle = document.getElementsByClassName("toggle");
-            for (let i = 0; i < navToggle.length; i++) {
-                navToggle.item(i).classList.toggle("hidden");
-            }
-        };
-    </script>
-
+    </second-navbar>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    <div class="mx-auto px-4 z-50">
+    <div class="mx-auto px-4">
         {% for category, message in messages %}
         <div id="alert"
             class="bg-{{ category|default('red') }}-300 border-l-4 border-{{ category|default('red') }}-700 text-{{ category|default('red') }}-900 p-4 mb-4"
@@ -381,17 +320,6 @@
     </div>
     {% endif %}
     {% endwith %}
-
-    <script>
-        setTimeout(function () {
-            var alert = document.getElementById('alert');
-            if (alert) {
-                alert.style.display = 'none';
-            }
-        }, 4000);
-    </script>
-
-
     {% block content %} {% endblock %}
 
     <!-- whatsapp chat -->
@@ -404,320 +332,8 @@
             </svg>
         </a>
     </div>
-
-
-    <!-- footer -->
-    <div style="background-color: rgb(244, 249, 252)"
-        class="sticky md:top-0 top-20 h-screen z-40 flex flex-col items-center justify-center md:mt-0 z-0">
-        <div class="relative px-6 pt-14 pb-14 lg:px-8 lg:pt-4 rounded-lg lg:pb-8">
-            <div class="absolute inset-0 bg-gray-300 rounded-lg md:text-xl text-md"></div>
-            <div class="relative mx-auto max-w-7xl md:m-0 m-4">
-                <div class="flex justify-center items-center">
-                    <a href="/"
-                        class="flex items-center flex justify-center mb-6 lg:justify-start space-x-3 transition-transform transform hover:-translate-y-2">
-                        <span class="text-rose-600">
-                            <img width="314" height="47"
-                                src="https://www.masikakoross.com/wp-content/uploads/2022/02/cropped-rsz_mk_letterhead_1-removebg-preview.png"
-                                class="custom-logo transition-transform duration-500 transform ease-in-out hover:scale-110"
-                                alt="Masika & Koross Advocates" />
-                        </span>
-                    </a>
-                </div>
-
-                <div class="flex flex-col text-left basis-1/2 justify-center mx-auto max-w-3xl md:-mb-12">
-                    <ul class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 md:text-md text-md">
-                        <li class="flex items-center justify-center md:justify-none gap-2">
-                            <!-- Icon -->
-                            <a href="tel:0794698693" class="flex-shrink-0">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.9655 12.6929C15.672 12.5811 15.5252 12.5251 15.3708 12.5118C15.2164 12.4984 15.0622 12.5283 14.7538 12.5881L12.3984 13.0445C12.0235 13.1172 11.836 13.1535 11.6427 13.1227C11.4493 13.0918 11.2957 13.0064 10.9886 12.8356C9.07557 11.7718 7.78657 10.5439 6.95042 8.81181C6.827 8.55614 6.76529 8.4283 6.74183 8.25256C6.71837 8.07683 6.74863 7.91452 6.80915 7.5899L7.27298 5.1021C7.32932 4.79993 7.35749 4.64884 7.3442 4.49766C7.33092 4.34649 7.27683 4.20263 7.16866 3.91491L6.61323 2.43758C6.35178 1.74217 6.22105 1.39447 5.93618 1.19723C5.65132 1 5.27985 1 4.53692 1H2.68622C1.66783 1 0.866113 1.84144 1.01869 2.8481C1.39788 5.36068 2.51739 9.91727 5.78835 13.1882C9.22363 16.6235 14.172 18.1141 16.895 18.7072C17.9468 18.9357 18.8794 18.1159 18.8794 17.0388V15.3317C18.8794 14.592 18.8794 14.2222 18.6836 13.938C18.4877 13.6538 18.1421 13.5222 17.4509 13.2588L15.9655 12.6929Z"
-                                        stroke="#92150a" stroke-width="1.6" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </a>
-                            <!-- Text -->
-                            <a href="tel:0794698693" class="text-gray-900 hover:text-red-800 font-medium">
-                                0794698693
-                            </a>
-                        </li>
-
-                        <li class="flex items-center justify-center md:justify-none gap-2">
-                            <!-- Icon -->
-                            <a href="mailto:info@masikakoross.com" class="flex-shrink-0">
-                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M1.87798 3.83594L6.80031 7.08201C8.55849 8.13692 9.43758 8.66437 10.4034 8.64139C11.3693 8.6184 12.2223 8.04973 13.9283 6.91239L18.1246 3.83594M8.33464 14.6693H11.668C14.8107 14.6693 16.382 14.6693 17.3583 13.693C18.3346 12.7166 18.3346 11.1453 18.3346 8.0026C18.3346 4.85991 18.3346 3.28856 17.3583 2.31225C16.382 1.33594 14.8107 1.33594 11.668 1.33594H8.33464C5.19194 1.33594 3.62059 1.33594 2.64428 2.31225C1.66797 3.28856 1.66797 4.85991 1.66797 8.0026C1.66797 11.1453 1.66797 12.7166 2.64428 13.693C3.62059 14.6693 5.19194 14.6693 8.33464 14.6693Z"
-                                        stroke="#92150a" stroke-width="1.6" stroke-linecap="round" />
-                                </svg>
-                            </a>
-                            <!-- Text -->
-                            <a href="mailto:info@masikakoross.com"
-                                class="text-gray-900 hover:text-red-800 text-italics font-medium">
-                                info@masikakoross.com
-                            </a>
-                        </li>
-
-                        <li class="flex items-center md:ml-0 justify-center md:justify-none gap-2">
-                            <!-- Icon -->
-                            <a target="_blank"
-                                href="https://www.google.com/maps/place/Masika+%26+Koross+Advocates/@-1.2821176,36.8123697,17.68z/data=!4m6!3m5!1s0x182f1118b414aef3:0x4d6730a055bd8982!8m2!3d-1.2822181!4d36.8139691!16s%2Fg%2F11j6g84y54?authuser=0&entry=ttu&g_ep=EgoyMDI0MDgyMC4xIKXMDSoASAFQAw%3D%3D"
-                                class="flex-shrink-0">
-                                <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M14.6654 8.60868C14.6654 11.8081 12.1279 14.3862 10.184 16.6526C9.22437 17.7713 8.74457 18.3307 7.9987 18.3307C7.25282 18.3307 6.77302 17.7713 5.81342 16.6526C3.86945 14.3862 1.33203 11.8081 1.33203 8.60868C1.33203 6.76685 2.03441 5.00046 3.28465 3.69809C4.5349 2.39573 6.23059 1.66406 7.9987 1.66406C9.76681 1.66406 11.4625 2.39573 12.7127 3.69809C13.963 5.00046 14.6654 6.76685 14.6654 8.60868Z"
-                                        stroke="#92150a" stroke-width="1.6" />
-                                    <path
-                                        d="M9.66536 7.7406C9.66536 8.69945 8.91917 9.47676 7.9987 9.47676C7.07822 9.47676 6.33203 8.69945 6.33203 7.7406C6.33203 6.78175 7.07822 6.00445 7.9987 6.00445C8.91917 6.00445 9.66536 6.78175 9.66536 7.7406Z"
-                                        stroke="#92150a" stroke-width="1.6" />
-                                </svg>
-                            </a>
-                            <!-- Text -->
-                            <a href="https://www.google.com/maps/place/Masika+%26+Koross+Advocates/@-1.2821176,36.8123697,17.68z/data=!4m6!3m5!1s0x182f1118b414aef3:0x4d6730a055bd8982!8m2!3d-1.2822181!4d36.8139691!16s%2Fg%2F11j6g84y54?authuser=0&entry=ttu&g_ep=EgoyMDI0MDgyMC4xIKXMDSoASAFQAw%3D%3D"
-                                class="text-gray-900 hover:text-red-800 font-medium">
-                                Office Location
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div
-                    class="py-24 px-8 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 md:flex-row gap-10 -mt-20 md:-mt-0">
-                    <!-- <div class="basis-1/2 grid grid-cols-1 grid-cols-4"> -->
-                    <div class="basis-1/2">
-                        <button
-                            class="relative flex gap-2 items-center w-full md:py-5 py-1 text-base font-semibold text-left border-t md:text-md border-base-content/10"
-                            aria-expanded="false" onclick="toggleFAQ(this)">
-                            <span class="flex-1 text-base-content">
-                                <h4 class="text-md text-red-800 font-medium">
-                                    Areas of Practice
-                                </h4>
-                            </span>
-                            <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect y="7" width="16" height="2" rx="1"
-                                    class="transform origin-center transition duration-200 ease-out"></rect>
-                                <rect y="7" width="16" height="2" rx="1"
-                                    class="transform origin-center rotate-90 transition duration-200 ease-out">
-                                </rect>
-                            </svg>
-                        </button>
-                        <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
-                            style="max-height: 0">
-                            <div class="pb-5 leading-relaxed">
-                                <ul class="text-sm transition-all duration-500 mx-auto max-w-xl text-left">
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/arbitration" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Arbitration and ADR
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/commercial" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Commercial and Corporate
-                                            <span class="ml-.5">&#8594;</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/employment" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Employment and Labour
-                                            <span class="ml-.5">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/environment" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Environment and Land
-                                            <span class="ml-.5">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/election" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Election Law and Practice
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button
-                            class="relative flex gap-2 items-center w-full md:py-5 py-1 text-base font-semibold text-left border-t md:text-md border-base-content/10"
-                            aria-expanded="false" onclick="toggleFAQ(this)">
-                            <span class="text-md text-red-800 font-medium">Legal Practice</span>
-                            <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect y="7" width="16" height="2" rx="1"
-                                    class="transform origin-center transition duration-200 ease-out"></rect>
-                                <rect y="7" width="16" height="2" rx="1"
-                                    class="transform origin-center rotate-90 transition duration-200 ease-out">
-                                </rect>
-                            </svg>
-                        </button>
-                        <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
-                            style="max-height: 0">
-                            <div class="pb-5 leading-relaxed">
-                                <ul class="text-sm transition-all duration-500 mx-auto max-w-xl text-left">
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/conveyance" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Conveyancing $ Securities
-                                            <span class="ml-.5">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/procurement" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Procurement Law
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/banking" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Banking Law
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/family" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Family Law
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/health" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Health Law
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button
-                            class="relative flex gap-2 items-center w-full md:py-5 py-1 text-base font-semibold text-left border-t md:text-md border-base-content/10"
-                            aria-expanded="false" onclick="toggleFAQ(this)">
-                            <span class="text-md text-red-800 font-medium">Legal Focus</span>
-                            <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect y="7" width="16" height="2" rx="1"
-                                    class="transform origin-center transition duration-200 ease-out"></rect>
-                                <rect y="7" width="16" height="2" rx="1"
-                                    class="transform origin-center rotate-90 transition duration-200 ease-out">
-                                </rect>
-                            </svg>
-                        </button>
-                        <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
-                            style="max-height: 0">
-                            <div class="pb-5 leading-relaxed">
-                                <ul class="text-sm transition-all duration-500 mx-auto max-w-xl text-left">
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/criminal" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Criminal Law
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/interllectial" class="text-gray-900 hover:text-red-800 font-medium">
-                                            IP Law
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2 md:mb-4">
-                                        <a href="/tax" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Tax Law
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button
-                            class="relative flex gap-2 items-center w-full md:py-5 py-1 text-base font-semibold text-left border-t md:text-md border-base-content/10"
-                            aria-expanded="false" onclick="toggleFAQ(this)">
-                            <span class="text-md text-red-800 font-medium">External Links</span>
-                            <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect y="7" width="16" height="2" rx="1"
-                                    class="transform origin-center transition duration-200 ease-out"></rect>
-                                <rect y="7" width="16" height="2" rx="1"
-                                    class="transform origin-center rotate-90 transition duration-200 ease-out">
-                                </rect>
-                            </svg>
-                        </button>
-                        <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
-                            style="max-height: 0">
-                            <div class="pb-5 leading-relaxed">
-                                <ul class="text-sm transition-all duration-500 text-left">
-                                    <li class="mb-2">
-                                        <a href="https://ciarbkenya.org/"
-                                            class="text-gray-900 hover:text-red-800 font-medium">
-                                            Chartered Institute of Arbitrators (CIArb)
-                                            <span class="ml-.5">&#8594;</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="https://icj-kenya.org/"
-                                            class="text-gray-900 hover:text-red-800 font-medium">
-                                            International Commission of Jurists (ICJ)
-                                            <span class="ml-.5">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2">
-                                        <a href="https://lsk.or.ke/"
-                                            class="text-gray-900 hover:text-red-800 font-medium">
-                                            Law Society of Kenya (LSK)
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li class="mb-2">
-                                        <a href="https://ppra.go.ke/"
-                                            class="text-gray-900 hover:text-red-800 font-medium">
-                                            Public Procurement Oversight Authority
-                                            <span class="ml-.5">&#8594;</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-gray-900 hover:text-red-800 font-medium">
-                                            Documents
-                                            <span class="ml-2">&#8594;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="py-7 border-t border-red-100 flex justify-center items-center -mt-20 md:-mt-10">
-                    <div class="grid grid-rows-2 grid-flow-col items-center justify-center">
-                        <div>
-                            <span class="text-sm text-red-900 font-bold text-center">
-                                ©<a href="home">Masika $ Koross</a>
-                                2024, All rights reserved.
-                            </span>
-                        </div>
-                        <div class="-ml-2">
-                            <span class="text-sm text-red-900 font-bold text-center">
-                                <a href="tel:+254727464">Designed & Developed by Bernard Omuse
-                                </a>
-                                2024 .
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <!-- scroll top -->
-    <div class="flex justify-start">
+    <div class="flex justify-start z-50">
         <div id="scrollToTopButton" class="scroll-to-top bottom-0 left-0 hidden" onclick="scrollToTop()">
             <svg fill="#000000" width="50px" height="50px" viewBox="0 0 24 24" id="up-arrow-circle"
                 data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
@@ -728,141 +344,340 @@
             </svg>
         </div>
     </div>
-    <!-- service_v5d9hof service id -->
+    <!-- footer -->
+    <section class="  sticky h-screen  top-0  z-50  opacity-90 " style="background-color: rgb(244, 249, 252)">
+
+        <footer class="">
+            <div class="container mx-auto p-0 md:p-8 xl:px-0  ">
+                <div class="mx-auto max-w-8xl px-6 pb-10 pt-16 lg:mt-28 shadow-lg opacity-90 shadow-lg hover:shadow-xl 5"
+                    style="background-color: #150233;" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="xl:grid xl:grid-cols-3 xl:gap-4">
+                        <div class="space-y-4 md:mt-16 lg:justify-normal md:justify-center justify-center ">
+                            <div>
+                                <a href="{{ url_for('views.index') }}"
+                                    class="flex items-center flex justify-center mb-6 lg:justify-start space-x-3 transition-transform transform hover:-translate-y-2">
+                                    <span class="text-rose-600 ">
+                                        <img width="380" height="57" src="../../static/images/m-logo.svg"
+                                            class="custom-logo  bg-white p-2  rounded-lg transition-transform duration-500 transform ease-in-out hover:scale-110"
+                                            alt="masika-logos">
+                                    </span>
+                                </a>
+
+                            </div>
+                            <div
+                                class="max-w-md pr-16 text-md text-gray-200 ml-0 sm:ml-0 md:ml-44 lg:ml-0 items-center flex sm:justify-center md:justify-center lg:justify-start">
+                                <h2 class="max-w-md pr-16 text-md text-gray-200 items-center bell font-bold  ">
+                                    Masika and Koross: Expert Legal Counsel. Strategic Solutions. Exceptional
+                                    Service.
+                                </h2>
+                            </div>
+                            <div
+                                class="flex space-x-2 items-center sm:justify-start md:justify-center lg:justify-start">
+                                <a href="mailto:info@masikakoross.com" class="text-gray-200 hover:bg-red-700">
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true">
+                                        <path d="M4 4h16v16H4V4zm16 0l-8 8-8-8" />
+                                    </svg>
+                                </a>
+                                <a href="tel:0794698693" class="text-gray-200 hover:bg-red-700">
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true">
+                                        <path
+                                            d="M22 16.92v3.56c0 .98-.8 1.8-1.78 1.7A20.92 20.92 0 013.78 3.78C3.7 2.8 4.52 2 5.5 2h3.56c.86 0 1.57.58 1.7 1.43.13.84.42 1.66.86 2.37.38.62.3 1.42-.24 1.96L8.91 9.21a16.02 16.02 0 006.28 6.28l1.45-1.45c.54-.54 1.34-.62 1.96-.24.71.44 1.53.73 2.37.86.85.13 1.43.84 1.43 1.7z" />
+                                    </svg>
+                                </a>
+
+                                <a target="_blank" href="https://www.google.com/maps/place/Masika+%26+Koross+Advocates"
+                                    class="text-gray-200 hover:bg-red-700">
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true">
+                                        <path
+                                            d="M12 21c-5.333-6-8-10-8-13a8 8 0 0116 0c0 3-2.667 7-8 13zm0-10a2 2 0 100-4 2 2 0 000 4z" />
+                                    </svg>
+                                </a>
+
+                                <a href="" target="_blank" class="text-gray-200 hover:bg-red-700">
+                                    <span class="sr-only">Linkedin</span>
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+
+                                <a href="" target="_blank" class="text-gray-200 hover:bg-red-700">
+                                    <span class="sr-only">Twitter</span>
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true">
+                                        <path
+                                            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                                        </path>
+                                    </svg>
+                                </a>
 
 
+                                <a href="https://www.facebook.com/bernard.emoyo/" target="_blank"
+                                    class="text-gray-200 hover:bg-red-700">
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M20.5 10.9751C20.5 5.4551 16.02 0.975098 10.5 0.975098C4.98 0.975098 0.5 5.4551 0.5 10.9751C0.5 15.8151 3.94 19.8451 8.5 20.7751V13.9751H6.5V10.9751H8.5V8.4751C8.5 6.5451 10.07 4.9751 12 4.9751H14.5V7.9751H12.5C11.95 7.9751 11.5 8.4251 11.5 8.9751V10.9751H14.5V13.9751H11.5V20.9251C16.55 20.4251 20.5 16.1651 20.5 10.9751Z"
+                                            fill="#4267B2"></path>
+                                    </svg>
+                                </a>
+
+                                <a href="https://linkedin.com/in/bernard-rygss-8a25121b3/" target="_blank"
+                                    class="text-gray-200 hover:bg-red-700">
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M14.9167 0.725098C15.4029 0.725098 15.8692 0.918252 16.213 1.26207C16.5568 1.60589 16.75 2.0722 16.75 2.55843V15.3918C16.75 15.878 16.5568 16.3443 16.213 16.6881C15.8692 17.0319 15.4029 17.2251 14.9167 17.2251H2.08333C1.5971 17.2251 1.13079 17.0319 0.786971 16.6881C0.443154 16.3443 0.25 15.878 0.25 15.3918V2.55843C0.25 2.0722 0.443154 1.60589 0.786971 1.26207C1.13079 0.918252 1.5971 0.725098 2.08333 0.725098H14.9167ZM14.4583 14.9334V10.0751C14.4583 9.28254 14.1435 8.52245 13.5831 7.96203C13.0226 7.40161 12.2626 7.08676 11.47 7.08676C10.6908 7.08676 9.78333 7.56343 9.34333 8.27843V7.26093H6.78583V14.9334H9.34333V10.4143C9.34333 9.70843 9.91167 9.13093 10.6175 9.13093C10.9579 9.13093 11.2843 9.26614 11.525 9.50681C11.7656 9.74748 11.9008 10.0739 11.9008 10.4143V14.9334H14.4583ZM3.80667 5.82176C4.2151 5.82176 4.60681 5.65952 4.89561 5.37071C5.18442 5.0819 5.34667 4.6902 5.34667 4.28176C5.34667 3.42926 4.65917 2.7326 3.80667 2.7326C3.3958 2.7326 3.00177 2.89581 2.71124 3.18634C2.42072 3.47686 2.2575 3.8709 2.2575 4.28176C2.2575 5.13426 2.95417 5.82176 3.80667 5.82176ZM5.08083 14.9334V7.26093H2.54167V14.9334H5.08083Z"
+                                            fill="#e68523"></path>
+                                    </svg>
+                                </a>
+
+                                <a href="https://twitter.com/@bernard_omuse5" target="_blank"
+                                    class="text-gray-200 hover:bg-red-700">
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0.5 0.51642H6.41516L11.8827 7.87074L18.6884 0.3479L20.3055 0.375987L12.6889 8.92871L20.5 19.4335H14.5872L9.42665 12.5801L3.12245 19.6021H1.53117L8.6439 11.5783L0.5 0.51642ZM5.8574 1.60248H2.73342L15.2317 18.3194H18.2994L5.8574 1.60248Z"
+                                            fill="#00000"></path>
+                                    </svg>
+                                </a>
+
+                                <a href="https://whatsapp.com/bernard omuse/" target="_blank"
+                                    class="text-gray-200 hover:bg-red-700">
+                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
+                                        class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.001 0.975098C15.524 0.975098 20.001 5.4521 20.001 10.9751C20.001 16.4981 15.524 20.9751 10.001 20.9751C8.23377 20.9779 6.49765 20.5103 4.97099 19.6201L0.00499063 20.9751L1.35699 16.0071C0.466084 14.48 -0.00196181 12.7431 0.000990443 10.9751C0.000990443 5.4521 4.47799 0.975098 10.001 0.975098ZM6.59299 6.2751L6.39299 6.2831C6.26351 6.29098 6.13697 6.325 6.02099 6.3831C5.91251 6.44453 5.81349 6.52132 5.72699 6.6111C5.60699 6.7241 5.53899 6.8221 5.46599 6.9171C5.09611 7.398 4.89696 7.98841 4.89999 8.5951C4.90199 9.0851 5.02999 9.5621 5.22999 10.0081C5.63899 10.9101 6.31199 11.8651 7.19999 12.7501C7.41399 12.9631 7.62399 13.1771 7.84999 13.3761C8.95338 14.3476 10.2682 15.0481 11.69 15.4221L12.258 15.4671C12.755 15.5031 13.304 15.3901 13.737 15.1581C14.065 14.9771 14.3802 14.7654 14.683 14.5251C15.029 14.2271 15.308 13.8621 15.49 13.4561C15.558 13.2941 15.577 13.1451 15.578 12.9841C15.575 12.8541 15.552 12.7091 15.473 12.5831C15.431 12.5211 15.379 12.4681 15.319 12.4251L14.122 11.4331C13.9397 11.2813 13.7175 11.2043 13.489 11.2167C13.2606 11.2291 13.0462 11.3296 12.894 11.4941L12.433 11.9841C12.369 12.0501 12.296 12.1151 12.213 12.1681C12.066 12.2571 11.866 12.3041 11.613 12.2041C11.129 12.0201 10.645 11.7331 10.241 11.4171C9.68688 10.9713 9.21028 10.4327 8.83799 9.8331C8.73699 9.6761 8.63399 9.5191 8.52899 9.3561C8.46799 9.2611 8.42399 9.1691 8.41299 9.0411C8.38999 8.7701 8.56399 8.5421 8.78899 8.3911C8.86188 8.3475 8.92293 8.28712 8.96799 8.2151L9.46999 7.5411C9.57057 7.4156 9.63927 7.26495 9.66848 7.10365C9.6977 6.94235 9.68664 6.77695 9.63699 6.6201C9.59299 6.4691 9.54499 6.3211 9.47099 6.1881L8.52299 4.5751C8.46699 4.4731 8.39299 4.3901 8.27899 4.3171C8.2045 4.26761 8.12259 4.22723 8.03599 4.1961C7.95199 4.1671 7.84999 4.1621 7.76299 4.1631H6.59199L6.59299 6.2751Z"
+                                            fill="#25D366"></path>
+                                    </svg>
+                                </a>
 
 
+                            </div>
+                        </div>
+                        <div
+                            class="mt-16 md:mt-0 lg:mt-16 grid grid-cols-1 md:grid-cols-2 justify-center items-center md:justify-normal md:gap-2 gap-6 xl:col-span-2 xl:mt-0">
+                            <div class="md:grid md:grid-cols-2 md:gap-8 md:mt-6 lg:mt-16">
+                                <div>
+                                    <span class="flex-1 text-base-content">
+                                        <h4 class="md:text-md text-lg text-red-600 bell-bold font-bold">
+                                            Areas of Practice
+                                        </h4>
+                                    </span>
+                                    <ul class="text-lg md:text-sm transition-all duration-500 mx-auto max-w-xl bell ">
+                                        <li class="mb-2 md:mb-4">
+                                            <a href="{{ url_for('pages.arbitration') }}"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-red-810 border-dashed rounded-md">
+                                                Arbitration and ADR
+                                                <span class="ml-2">&#8594;</span>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2 md:mb-4">
+                                            <a href="{{ url_for('pages.commercial') }}"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Commercial and Corporate
+                                                <span class="ml-.5">&#8594;</span>
+                                            </a>
+                                        </li>
 
+                                        <li class="mb-2 md:mb-4">
+                                            <a href="{{ url_for('pages.employment') }}"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Employment and Labour
+                                                <span class="ml-.5">&#8594;</span>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2 md:mb-4">
+                                            <a href="{{ url_for('pages.environment') }}"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Environment and Land
+                                                <span class="ml-.5">&#8594;</span>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2 md:mb-4">
+                                            <a href="{{ url_for('pages.election') }}"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Election Law and Practice
+                                                <span class="ml-2">&#8594;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mt-10 md:mt-0">
+                                    <span class="text-md text-red-600 font-bold bell-bold text-lg md:text-md">Legal
+                                        Practice</span>
+                                    <div class="pb-5 leading-relaxed">
+                                        <ul
+                                            class="text-lg md:text-sm transition-all duration-500 mx-auto max-w-xl bell underline-dotted">
+                                            <li class="mb-2 md:mb-4 ">
+                                                <a href="{{ url_for('pages.conveyance') }}"
+                                                    class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                    Conveyancing $ Securities
+                                                    <span class="ml-.5">&#8594;</span>
+                                                </a>
+                                            </li>
+                                            <li class="mb-2 md:mb-4">
+                                                <a href="{{ url_for('pages.procurement') }}"
+                                                    class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                    Procurement Law
+                                                    <span class="ml-2">&#8594;</span>
+                                                </a>
+                                            </li>
+                                            <li class="mb-2 md:mb-4">
+                                                <a href="{{ url_for('pages.banking') }}"
+                                                    class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                    Banking Law
+                                                    <span class="ml-2">&#8594;</span>
+                                                </a>
+                                            </li>
+                                            <li class="mb-2 md:mb-4">
+                                                <a href="{{ url_for('pages.family') }}"
+                                                    class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                    Family Law
+                                                    <span class="ml-2">&#8594;</span>
+                                                </a>
+                                            </li>
+                                            <li class="mb-2 md:mb-4">
+                                                <a href="{{ url_for('pages.health') }}"
+                                                    class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                    Health Law
+                                                    <span class="ml-2">&#8594;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:grid md:grid-cols-2 md:gap-8 md:-mt-16 lg:mt-0">
+                                <div class="pb-5 leading-relaxed bell">
+                                    <span class="text-lg md:text-md text-red-600 bell-bold font-bold">Legal
+                                        Focus</span>
+                                    <ul class="text-lg md:text-sm transition-all duration-500 mx-auto max-w-xl">
+                                        <li class="mb-2 md:mb-4">
+                                            <a href="{{ url_for('pages.criminal') }}"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Criminal Law
+                                                <span class="ml-2">&#8594;</span>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2 md:mb-4">
+                                            <a href="{{ url_for('pages.interlectial') }}"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                IP Law
+                                                <span class="ml-2">&#8594;</span>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2 md:mb-4">
+                                            <a href="{{ url_for('pages.tax') }}"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Tax Law
+                                                <span class="ml-2">&#8594;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                                <div class="mt-10 md:mt-0 md:-ml-16">
+                                    <span class="text-lg md:text-md text-red-600 bell-bold font-bold">External
+                                        Links</span>
+                                    <ul class="text-md md:text-sm transition-all duration-500 bell">
+                                        <li class="mb-2 ">
+                                            <a href="https://ciarbkenya.org/"
+                                                class="text-white  hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Chartered Institute of Arbitrators (CIArb)
+                                                <span class="ml-.5">&#8594;</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="mb-2">
+                                            <a href="https://icj-kenya.org/"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                International Commission of Jurists (ICJ)
+                                                <span class="ml-.5">&#8594;</span>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2">
+                                            <a href="https://lsk.or.ke/"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Law Society of Kenya (LSK)
+                                                <span class="ml-2">&#8594;</span>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2">
+                                            <a href="https://ppra.go.ke/"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Public Procurement Oversight Authority
+                                                <span class="ml-.5">&#8594;</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
+                                                Documents
+                                                <span class="ml-2">&#8594;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-16 border-t border-gray-400/30 pt-8 sm:mt-6 lg:mt-10">
+                        <div class="text-sm md:text-md text-center text-white">
+                            <div>
+                                <span
+                                    class=" text-sm md:text-md items-center justify-center  bell-regular font-bold text-center">
+                                    ©<a href="{{ url_for('views.home') }}">Masika and Koross</a>
+                                    2024, All rights reserved.
+                                </span>
+                            </div>
+                            <div class="-ml-2">
+                                <span
+                                    class="text-sm md:text-md items-center justify-center  bell-regular font-bold text-center">
+                                    <a href="tel:+254707821269">Designed and Developed by Hark and Bernard
+                                    </a>
+                                    2024 .
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
-
-    <script>
-        var socket = io();
-
-        // Dynamically listen for updates to each banner (up to 8 banners)
-        for (let i = 1; i <= 8; i++) {
-            socket.on(`banner${i}_updated`, function (data) {
-                document.getElementById(`banner${i}_title`).innerText = data.title;
-                document.getElementById(`banner${i}_subtitle`).innerText = data.subtitle;
-                document.getElementById(`banner${i}_button_link`).innerText = data.button_text;
-                document.getElementById(`banner${i}_button_link`).href = data.button_link;
-
-                // Update the background image only if new image data is available
-                if (data.image) {
-                    document.getElementById(`banner${i}`).style.backgroundImage = `url('${data.image}')`;
-                }
-            });
-        }
-
-        // Listen for updates to the "About Us" section
-        socket.on('about_updated', function (data) {
-            document.getElementById('about_title').innerText = data.title;
-            document.getElementById('about_content').innerText = data.content;
-            document.getElementById('about_button_link').innerText = data.button_text;
-            document.getElementById('about_button_link').href = data.button_link;
-
-            // Update the About Us image only if new image data is available
-            if (data.image) {
-                document.getElementById('about_image').src = data.image;
-            }
-        });
-    </script>
-
-
-
-    <script>
-        const socket = io();
-
-        // Handle the content updates in real-time
-        socket.on('content_updated', function (data) {
-            document.getElementById('about-us-text').textContent = data.text;
-        });
-
-        socket.on('title_updated', function (data) {
-            document.getElementById('about-title').textContent = data.text;
-        });
-
-        socket.on('button_text_updated', function (data) {
-            document.getElementById('learn-more-link').textContent = data.text;
-        });
-
-        socket.on('button_link_updated', function (data) {
-            document.getElementById('learn-more-link').href = data.text;
-        });
-
-        socket.on('image_updated', function (data) {
-            console.log('Received image URL:', data.url);  // Log the received URL
-            const timestamp = new Date().getTime();
-            document.getElementById('about-us-image').src = data.url + '?t=' + timestamp;
-        });
-
-    </script>
-
-
-
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        var swiper6 = new Swiper(".mySwiperSlides", {
-            loop: true,
-            grabCursor: true,
-            clickable: true,
-            effect: "creative",
-            speed: 1000,
-            pagination: {
-                el: ".swiper-pagination",
-            },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            creativeEffect: {
-                prev: {
-                    shadow: true,
-                    origin: "left center",
-                    translate: ["-10%", 0, -300],
-                    scale: [0.8, 1], // Shrink the slide during transition
-                    opacity: [0, 1], // Fade in the slide
-                },
-                next: {
-                    origin: "right center",
-                    translate: ["10%", 0, -300],
-                    scale: [1, 0.8], // Enlarge the slide during transition
-                    opacity: [1, 0], // Fade out the slide
-                },
-            },
-        });
-    </script>
-    <script src="static/js/consult.js"></script>
-    <script src="static/js/counter.js"></script>
-    <script src="static/js/background-changer.js"></script>
-    <script src="static/js/footer-accordion.js"></script>
-    <script src="static/js/swiper.js"></script>
-    <script src="static/js/font.js"></script>
-    <script src="static/js/banner-slider.js"></script>
-    <script src="static/js/nav-menu.js"></script>
-    <script src="static/js/scroll-to-top.js"></script>
-    <script src="static/js/area-practice.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.4.1/tailwindcss.js"></script>
+    <script src="../static/js/consult.js"></script>
+    <script src="../static/js/counter.js"></script>
+    <script src="../static/js/background-changer.js"></script>
+    <script src="../static/js/footer-accordion.js"></script>
+    <script src="../static/js/swiper-works.js"></script>
+    <script src="../static/js/font.js"></script>
+    <script src="../static/js/banner-slider.js"></script>
+    <script src="../static/js/nav-menu.js"></script>
+    <script src="../static/js/scroll-to-top.js"></script>
+    <script src="../static/js/section-target.js"></script>
+    <script src="../static/js/area-practice.js"></script>
+    <script src="../static/js/newsletter.js"></script>
+    <script src="../static/js/alert_timer.js"></script>
+    <script src="../static/js/testmonials.js"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
-    <script src="static/js/masika-team.js"></script>
+    <script src="../static/js/masika-team.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
     <script crossorigin="anonymous" defer
         src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    <script> AOS.init(); </script>
 </body>
 
 </html>

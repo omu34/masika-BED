@@ -1,12 +1,11 @@
 import os
 
-from flask_mail import Mail, Message
-from Starter import mail
+from flask_mail import Message
+from . import mail
 import psycopg2.extras
 from flask import (Blueprint, flash, redirect, render_template, request,
                    session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
-
 
 auth = Blueprint('auth', __name__)
 
@@ -14,6 +13,7 @@ auth = Blueprint('auth', __name__)
 ADMIN_SECRET_CODE = os.getenv('ADMIN_SECRET_CODE')
 SUPER_ADMIN_EMAIL = os.getenv('SUPER_ADMIN_EMAIL')
 SESSION_PERMANENT = os.getenv('SESSION_PERMANENT')
+
 
 def get_db_connection():
     """Get a connection to the database"""
@@ -35,7 +35,6 @@ def auth_register():
         email = request.form['email']
         password = request.form['password']
         is_admin = request.form.get('is_admin', False)  # Checkbox value
-
         # Get admin code if provided
         admin_code = request.form.get('admin_code', None)
 
@@ -75,7 +74,7 @@ def auth_register():
 
             # Send confirmation email
             msg = Message('Account creation successful', recipients=[email])
-            msg.body = f'Thank you for registering with us, {username}!'
+            msg.body = f'Thank you for registering with Masika and Koross Advocates, {username}!'
             mail.send(msg)
 
             # Notify superadmin if necessary
@@ -84,7 +83,6 @@ def auth_register():
                                     recipients=[SUPER_ADMIN_EMAIL])
                 admin_msg.body = f'New Admin registered: {username} ({email})'
                 mail.send(admin_msg)
-
             flash('You are ready to go! You can now log in.')
             return redirect(url_for('auth.auth_login'))
 
@@ -178,7 +176,6 @@ def auth_logout():
 @auth.route('/admin_dashboard')
 def admin_dashboard():
     """handles admin dashboard"""
-
     if session.get('loggedin') and session.get('is_admin'):
         conn = get_db_connection()
         cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -207,7 +204,6 @@ def admin_dashboard():
     else:
         flash('Unauthorized access!')
         return redirect(url_for('views.home'))
-
 
 
 # users
@@ -266,5 +262,3 @@ def delete_user(id):
     else:
         flash('Unauthorized access!')
         return redirect(url_for('views.home'))
-
-

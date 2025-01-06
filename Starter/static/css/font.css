@@ -1,0 +1,112 @@
+.bell-extrasmall {
+  font-family: 'Bell MT', Georgia, serif;
+  font-size: 12px;
+  font-weight:normal;
+}
+.bell-small {
+  font-family: 'Bell MT', Georgia, serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.bell-small button{
+  font-family: 'Bell MT', Georgia, serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+.bell-regular {
+  font-family: 'Bell MT', Georgia, serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.bell-bold {
+  font-family: 'Bell MT', Georgia, serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.bell-bolder {
+  font-family: 'Bell MT', Georgia, serif;
+  font-size: 28px;
+  font-weight: bolder;
+}
+
+
+.bell-extrabold {
+  font-family: 'Bell MT', Georgia, serif;
+  font-size: 36px;
+  font-weight: bolder;
+}
+
+.bell-italic {
+  font-family: 'Bell MT', Georgia, serif;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .banner-text h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    
+    align-items: center;
+  }
+  .banner-text h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    
+    align-items: center;
+  }
+  .banner-text h3 {
+    text-align: center;
+    font-size: 0.9rem;    
+    align-items: center;
+  }
+
+  .banner-text p{
+    text-align: center;
+    font-size: 1rem;
+    
+    align-items: center;
+  }
+
+  .banner-text a{
+    text-align: center;
+    font-size: 0.8rem;    
+    align-items: center;
+  }
+
+  .banner-text button{
+    text-align: center;
+    font-size: 0.8rem;    
+    align-items: center;
+  }
+
+  .banner-text dd {
+    text-align: center;
+    font-size: 1.5rem;
+    
+    align-items: center;
+  }
+
+  .banner-text dt {
+    text-align: center;
+    font-size: 1.5rem;
+    
+    align-items: center;
+  }
+}
+.svg-container {
+  width: 100%; 
+  max-width: 600px; 
+  margin: 0 auto; 
+   height: auto;
+}
+
+
+
+
+
+

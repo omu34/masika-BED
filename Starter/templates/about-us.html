@@ -1,0 +1,367 @@
+{% extends "layout.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<!-- ./templates/**/*.html",  "./static/js/**/*.js", "./static/css/**/*.css" -->
+
+
+
+    <!--Banner component -->
+    <div class="bg-cover bg-center mt-1   h-auto text-white py-24 px-10 object-fill"
+        style="background-image: url(../static/images/constitutional.webp)">
+        <div class="md:w-full flex flex-col items-center justify-center md:mt-20">
+            <h1 class="text-center md:text-white   bell-bold font-bold text-2xl lg:text-4xl  text-[#d13642] ">Meet Our Team</h1>
+            <p class="text-white text-md bell font-bold sm:text-xl md:text-2xl text-center">
+                Discover our commitment to excellence and client satisfaction.
+            </p>
+
+            <!-- SVG Container -->
+            <div class="container mt-4 mx-auto max-w-7xl flex justify-center">
+                <svg fill="#000000" width="50px" height="50px" viewBox="0 0 24 24" id="down-arrow-circle"
+                    data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
+                    class="icon-container icon flat-color animate-bounce w-12 h-12" onclick="scrollToSection()">
+                    <circle id="primary" cx="12" cy="12" r="10" style="fill: rgb(0, 0, 0);"></circle>
+                    <path id="secondary"
+                        d="M14.14,13H13V7a1,1,0,0,0-2,0v6H9.86a1,1,0,0,0-.69,1.5l2.14,3.12a.82.82,0,0,0,1.38,0l2.14-3.12A1,1,0,0,0,14.14,13Z"
+                        style="fill: rgb(44, 169, 188);">
+                        Contact us
+                    </path>
+
+                </svg>
+            </div>
+            <!-- </button> -->
+        </div>
+    </div>
+
+    <!-- ABOUT US -->
+    <div id="about" class="relative bg-white  overflow-hidden mt-2 sm:mt-16 " data-aos="fade-up"
+        data-aos-duration="1000"  >
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 sm:pb-16 md:pb-6 bg-white   lg:max-w-2xl lg:w-full lg:pb-4 xl:pb-4">
+                <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+                    fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points=""></polygon>
+                </svg>
+                <div class="pt-1"></div>
+
+                <main class="mt-10  px-4 sm:mt-2 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-20 ">
+                    <div class="sm:text-center lg:text-left">
+                        <h2 class="text-xl -ml-2 font-bold  bell-bold text-[#d13642] sm:text-3xl  mb-4 pb-1 px-2 ">
+                            <!-- rounded-md w-fit border-b-2 border-red-800 -->
+                            Experience Skilled Team at Masika And Koross
+                            <span class="text-indigo-900">Law Firm</span>
+                        </h2>
+                        <p
+                            class="text-md w-fit mt-4 text-sm lg:text- tracking-wide  text-gray-900 md:text-base bell font-medium text-lg ">
+                            We are a medium–sized law firm established and registered in the Republic of Kenya in
+                            the year
+                            2007. We are configured to deliver the highest quality services to our clients
+                            regardless of the
+                            complexity of the legal issues. Besides our work; we are frequently requested to assist
+                            other
+                            lawyers and firms in significant cases which seem destined for trial.
+                        </p>
+                        <div class="mt-5 md:mt-8 lg:mt-3">
+                            <a href="{{ url_for('pages.about') }}" class="text-[#d13642] hover:text-red-400 lg:text-lg bell font-medium">
+                                About us
+                                <span class="ml-2">&#8594;</span></a>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div   class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 ml-2 mr-2 md:ml-0 md:mr-0">
+            <img data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000"  class="h-56 w-full object-contain object-top sm:h-72 md:h-96 lg:w-full lg:h-full"
+                src="../static/images/m_team.webp" alt="">
+        </div>
+    </div>
+
+
+    <!-- featured articles section -->
+    <section data-aos="fade-up" data-aos-duration="1000" class="z-20 sticky top-0 bg-white" style="background-color: rgb(244, 249, 252)">
+        <div class=" mb-1 mt-1 md:mb-4 py-8  mx-auto max-w-7xl w-full px-4 sm:px-6 md:px-8 ">
+            <div class="">
+                <h2
+                    class="text-xl font-bold w-fit bell-bold text-[#d13642] sm:text-3xl  mb-4 pb-1 px-2 rounded-md border-b-2 border-red-800 text-center md:text-left">
+                    Featured
+                    <span class="text-indigo-900">Articles</span>
+                </h2>
+            </div>
+            <div class="mx-auto mt-8 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:max-w-none">
+                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                            src="../static/images/procurements.webp" alt="" />
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-[#d13642]">
+                                <a href="/blog" class="bell-regular font-semibold hover:text-red-600">
+                                    read Article
+                                    <span class="ml-1">&#8594;</span>
+                                </a>
+                            </p>
+                            <a href="#" class="mt-2 block">
+                                <p class="text-xl font-bold bell-bold text-gray-900">
+                                    Best won procurement case
+                                </p>
+                                <p
+                                    class="mt-4 text-sm md:text-md tracking-wide text-gray-900 md:text-base bell font-medium">
+                                    Our firm successfully defended a high-stakes procurement case, securing
+                                    a favorable outcome for our client and setting a
+                                    precedent in the industry.
+                                </p>
+                            </a>
+                        </div>
+                        <div class="flex space-x-1 text-sm  bell font-medium text-gray-500 mt-2">
+                            <time datetime="2020-03-16">Mar 16, 2020</time>
+                            <span aria-hidden="true">·</span>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                            src="../static/images/Corporate-Commercial.webp" alt="" />
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-indigo-600">
+                                <a href="/blog"
+                                    class="bell-regular font-semibold text-[#d13642] hover:text-red-600">
+                                    view Video
+                                    <span class="ml-1">&#8594;</span>
+                                </a>
+                            </p>
+                            <a href="#" class="mt-2 block">
+                                <p class="text-xl bell-bold font-bold text-gray-900">
+                                    How we handle commercial and corporate cases
+                                </p>
+                                <p
+                                    class="mt-4 text-sm md:text-md tracking-wide text-gray-900 md:text-base bell font-medium">
+                                    Discover our strategic approach to complex commercial and corporate
+                                    disputes. Learn how our expert team navigates legal
+                                    challenges, protects client interests, and delivers tailored solutions.
+                                </p>
+                            </a>
+                        </div>
+                        <div class="flex space-x-1 bell font-medium text-sm text-gray-500 mt-2">
+                            <time datetime="2020-03-10">Mar 10, 2020</time>
+                            <span aria-hidden="true">·</span>
+                            <span>4 min read</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col hidden md:block overflow-hidden rounded-lg shadow-lg md:mb-0 mb-56">
+                    <div class="flex-shrink-0">
+                        <img class="h-48 w-full object-cover transition-transform duration-500 transform ease-in-out hover:scale-110"
+                            src="../static/images/home.webp" alt="" />
+                    </div>
+                    <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-indigo-600">
+                                <a href="blog"
+                                    class="bell-regular font-semibold text-[#d13642] hover:text-red-600">
+                                    study
+                                    <span class="ml-1">&#8594;</span>
+                                </a>
+                            </p>
+                            <a href="#" class="mt-2 block">
+                                <p class="text-xl bell-bold font-bold text-gray-900">
+                                    This is how we secured our client home.
+                                </p>
+                                <p
+                                    class="mt-4 text-sm md:text-md tracking-wide text-gray-900 md:text-base bell font-medium">
+                                    Witness the journey of securing a dream home. Explore our comprehensive
+                                    legal process, from initial consultation to
+                                    closing day, ensuring a smooth and successful transaction.
+                                </p>
+                            </a>
+                        </div>
+                        <div class="flex space-x-1 bell font-medium text-sm text-gray-500 mt-2">
+                            <time datetime="2020-02-12">Feb 12, 2020</time>
+                            <span aria-hidden="true">·</span>
+                            <span>11 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Masika & Koross Team -->
+    <section data-aos="fade-up" data-aos-duration="300" class="z-30 sticky top-0 py-28 lg:mb-24 bg-white ">
+        <div class="w-full px-4 sm:px-6 md:px-8 pb-10">
+            <div
+                class="mx-auto max-w-7xl mt-8 mb-8 md:mt-0 items-center-mt-5 bg-white justify-self-center p-5 shadow-lg md:h-[350px]">
+                <div class="w-full mx-auto flex flex-col justify-center relative p-4">
+                    <!-- Heading Section -->
+                    <div class="text-center md:text-left" data-aos="fade-right" data-aos-offset="400"
+                        data-aos-easing="ease-in-sine">
+                        <h1
+                            class="text-xl font-bold w-fit bell-bold text-[#d13642] sm:text-3xl  mb-4 pb-1 px-2 rounded-md border-b-2 border-red-800 text-center md:text-left">
+                            Masika And Koross
+                            <span class="text-indigo-900">Team</span>
+                        </h1>
+                        <p
+                            class="mt-3 max-w-2xl text-left bell-regular font-medium text-sm sm:text-md md:text-lg text-gray-900 sm:mt-4">
+                            Our team of skilled attorneys is dedicated to exceptional legal representation. With years
+                            of
+                            experience and a commitment to excellence, we are committed to achieving the best possible
+                            outcomes for our clients.
+                        </p>
+                    </div>
+
+                    <!-- Slider Section -->
+                    <div class="mt-6 lg:mt-2 border-t pt-6 " data-aos-easing="ease-in-sine">
+                        <div x-data="{
+                                        skip: 1,
+                                        atBeginning: false,
+                                        atEnd: false,
+                                        next() { this.to((current, offset) => current + (offset * this.skip)) },
+                                        prev() { this.to((current, offset) => current - (offset * this.skip)) },
+                                        to(strategy) {
+                                            let slider = this.$refs.slider;
+                                            let current = slider.scrollLeft;
+                                            let offset = slider.firstElementChild.getBoundingClientRect().width;
+                                            slider.scrollTo({ left: strategy(current, offset), behavior: 'smooth' });
+                                        },
+                                    }">
+                            <!-- Navigation Buttons -->
+                            <div class="inline-flex space-x-2 justify-center md:justify-start mb-4">
+                                <button
+                                    class="bg-red-800 hover:bg-orange-600 w-8 h-8 flex items-center justify-center rounded-full text-white opacity-50"
+                                    :class="{ 'opacity-50': atBeginning }" x-on:click="prev" tabindex="0"
+                                    :aria-disabled="atBeginning">
+                                    ←
+                                </button>
+                                <button
+                                    class="bg-red-800 hover:bg-orange-600 w-8 h-8 flex items-center justify-center rounded-full text-white"
+                                    :class="{ 'opacity-50': atEnd }" x-on:click="next" tabindex="0"
+                                    :aria-disabled="atEnd">
+                                    →
+                                </button>
+                            </div>
+
+                            <!-- Slider -->
+                            <div class="overflow-hidden relative mb-10" x-ref="slider">
+                                <ul class="flex gap-4 snap-mandatory snap-x">
+                                    <!-- Slide 1 -->
+                                    <li
+                                        class="w-full flex flex-col shrink-0 snap-start p-4 bg-gray-50 rounded-md shadow-md">
+                                        <div class="flex items-center justify-center">
+                                            <img class="w-full max-w-xs md:max-w-sm object-cover"
+                                                src="../static/images/m_team.webp" alt="Masika Team">
+                                        </div>
+                                        <p class="mt-3 text-sm md:text-lg bell  font-bold text-[#d13642] text-center">Our
+                                            Diligent
+                                            Team</p>
+                                    </li>
+                                    <!-- Slide 2 -->
+                                    <li
+                                        class="w-full flex flex-col shrink-0 snap-start p-4 bg-gray-50 rounded-md shadow-md">
+                                        <div class="flex flex-col items-center">
+                                            <img class="h-40 w-40 rounded-full object-cover" src="../static/images/masika.webp"
+                                                alt="Alex Masika">
+                                            <div class="mt-2 text-center">
+                                                <p class="text-md md:text-lg bell text-[#d13642]">Alex Masika</p>
+                                                <p class="text-sm bell-italic text-red-500">Senior Partner</p>
+                                                <a href="skmasika@gmail.com" class="inline-block mt-2">
+                                                    <img src="../static/images/email.webp"
+                                                        class="h-8 border-2 hover:border-red-600 rounded-full"
+                                                        alt="Email">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li
+                                        class="w-full flex flex-col shrink-0 snap-start p-4 bg-gray-50 rounded-md shadow-md">
+                                        <div class="flex flex-col items-center">
+                                            <img class="h-40 w-40 rounded-full object-cover" src="../static/images/koross.webp"
+                                                alt="Koross">
+                                            <div class="mt-2 text-center">
+                                                <p class="text-md md:text-lg bell font-bold text-[#d13642]">Ann Koross</p>
+                                                <p class="text-sm bell-italic text-red-500">Now Judge At ELC</p>
+                                                <a href="skmasika@gmail.com" class="inline-block mt-2">
+                                                    <img src="../static/images/email.webp"
+                                                        class="h-8 border-2 hover:border-red-600 rounded-full"
+                                                        alt="Email">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+
+                                    <li
+                                        class="w-full flex flex-col shrink-0 snap-start p-4 bg-gray-50 rounded-md shadow-md">
+                                        <div class="flex flex-col items-center">
+                                            <img class="h-40 w-40 rounded-full object-cover" src="../static/images/pius.webp"
+                                                alt="pius">
+                                            <div class="mt-2 text-center">
+                                                <p class="text-md md:text-lg bell font-bold text-[#d13642]">Dr Pius Wanjala</p>
+                                                <p class="text-sm bell-italic text-red-500">Partner</p>
+                                                <a href="skmasika@gmail.com" class="inline-block mt-2">
+                                                    <img src="../static/images/email.webp"
+                                                        class="h-8 border-2 hover:border-red-600 rounded-full"
+                                                        alt="Email">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li
+                                        class="w-full flex flex-col shrink-0 snap-start p-4 bg-gray-50 rounded-md shadow-md">
+                                        <div class="flex flex-col items-center">
+                                            <img class="h-40 w-40 rounded-full object-cover" src="../static/images/nelson.webp"
+                                                alt="Nelson">
+                                            <div class="mt-2 text-center">
+                                                <p class="text-md bell font-bold text-[#d13642]">Nelson Kuya</p>
+                                                <p class="text-sm bell-italic text-red-500">Legal Assistant</p>
+                                                <a href="skmasika@gmail.com" class="inline-block mt-2">
+                                                    <img src="../static/images/email.webp"
+                                                        class="h-8 border-2 hover:border-red-600 rounded-full"
+                                                        alt="Email">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+                                    <li
+                                        class="w-full flex flex-col shrink-0 snap-start p-4 bg-gray-50 rounded-md shadow-md">
+                                        <div class="flex flex-col items-center">
+                                            <img class="h-40 w-40 rounded-full object-cover" src="../static/images/tomas.webp"
+                                                alt="pius">
+                                            <div class="mt-2 text-center">
+                                                <p class="text-md md:text-lg bell font-bold text-[#d13642]">Thomas Opunga</p>
+                                                <p class="text-sm bell-italic text-red-500">Associate Lawyer</p>
+                                                <a href="skmasika@gmail.com" class="inline-block mt-2">
+                                                    <img src="../static/images/email.webp"
+                                                        class="h-8 border-2 hover:border-red-600 rounded-full"
+                                                        alt="Email">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   {% endblock %}

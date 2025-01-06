@@ -7,7 +7,8 @@
       "default",
       {
         "label": "off",
-        "autocomplete-valid": "off"
+        "autocomplete-valid": "off",
+        "select-name": "off"
       }
     ],
     "no-inline-styles": "off",
@@ -32,6 +33,14 @@
       }
     ],
     "disown-opener": "off",
-    "button-type": "off"
+    "button-type": "off",
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "iframe[loading]"
+        ]
+      }
+    ]
   }
 }

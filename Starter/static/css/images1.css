@@ -1,0 +1,12 @@
+.image1 {
+    overflow: hidden;
+    width: 50%; /* Ensures the images are half-width */
+    border-radius: 0.5rem; /* Rounds the corners */
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease; /* Adds smooth scaling for better responsiveness */
+}
+
+
