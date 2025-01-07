@@ -6,7 +6,7 @@
 <div class="flex justify-center items-center mx-auto max-w-5x" style="height: 80vh;">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-center text-2xl font-bold mb-6">Update Form</h2>
-        <form method="POST" action="{{ url_for('views.get_message', id=message.id) }}">
+        <form method="POST" action="{{ url_for('views.edit_message', id=message.id) }}">
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
                 <input type="text" id="name" name="name" value="{{ message.name }}"

@@ -1,4 +1,3 @@
-from sqlalchemy.dialects.postgresql import JSONB
 from flask import Blueprint, flash
 from werkzeug.security import check_password_hash, generate_password_hash
 from . import db
@@ -62,12 +61,27 @@ class FeaturedArticle(db.Model):
     youtube_id = db.Column(db.String(20))
     updated_at = db.Column(
         db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
-
-
     def __repr__(self):
         return f"<FeaturedArticle {self.title}>"
+class Subscriber(db.Model):
+    __tablename__ = 'subscribers'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), nullable=False, unique=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    def __repr__(self):
+        return f'<Subscriber {self.id} - {self.name}>'
 
+class Message(db.Model):
+    __tablename__ = 'messages'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    phone_number = db.Column(db.String(15), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    texts = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<Message {self.id} - {self.name}>'
 
 # Function to Create User
 def create_user(username, email, password, is_admin=False):
@@ -88,6 +102,9 @@ def create_user(username, email, password, is_admin=False):
     db.session.add(new_user)
     db.session.commit()
     return new_user
+
+
+
 
 
 

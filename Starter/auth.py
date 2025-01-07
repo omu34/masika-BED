@@ -1,7 +1,7 @@
 import os
 
 from flask_mail import Message
-from . import mail
+from . import mail, get_db_connection
 import psycopg2.extras
 from flask import (Blueprint, flash, redirect, render_template, request,
                    session, url_for)
@@ -15,16 +15,7 @@ SUPER_ADMIN_EMAIL = os.getenv('SUPER_ADMIN_EMAIL')
 SESSION_PERMANENT = os.getenv('SESSION_PERMANENT')
 
 
-def get_db_connection():
-    """Get a connection to the database"""
-    conn = psycopg2.connect(
-        dbname=os.getenv('DB_NAME'),
-        user=os.getenv('DB_USER'),
-        password=os.getenv('DB_PASSWORD'),
-        host=os.getenv('DB_HOST'),
-        port=os.getenv('DB_PORT')
-    )
-    return conn
+
 
 
 @auth.route('/auth_register', methods=['GET', 'POST'])
@@ -203,7 +194,10 @@ def admin_dashboard():
         return render_template('admin_dashboard.html', users_list=users_list, list_messages=list_messages, list_articles=list_articles, list_subscribers=list_subscribers)
     else:
         flash('Unauthorized access!')
-        return redirect(url_for('views.home'))
+        return redirect(url_for('views.add_message'))
+
+
+
 
 
 # users

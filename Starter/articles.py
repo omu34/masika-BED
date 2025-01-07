@@ -5,6 +5,7 @@ from flask_socketio import emit
 from werkzeug.utils import secure_filename
 from .models import db, FeaturedArticle
 from . import socketio
+from .tasks import validate_article_data, allowed_file, save_file
 
 articles = Blueprint('articles', __name__)
 
@@ -13,49 +14,7 @@ VALID_ARTICLE_TYPES = ["news", "videos", "gallery"]
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'mp4', 'webm', 'ogg', 'svg', 'webp', 'wav', 'ogg', 'mp3' }
 
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-# Helper function to validate article data
-
-
-def validate_article_data(title, description, time_to_read):
-    """Validate article data before adding."""
-    if not title or not description:
-        return "Title and description are required."
-    if time_to_read and not time_to_read.isdigit():
-        return "Time to read must be a numeric value."
-    return None
-
-# Save uploaded files
-
-
-def save_file(file, folder):
-    """Save file and return its URL."""
-    filename = secure_filename(file.filename)
-    upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], folder)
-    os.makedirs(upload_path, exist_ok=True)
-    file.save(os.path.join(upload_path, filename))
-    return url_for('articles.uploaded_file', folder=folder, filename=filename, _external=True)
-
-# Serve uploaded files
-
-
-@articles.route('/uploads/<folder>/<filename>')
-def uploaded_file(folder, filename):
-    """Serve uploaded files."""
-    upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], folder)
-    if os.path.exists(os.path.join(upload_path, filename)):
-        return send_from_directory(upload_path, filename)
-    
-    
-    return "File not found", 404
-
-
 @articles.route('/articles', methods=['POST'])
-
-
 def upload_article():
     try:
         # Get form data
@@ -145,9 +104,17 @@ def handle_connect():
 #         ]
 #     emit('initial_data', featured_articles)
 
+
+@articles.route('/uploads/<folder>/<filename>')
+def uploaded_file(folder, filename):
+    """Serve uploaded files."""
+    upload_path = os.path.join(current_app.config['UPLOAD_FOLDER'], folder)
+    if os.path.exists(os.path.join(upload_path, filename)):
+        return send_from_directory(upload_path, filename)
+
+    return "File not found", 404
+
 # Update Articles
-
-
 @articles.route('/articles/update-article/<article_type>', methods=['POST'])
 def update_article(article_type):
     """Add or update an article."""

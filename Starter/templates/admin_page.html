@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="max-w-7xl mx-auto">
 <div class="bg-white p-6 rounded-lg shadow-md">
-    <h2 class="text-xl font-semibold mb-4 bell-bold">Existing Articles</h2>
+    <h2 class="text-xl font-extrabold mb-4 bell-bold text-red-700">Existing Articles</h2>
     <div id="existing-articles" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Articles will be dynamically loaded here -->
     </div>
@@ -68,7 +68,7 @@
         </div>
     </form>
 </div>
-
+</div>
 <script>
     const socket = io();
 
@@ -214,86 +214,7 @@
     }
 </script>
 
-<!-- <script>
-    const socket = io();
 
-    socket.on('initial_data', (data) => displayArticles(data));
-
-    socket.on('update_featured', ({ type, data }) => {
-        const section = document.getElementById(`section-${type}`);
-        if (section) {
-            section.innerHTML = '';
-            displayArticles({ [type]: [data] });
-        }
-    });
-
-    document.getElementById('article-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const form = e.target;
-        const formData = new FormData(form);
-        const articleType = formData.get('article_type');
-
-        try {
-            const response = await fetch(`/articles/update-article/${articleType}`, {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (response.ok) {
-                form.reset();
-                alert('Article added!');
-            } else {
-                const error = await response.json();
-                alert(error.error || 'Error occurred');
-            }
-        } catch (error) {
-            alert('An unexpected error occurred.');
-            console.error(error);
-        }
-    });
-
-    function displayArticles(data) {
-        const container = document.getElementById('existing-articles');
-        container.innerHTML = '';
-
-        for (const [type, articles] of Object.entries(data)) {
-            articles.forEach(article => {
-                container.innerHTML += `
-                    <div class="bg-white border rounded-lg shadow p-4 flex flex-col items-start justify-between h-full">
-                        <div>
-                            <h3 class="text-lg font-bold">${article.title}</h3>
-                            <p class="text-sm text-gray-600">${article.description}</p>
-                        </div>
-                        <div class="w-full mt-4">
-                            ${article.link ? getMediaPreview(article.link) : ''}
-                        </div>
-                        <div class="mt-4 flex gap-2">
-                            <button class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700" onclick="toggleFeatured('${type}', ${article.id}, true)">Feature</button>
-                            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700" onclick="deleteArticle('${type}', ${article.id})">Delete</button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-    }
-
-    function getMediaPreview(url) {
-        if (url.match(/\.(jpeg|jpg|gif|png)$/i)) {
-            return `<img src="${url}" alt="Image Preview" class="w-full h-48 object-cover rounded">`;
-        } else if (url.includes("youtube.com") || url.includes("vimeo.com")) {
-            const videoId = url.includes("youtube.com")
-                ? new URL(url).searchParams.get("v")
-                : url.split("/").pop();
-            const videoUrl = url.includes("youtube.com")
-                ? `https://www.youtube.com/embed/${videoId}`
-                : `https://player.vimeo.com/video/${videoId}`;
-            return `<iframe src="${videoUrl}" class="w-full h-48 rounded" frameborder="0" allowfullscreen></iframe>`;
-        } else {
-            return `<a href="${url}" target="_blank" class="text-blue-500 underline">View Content</a>`;
-        }
-    }
-</script> -->
 
 {% endblock %}
 
