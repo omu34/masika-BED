@@ -25,7 +25,7 @@ celery = Celery()
 @login_manager.user_loader
 def load_user(user_id):
     """Loads user by ID for Flask-Login."""
-    from starter.models import User
+    from api.models import User
     return User.query.get(int(user_id))
 
 # Notification Listener
