@@ -13,6 +13,9 @@ from flask_sqlalchemy import SQLAlchemy
 from authlib.integrations.flask_client import OAuth
 from sqlalchemy.sql import text
 from celery import Celery
+import sys
+print(sys.path)
+
 # Extensions
 socketio = SocketIO(cors_allowed_origins="*")
 login_manager = LoginManager()
