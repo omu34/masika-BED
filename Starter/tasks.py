@@ -1,36 +1,17 @@
-from . import mail, get_db_connection
+from flask import url_for, Blueprint, current_app
 from flask_mail import Message
-from flask import redirect, url_for, flash, request, Blueprint, current_app, send_from_directory
 from threading import Thread
 import re
-import psycopg2
 import os
-import psycopg2.extras
 from werkzeug.utils import secure_filename
 
 tasks = Blueprint("tasks", __name__)
 
-# Define allowed extensions for file uploads
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'pdf', 'doc', 'docx'}
-
+SUPER_ADMIN_EMAIL = os.getenv('SUPER_ADMIN_EMAIL')
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-# Helper function to validate article data
-
-
-def validate_article_data(title, description, time_to_read):
-    """Validate article data before adding."""
-    if not title or not description:
-        return "Title and description are required."
-    if time_to_read and not time_to_read.isdigit():
-        return "Time to read must be a numeric value."
-    return None
-
-# Save uploaded files
-
 
 def save_file(file, folder):
     """Save file and return its URL."""
@@ -40,73 +21,41 @@ def save_file(file, folder):
     file.save(os.path.join(upload_path, filename))
     return url_for('articles.uploaded_file', folder=folder, filename=filename, _external=True)
 
-# Send email asynchronously
-
 def send_email_async(app, msg):
-    """Sends email in a separate thread to avoid delays."""
+    """Send email in a separate thread."""
     with app.app_context():
         try:
+            mail = app.extensions['mail']
             mail.send(msg)
             print(f"Email sent successfully to {msg.recipients}")
         except Exception as e:
             print(f"Failed to send email: {e}")
 
-
 def send_email(subject, recipients, body):
-    """Helper function to prepare and send an email asynchronously."""
+    """Prepare and send email asynchronously."""
     msg = Message(subject=subject, recipients=recipients, body=body)
-    Thread(target=send_email_async, args=(mail._app, msg)).start()
-
-# Updated subscriber_email_to_admin
+    Thread(target=send_email_async, args=(current_app._get_current_object(), msg)).start()
 
 def subscriber_email_to_admin(email):
-    admin_email = "bernardomuse22@gmail.com"
+    admin_email = [SUPER_ADMIN_EMAIL]
     subject = "New Subscription Received"
-    body = f"""
-    You have received a new subscription:
-    Email: {email}
-    """
-    send_email(subject, [admin_email], body)
+    body = f"You have received a new subscription:\n\nEmail: {email}"
+    send_email(subject, admin_email, body)
 
-# Updated subscriber_email_to_client
 def subscriber_email_to_client(email):
     subject = "Thank You for Subscribing"
-    body = f"""
-    Hi {email},
-
-    Thank you for subscribing to us. We have received your subscription and will keep you updated.
-
-    Best Regards,
-    Masika and Koross Advocates
-    """
+    body = f"Hi {email},\n\nThank you for subscribing to us. We will keep you updated.\n\nBest Regards,\nMasika and Koross Advocates"
     send_email(subject, [email], body)
 
-# Updated send_email_to_admin
 def send_email_to_admin(name, phone_number, email, texts):
-    admin_email = "skmasika@gmail.com"
+    admin_email = [SUPER_ADMIN_EMAIL]
     subject = "New Message Received"
-    body = f"""
-    You have received a new message:
-    Name: {name}
-    Phone Number: {phone_number}
-    Email: {email}
-    Message: {texts}
-    """
-    send_email(subject, [admin_email], body)
-
-# Updated send_email_to_client
-
+    body = f"You have received a new message:\n\nName: {name}\nPhone Number: {phone_number}\nEmail: {email}\nMessage: {texts}"
+    send_email(subject, admin_email, body)
 
 def send_email_to_client(name, email):
     subject = "Thank You for Contacting Us"
-    body = f"""
-    Hi {name},
-
-    Thank you for reaching out to us. We have received your message and will get back to you shortly.
-
-    Best Regards,
-    Masika and Koross Advocates
-    """
+    body = f"Hi {name},\n\nThank you for reaching out to us. We will get back to you shortly.\n\nBest Regards,\nMasika and Koross Advocates"
     send_email(subject, [email], body)
 
 def is_valid_email(email):
@@ -115,4 +64,9 @@ def is_valid_email(email):
     return re.match(email_regex, email) is not None
 
 
-
+def validate_article_data(title, description, time_to_read):
+    if not title or not description:
+        return "Title and description are required."
+    if not time_to_read.isdigit():
+        return "Time to read must be a number."
+    return None

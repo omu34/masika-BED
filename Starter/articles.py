@@ -1,11 +1,11 @@
 import os
 import time
-from flask import Blueprint, current_app, request, jsonify, render_template, send_from_directory, url_for
+from flask import Blueprint, current_app, request, jsonify, render_template, send_from_directory
 from flask_socketio import emit
 from werkzeug.utils import secure_filename
 from .models import db, FeaturedArticle
 from . import socketio
-from .tasks import validate_article_data, allowed_file, save_file
+from .tasks import allowed_file, save_file, validate_article_data
 
 articles = Blueprint('articles', __name__)
 
@@ -78,31 +78,6 @@ def handle_connect():
             for article in articles
         ]
     emit('initial_data', featured_articles)
-
-
-# @socketio.on('connect')
-# def handle_connect():
-#     """Send the latest articles to the client."""
-#     featured_articles = {}
-#     for article_type in VALID_ARTICLE_TYPES:
-#         articles = (
-#             FeaturedArticle.query.filter_by(type=article_type)
-#             .order_by(FeaturedArticle.id.desc())
-#             .all()
-#         )
-#         featured_articles[article_type] = [
-#             {
-#                 "id": article.id,
-#                 "title": article.title,
-#                 "description": article.description,
-#                 "link": article.link,
-#                 "time_featured": article.time_featured,
-#                 "time_to_read": article.time_to_read,
-#                 "is_featured": article.is_featured,
-#             }
-#             for article in articles
-#         ]
-#     emit('initial_data', featured_articles)
 
 
 @articles.route('/uploads/<folder>/<filename>')
