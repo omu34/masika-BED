@@ -140,12 +140,12 @@ def create_app():
 
     # Register blueprints
     blueprints = [
-        ("starter.views", "views"),
-        ("starter.articles", "articles"),
-        ("starter.auth", "auth"),
-        ("starter.models", "models"),
-        ("starter.pages", "pages"),
-        ("starter.googles", "googles"),
+        ("api.views", "views"),
+        ("api.articles", "articles"),
+        ("api.auth", "auth"),
+        ("api.models", "models"),
+        ("api.pages", "pages"),
+        ("api.googles", "googles"),
     ]
 
     for module_path, blueprint_name in blueprints:
