@@ -1,4 +1,4 @@
-from starter import create_app, celery
+from api import create_app, celery
 
 # Create the Flask app and integrate Celery
 flask_app = create_app()
