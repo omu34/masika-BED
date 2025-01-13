@@ -1,0 +1,13 @@
+.responsive-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center; /* Adjust alignment */
+}
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional styling */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}

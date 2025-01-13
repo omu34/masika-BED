@@ -6,95 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-
-    <title>{% block title %}Masika & Koross Advocates - {% endblock %}</title>
-  <link rel="icon" type="image/x-icon" href="../static/images/m-logo.webp">  
-
-    
+    <link rel="icon" href="images/favicon.ico" />
+    <meta name="description" content="Masika and Koross your best law firm." />
+    <meta name="keywords" content="Best law firm, Masika and koross, advocates,  law firm, law firm services" />
+    <title>{% block title %}Masika $ Koross Advocates - {% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="../static/images/m-logo.webp">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="../static/css/font.css" />
+
     <link rel="stylesheet" href="../static/css/slider.css" />
     <link rel="stylesheet" href="../static/css/area-practice.css" />
     <link rel="stylesheet" href="../static/css/scroll-to-top.css" />
     <link rel="stylesheet" href="../static/css/nav-bar.css" />
     <link rel="stylesheet" href="../static/css/output.css">
     <link rel="stylesheet" href="../static/css/articles.css">
-
-
+    <link rel="stylesheet" href="../static/css/imagis.css">
+    <link rel="stylesheet" href="../static/css/swiper.css">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" rel="stylesheet" />
-    <!-- coop -->
+    <!-- swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Fonts -->
     <link rel="stylesheet" href="../static/css/font.css" />
     <link rel="stylesheet" href="../static/stylesheet.css" />
-
     <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.7.5/dist/socket.io.min.js"></script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                "gtm.start": new Date().getTime(),
+                event: "gtm.js",
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-PKNCC3PB");
+    </script>
+    <!-- End Google Tag Manager -->
 </head>
 
-<body class="overflow-x-hidden bell-regular">
+<body class="overflow-x-hidden bell-regular line-space banner-text" style="background-color: rgb(244, 249, 252)">
 
-    <!-- <header>
-    <h1>
-      <a ><img src="{{ url_for('static', filename='logo.png') }}" alt="Masika & Koross Advocates Logo">
-        Masika & Koross Advocates
-      </a>
-    </h1>
-  </header> -->
-    <!-- First Navbar -->
-    <div
-        class="flex flex-col md:flex-row items-center gap-4 lg:mt-0 lg:p-2 p-2 md:p-6 md:pt-10 justify-between max-w-full md:max-w-7xl px-2 md:px-6 mx-auto">
-
-        <!-- Logo Section -->
-        <div class=" mb-1.5 md:mb-0">
-            <a href="/index" class="flex items-center justify-center md:justify-start">
-                <img width="397" height="47" src="../../static/images/m-logo.svg" alt="Masika Koross Logo"
-                    class="max-w-[480px] md:max-w-[580px] lg:max-w-[690px] rounded-lg transition-transform duration-500 transform ease-in-out hover:scale-110">
-            </a>
-        </div>
-
-
-
-        <!-- Contact Buttons -->
-        <div
-            class=" flex  flex-row items-center justify-center md:justify-end gap-1 sm:gap-10 md:gap-2 mx-auto max-w-xs md:max-w-2xl md:mr-0 mr-10 -mt-8 md:mt-0 sm:-mr-2 sm:-ml-8 md:ml-0 ">
-            <!-- Email Us Button -->
-            <a href="mailto:info@masikakoross.com" target="_blank" class="w-full md:w-auto text-center ">
-                <button
-                    class="block md:mr-2 py-2 px-3  md:px-5 shadow-lg bell ease-in-out duration-500 hover:bg-white hover:text-[#d13642] uppercase font-bold text-white rounded bg-red-700">
-                    Email Us
-                </button>
-            </a>
-
-            <!-- Call Us Section -->
-            <a href="tel:0794698693" target="_blank"
-                class="flex flex-row items-center justify-center gap-2 md:gap-4 text-[#d13642] hover:text-red-500 ">
-                <!-- Call Button -->
-                <button class="border-2 border-red-700 rounded-full p-2 flex-shrink-0 ml-2">
-                    <img class="h-6 w-6 md:w-8 md:h-8" src="../../static/images/icon-call-calling.svg" alt="Call Icon">
-                </button>
-                <!-- Call Details -->
-                <div class="text-left">
-                    <p class="text-md lg:text-xl bell-italic font-bold text-[#d13642] bell hover:text-[#d13642]">
-                        0794698693</p>
-                    <h6
-                        class="text-xs md:text-md bell-italic lg:text-lg font-medium text-text-[#d13642] uppercase hover:text-[#d13642]">
-                        Legal Speaks
-                    </h6>
+    <first-navbar>
+        <div class="mx-auto bg-white">
+            <div class="flex flex-col md:flex-row items-center gap-4 pb-1.5 justify-between max-w-7xl  mx-auto ">
+                <!-- Logo Section -->
+                <div class="svg-container">
+                    <a href="/index" class="flex items-center justify-center md:justify-start">
+                        <img width="397" height="47" src="../../static/images/m-logo.svg" alt="Masika Koross Logo"
+                            class="max-w-[480px] md:max-w-[580px] lg:max-w-[690px] rounded-lg transition-transform duration-500 transform ease-in-out hover:scale-110" />
+                    </a>
                 </div>
-            </a>
-        </div>
-    </div>
 
+                <!-- Contact Buttons -->
+                <div
+                    class="w-full flex flex-col bell-bolder md:flex-row bell-italic items-center justify-center md:justify-end gap-4  sm:mt-0 md:mt-0 -mt-2">
+                    <!-- Email Us Button -->
+                    <a href="mailto:info@masikakoross.com" target="_blank" class="w-full md:w-auto text-center">
+                        <button
+                            class="w-3/4  call-number bell-small md:w-auto py-2 px-4 md:px-6 text-white shadow-lg transition duration-500 hover:bg-white hover:text-red-700 bg-red-700 rounded-md">
+                            Email Us
+                        </button>
+                    </a>
+                    <!-- Call Us Section -->
+                    <a href="tel:0794698693" target="_blank"
+                        class="flex flex-row items-center justify-center gap-3 text-red-700">
+                        <!-- Call Button -->
+                        <button class="border-2 border-red-700 rounded-full p-2 flex-shrink-0 hover:text-red-500">
+                            <img class="h-7 w-7 block" src="../../static/images/icon-call-calling.svg"
+                                alt="Call Icon" />
+                        </button>
+                        <!-- Call Details -->
+                        <div class="text-left bell-italic">
+                            <h3 class="hover:text-red-500 call-number ">0794698693</h3>
+                            <h6 class="uppercase hover:text-red-500 ">Legal Speaks</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </first-navbar>
 
     <!--Second Navbar  -->
     <second-navbar>
-        <div class=" w-full sticky top-0 rounded-t-md   inset-x-0 z-[9999]  bg-blue-100">
+        <div class="mx-auto max-w-7xl p-1 sticky top-0 rounded-md inset-x-0 z-[9999] w-full bg-purple-100 opacity-90">
             <nav
-                class="flex flex-wrap items-center bell-regular font-bold max-w-xl sm:max-w-7xl mx-auto justify-between z-[9999] space-y-4 md:space-y-0">
+                class="flex flex-wrap items-center max-w-xl sm:max-w-7xl mx-auto justify-between z-[9999] space-y-4 md:space-y-0">
                 <!-- Hamburger Menu Button -->
                 <div class="flex md:hidden">
                     <button id="hamburger" class="relative z-30">
@@ -113,78 +117,75 @@
                         class="block py-2 pl-3 bell-regular  md:text-lg text-sm pr-4 text-[#d13642] uppercase    hover:underline  hover:text-[#d13642]">
                         Home
                     </a>
-                    <div id="bouton" class="relative group mt-2 z-20">
+                    <div id="bouton" class="relative group mt-2 z-20 justify-center ">
                         <!-- Button -->
-                        <button
-                            class="flex items-center ml-2 md:ml-0 bell-regular md:text-lg text-sm uppercase hover:text-[#d13642] relative z-30">
+                        <button class="flex items-center ml-20 md:ml-0 uppercase hover:text-[#d13642] relative z-30">
                             Areas Of Practice
                             <span class="ml-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="#CB4154" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor"
-                                    class="w-5 h-4 transition-transform group-hover:rotate-90">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="#CB4154" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" class="w-5 h-4 transition-transform group-hover:rotate-90">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                             </span>
                         </button>
                         <!-- Dropdown Content -->
                         <div
-                            class="absolute bell-regular  top-full left-0 bg-purple-50  text-gray-700 md:-ml-4 ml-2.5 shadow-lg rounded-md grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 w-[24rem] md:w-[32rem] lg:w-[48rem] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+                            class="absolute bell-extrasmall  top-full left-0 bg-purple-100 opacity-95 text-gray-900 md:-ml-4 -ml-2  rounded-md grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 shadow-lg w-[24rem] md:w-[32rem] lg:w-[48rem]  invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
                             <!-- Practice Areas -->
                             <a href="{{ url_for('pages.procurement') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Procurement Law
                             </a>
                             <a href="{{ url_for('pages.arbitration') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Arbitration and ADR
                             </a>
-                            <a href="{{ url_for('pages.conveyance') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                            <a href="{{ url_for('pages.conveyance') }}l"
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Conveyance and Securities
                             </a>
                             <a href="{{ url_for('pages.family') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Family Law
                             </a>
                             <a href="{{ url_for('pages.constitutional') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Constitutional and Administrative Law
                             </a>
                             <a href="{{ url_for('pages.election') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Election Law and Practice
                             </a>
                             <a href="{{ url_for('pages.commercial') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Commercial and Corporate Practice
                             </a>
                             <a href="{{ url_for('pages.banking') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Banking and Finance Law
                             </a>
                             <a href="{{ url_for('pages.employment') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Employment and Labour Law
                             </a>
                             <a href="{{ url_for('pages.environment') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Environment and Land Law
                             </a>
                             <a href="{{ url_for('pages.health') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Health Law
                             </a>
                             <a href="{{ url_for('pages.interlectial') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
-                                Interlectial Property (IP)
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                Interlectual Property (IP)
                             </a>
-                            <a href="{{ url_for('pages.tax') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                            <a href="{{ url_for('pages.tax') }}l"
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Tax Law
                             </a>
                             <a href="{{ url_for('pages.criminal') }}"
-                                class="block py-2 px-4 text-sm hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
+                                class="block py-2 px-4 hover:text-[#d13642] border-y border-red-800 border-dashed rounded-md">
                                 Criminal Law
                             </a>
                         </div>
@@ -212,13 +213,13 @@
                         class=" md:hidden block py-2 pl-3 bell-regular  md:text-lg text-sm pr-4 text-[#d13642] uppercase    hover:underline  hover:text-[#d13642]">
                         Sign Out?
                     </a>
-                    
+
                     <div class="rounded-xl toggle pl-1">
                         <div
                             class="flex justify-center  items-center bell-regular  text-sm md:text-md lg:text-lg font-medium">
                             <!-- If user is logged in and is an admin -->
                             {% if session.get('loggedin') and session.get('is_admin') %}
-                            
+
                             <button id="openContactForm"
                                 class="toggle text-md bell  m-1 hover:text-white  md:flex w-full md:w-auto px-2 py-1  text-left bg-red-800 hover:bg-red-900 text-white rounded-md">
                                 Admin! {{ session.get('email') }}
@@ -264,7 +265,7 @@
                             </div>
 
                             {% elif session.get('loggedin') %}
-                            
+
                             <button id="openContactForm"
                                 class="toggle text-md bell  m-1 hover:text-white  md:flex w-full md:w-auto px-2 py-1  text-left bg-red-800 hover:bg-red-900 text-white rounded-md">
                                 Hi! {{ session.get('email') }}
@@ -320,65 +321,109 @@
     {% endif %}
     {% endwith %}
     {% block content %} {% endblock %}
-
-    <!-- whatsapp chat -->
-    <div class="fixed bottom-20 right-2 z-50 animate-bounce">
-        <a href="https://wa.me/254727464224" class="" target="_blank">
-            <svg fill="#000000" width="60px" height="60px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                class="icon w-12 h-12">
+<!-- whatsapp chat -->
+    <div class="fixed bottom-4 left-4 z-50 animate-bounce">
+        <a href="https://wa.me/254727464224" target="_blank" class="block">
+            <svg class="w-12 h-12 md:w-16 md:h-16" fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#25D366"
                     d="M16 0C7.163 0 0 7.163 0 16c0 2.821.734 5.479 2.015 7.82L0 32l8.406-2.016A15.943 15.943 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm9.705 23.87c-.371 1.043-2.178 1.979-3.043 2.068-.784.077-1.785.108-2.872-.17-.663-.158-1.514-.49-2.61-1.002-4.57-2.104-7.536-6.878-7.77-7.203-.232-.325-1.86-2.48-1.86-4.73 0-2.25 1.177-3.349 1.591-3.814.371-.433.981-.651 1.571-.651.188 0 .358.01.507.018.446.019.668.03.961.744.371.902 1.264 3.125 1.37 3.348.106.222.177.481.032.775-.148.302-.222.482-.444.74-.223.26-.468.58-.67.78-.22.228-.448.476-.195.924.252.447 1.118 1.836 2.4 2.976 1.653 1.472 3.033 1.932 3.501 2.147.467.215.744.195 1.02-.117.276-.312 1.178-1.338 1.332-1.611.154-.272.221-.453.443-.744.223-.291.444-.3.743-.204.3.096 1.888.89 2.211 1.048.325.16.556.235.638.364.083.13.083.75-.29 1.793z" />
             </svg>
         </a>
     </div>
-    <!-- scroll top -->
-    <div class="flex justify-start z-50">
-        <div id="scrollToTopButton" class="scroll-to-top bottom-0 left-0 hidden" onclick="scrollToTop()">
-            <svg fill="#000000" width="50px" height="50px" viewBox="0 0 24 24" id="up-arrow-circle"
-                data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
-                class="icon flat-color animate-pulse w-12 h-12">
-                <circle id="primary" cx="12" cy="12" r="10" style=""></circle>
-                <path id="secondary" d="M10 16L14 16L14 10L16 10L12 6L8 10L10 10L10 16Z" style="fill: rgb(241, 198, 3)">
-                </path>
+
+    <!-- whatsapp chat -->
+    <!-- <div class="fixed bottom-4 right-4 z-50 animate-bounce">
+        <a href="https://wa.me/254727464224" target="_blank" class="block">
+            <svg class="w-12 h-12 md:w-16 md:h-16" fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#25D366"
+                    d="M16 0C7.163 0 0 7.163 0 16c0 2.821.734 5.479 2.015 7.82L0 32l8.406-2.016A15.943 15.943 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm9.705 23.87c-.371 1.043-2.178 1.979-3.043 2.068-.784.077-1.785.108-2.872-.17-.663-.158-1.514-.49-2.61-1.002-4.57-2.104-7.536-6.878-7.77-7.203-.232-.325-1.86-2.48-1.86-4.73 0-2.25 1.177-3.349 1.591-3.814.371-.433.981-.651 1.571-.651.188 0 .358.01.507.018.446.019.668.03.961.744.371.902 1.264 3.125 1.37 3.348.106.222.177.481.032.775-.148.302-.222.482-.444.74-.223.26-.468.58-.67.78-.22.228-.448.476-.195.924.252.447 1.118 1.836 2.4 2.976 1.653 1.472 3.033 1.932 3.501 2.147.467.215.744.195 1.02-.117.276-.312 1.178-1.338 1.332-1.611.154-.272.221-.453.443-.744.223-.291.444-.3.743-.204.3.096 1.888.89 2.211 1.048.325.16.556.235.638.364.083.13.083.75-.29 1.793z" />
             </svg>
+        </a>
+    </div> -->
+
+
+    
+    <!-- footer modal confirm -->
+    <div id="modelConfirm"
+        class="fixed hidden z-50 inset-0 md:mt-16 bg-transparent bg-opacity-10 overflow-y-auto h-full w-full px-4 ">
+        <div class="relative top-40 mx-auto shadow-xl rounded-md bg-gray-200 max-w-lg">
+
+            <div class="flex justify-end p-2">
+                <button onclick="closeModal('modelConfirm')" type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-6 pt-0 text-center">
+                <svg class="w-20 h-20 text-red-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <h3 class="text-xl font-normal text-gray-500 mt-5 mb-6">These terms and conditions
+                    outline
+                    the professional relationship between Masika & Koross Advocates and our clients.</h3>
+
+
+                <p class="">
+                    They
+                    cover key areas like fees, confidentiality, and dispute resolution. By agreeing to these terms,
+                    clients understand their
+                    rights and responsibilities, and the firm's commitment to providing quality legal services.
+                </p>
+                <a href="#" onclick="closeModal('modelConfirm')"
+                    class="text-white mt-4 bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
+                    Yes, I'm sure
+                </a>
+
+            </div>
+
         </div>
     </div>
-    <!-- footer -->
-    <section class="  sticky h-screen  top-0  z-50  opacity-90 " style="background-color: rgb(244, 249, 252)">
 
+
+    <!-- footer -->
+    <section class="  sticky h-screen  top-0  z-40 bg-slate-100 ">
+        <!-- #020d1f -->
         <footer class="">
-            <div class="container mx-auto p-0 md:p-8 xl:px-0  ">
-                <div class="mx-auto max-w-8xl px-6 pb-10 pt-16 lg:mt-28  opacity-90 shadow-lg hover:shadow-xl 5"
+
+            <div class=" mx-auto p-0 md:p-8 xl:px-0  ">
+                <div class="mx-auto max-w-8xl px-6 pb-10 pt-16 rounded-lg lg:mt-28 shadow-lg opacity-50 hover:shadow-xl 5"
                     style="background-color: #150233;" data-aos="fade-up" data-aos-duration="1000">
+                    <button class="bg-red-700 text-white rounded-t-md px-4 py-2  hover:bg-rose-700 transition"
+                        onclick="openModal('modelConfirm')">
+                        Terms & Conditions
+                    </button>
                     <div class="xl:grid xl:grid-cols-3 xl:gap-4">
                         <div class="space-y-4 md:mt-16 lg:justify-normal md:justify-center justify-center ">
                             <div>
                                 <a href="/index"
-                                    class=" items-center flex justify-center mb-6 lg:justify-start space-x-3 transition-transform transform hover:-translate-y-2">
+                                    class="flex items-center justify-center mb-6 lg:justify-start space-x-3 transition-transform transform hover:-translate-y-1">
                                     <span class="text-rose-600 ">
-                                        <img width="380" height="57" src="../../static/images/m-logo.svg"
+                                        <img width="380" height="57" src="../static/images/m-logo.svg"
                                             class="custom-logo  bg-white p-2  rounded-lg transition-transform duration-500 transform ease-in-out hover:scale-110"
                                             alt="masika-logos">
                                     </span>
                                 </a>
 
                             </div>
-                            <div
-                                class="max-w-md pr-16 text-md text-gray-200 ml-0 sm:ml-0 md:ml-44 lg:ml-0 items-center flex sm:justify-center md:justify-center lg:justify-start">
-                                <h2 class="max-w-md pr-16 text-md text-gray-200 items-center bell font-bold  ">
-                                    Masika and Koross: Expert Legal Counsel. Strategic Solutions. Exceptional
-                                    Service.
-                                </h2>
-                            </div>
+
                             <div
                                 class="flex space-x-2 items-center sm:justify-start md:justify-center lg:justify-start">
-                                <a href="mailto:info@masikakoross.com" class="text-gray-200 hover:bg-red-700">
+                                <a href="mailto:info@masikakoross.com"
+                                    class="text-gray-200  transition-transform transform hover:-translate-y-1">
                                     <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
                                         class="h-6 w-6" aria-hidden="true">
                                         <path d="M4 4h16v16H4V4zm16 0l-8 8-8-8" />
                                     </svg>
                                 </a>
-                                <a href="tel:0794698693" class="text-gray-200 hover:bg-red-700">
+                                <a href="tel:0794698693"
+                                    class="text-gray-200  transition-transform transform hover:-translate-y-1">
                                     <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
                                         class="h-6 w-6" aria-hidden="true">
                                         <path
@@ -387,7 +432,7 @@
                                 </a>
 
                                 <a target="_blank" href="https://www.google.com/maps/place/Masika+%26+Koross+Advocates"
-                                    class="text-gray-200 hover:bg-red-700">
+                                    class="text-gray-200  transition-transform transform hover:-translate-y-1">
                                     <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
                                         class="h-6 w-6" aria-hidden="true">
                                         <path
@@ -395,7 +440,8 @@
                                     </svg>
                                 </a>
 
-                                <a href="" target="_blank" class="text-gray-200 hover:bg-red-700">
+                                <a href="" target="_blank"
+                                    class="text-gray-200  transition-transform transform hover:-translate-y-1">
                                     <span class="sr-only">Linkedin</span>
                                     <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
                                         class="h-6 w-6" aria-hidden="true">
@@ -405,7 +451,8 @@
                                     </svg>
                                 </a>
 
-                                <a href="" target="_blank" class="text-gray-200 hover:bg-red-700">
+                                <a href="" target="_blank"
+                                    class="text-gray-200  transition-transform transform hover:-translate-y-1">
                                     <span class="sr-only">Twitter</span>
                                     <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
                                         class="h-6 w-6" aria-hidden="true">
@@ -417,7 +464,7 @@
 
 
                                 <a href="https://www.facebook.com/bernard.emoyo/" target="_blank"
-                                    class="text-gray-200 hover:bg-red-700">
+                                    class="text-gray-200  transition-transform transform hover:-translate-y-1">
                                     <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
                                         class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -426,28 +473,10 @@
                                     </svg>
                                 </a>
 
-                                <a href="https://linkedin.com/in/bernard-rygss-8a25121b3/" target="_blank"
-                                    class="text-gray-200 hover:bg-red-700">
-                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
-                                        class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M14.9167 0.725098C15.4029 0.725098 15.8692 0.918252 16.213 1.26207C16.5568 1.60589 16.75 2.0722 16.75 2.55843V15.3918C16.75 15.878 16.5568 16.3443 16.213 16.6881C15.8692 17.0319 15.4029 17.2251 14.9167 17.2251H2.08333C1.5971 17.2251 1.13079 17.0319 0.786971 16.6881C0.443154 16.3443 0.25 15.878 0.25 15.3918V2.55843C0.25 2.0722 0.443154 1.60589 0.786971 1.26207C1.13079 0.918252 1.5971 0.725098 2.08333 0.725098H14.9167ZM14.4583 14.9334V10.0751C14.4583 9.28254 14.1435 8.52245 13.5831 7.96203C13.0226 7.40161 12.2626 7.08676 11.47 7.08676C10.6908 7.08676 9.78333 7.56343 9.34333 8.27843V7.26093H6.78583V14.9334H9.34333V10.4143C9.34333 9.70843 9.91167 9.13093 10.6175 9.13093C10.9579 9.13093 11.2843 9.26614 11.525 9.50681C11.7656 9.74748 11.9008 10.0739 11.9008 10.4143V14.9334H14.4583ZM3.80667 5.82176C4.2151 5.82176 4.60681 5.65952 4.89561 5.37071C5.18442 5.0819 5.34667 4.6902 5.34667 4.28176C5.34667 3.42926 4.65917 2.7326 3.80667 2.7326C3.3958 2.7326 3.00177 2.89581 2.71124 3.18634C2.42072 3.47686 2.2575 3.8709 2.2575 4.28176C2.2575 5.13426 2.95417 5.82176 3.80667 5.82176ZM5.08083 14.9334V7.26093H2.54167V14.9334H5.08083Z"
-                                            fill="#e68523"></path>
-                                    </svg>
-                                </a>
 
-                                <a href="https://twitter.com/@bernard_omuse5" target="_blank"
-                                    class="text-gray-200 hover:bg-red-700">
-                                    <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
-                                        class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M0.5 0.51642H6.41516L11.8827 7.87074L18.6884 0.3479L20.3055 0.375987L12.6889 8.92871L20.5 19.4335H14.5872L9.42665 12.5801L3.12245 19.6021H1.53117L8.6439 11.5783L0.5 0.51642ZM5.8574 1.60248H2.73342L15.2317 18.3194H18.2994L5.8574 1.60248Z"
-                                            fill="#00000"></path>
-                                    </svg>
-                                </a>
 
                                 <a href="https://whatsapp.com/bernard omuse/" target="_blank"
-                                    class="text-gray-200 hover:bg-red-700">
+                                    class="text-gray-200  transition-transform transform hover:-translate-y-1">
                                     <svg fill="none" stroke="#ffffff" stroke-width="1.6" viewBox="0 0 24 24"
                                         class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -460,24 +489,24 @@
                             </div>
                         </div>
                         <div
-                            class="mt-16 md:mt-0 lg:mt-16 grid grid-cols-1 md:grid-cols-2 justify-center items-center md:justify-normal md:gap-2 gap-6 xl:col-span-2 xl:mt-0">
-                            <div class="md:grid md:grid-cols-2 md:gap-8 md:mt-6 lg:mt-16">
+                            class="text-center md:text-left mt-16 md:mt-0 lg:mt-16 grid grid-cols-1 md:grid-cols-2 justify-center items-center md:justify-normal md:gap-2 gap-6 xl:col-span-2 xl:mt-0">
+                            <div class="md:grid md:grid-cols-2 md:gap-8 md:mt-6 lg:mt-16  ">
                                 <div>
                                     <span class="flex-1 text-base-content">
                                         <h4 class="md:text-md text-lg text-red-600 bell-bold font-bold">
                                             Areas of Practice
                                         </h4>
                                     </span>
-                                    <ul class="text-lg md:text-sm transition-all duration-500 mx-auto max-w-xl bell ">
+                                    <ul class="text-lg md:text-sm transition-all duration-500 mx-auto max-w-xl  ">
                                         <li class="mb-2 md:mb-4">
-                                            <a href="{{ url_for('pages.arbitration') }}"
+                                            <a href="'{{url_for('pages.arbitration')}}"
                                                 class="text-white hover:text-[#d13642] font-medium border-b border-red-810 border-dashed rounded-md">
                                                 Arbitration and ADR
                                                 <span class="ml-2">&#8594;</span>
                                             </a>
                                         </li>
                                         <li class="mb-2 md:mb-4">
-                                            <a href="{{ url_for('pages.commercial') }}"
+                                            <a href="{{url_for('pages.commercial')}}"
                                                 class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                 Commercial and Corporate
                                                 <span class="ml-.5">&#8594;</span>
@@ -485,21 +514,21 @@
                                         </li>
 
                                         <li class="mb-2 md:mb-4">
-                                            <a href="{{ url_for('pages.employment') }}"
+                                            <a href="{{url_for('pages.employment')}}"
                                                 class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                 Employment and Labour
                                                 <span class="ml-.5">&#8594;</span>
                                             </a>
                                         </li>
                                         <li class="mb-2 md:mb-4">
-                                            <a href="{{ url_for('pages.environment') }}"
+                                            <a href="{{url_for('pages.environment')}}"
                                                 class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                 Environment and Land
                                                 <span class="ml-.5">&#8594;</span>
                                             </a>
                                         </li>
                                         <li class="mb-2 md:mb-4">
-                                            <a href="{{ url_for('pages.election') }}"
+                                            <a href="{{url_for('pages.election')}}"
                                                 class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                 Election Law and Practice
                                                 <span class="ml-2">&#8594;</span>
@@ -514,35 +543,35 @@
                                         <ul
                                             class="text-lg md:text-sm transition-all duration-500 mx-auto max-w-xl bell underline-dotted">
                                             <li class="mb-2 md:mb-4 ">
-                                                <a href="{{ url_for('pages.conveyance') }}"
+                                                <a href="{{url_for('pages.conveyance')}}"
                                                     class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                     Conveyancing $ Securities
                                                     <span class="ml-.5">&#8594;</span>
                                                 </a>
                                             </li>
                                             <li class="mb-2 md:mb-4">
-                                                <a href="{{ url_for('pages.procurement') }}"
+                                                <a href="{{url_for('pages.procurement')}}"
                                                     class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                     Procurement Law
                                                     <span class="ml-2">&#8594;</span>
                                                 </a>
                                             </li>
                                             <li class="mb-2 md:mb-4">
-                                                <a href="{{ url_for('pages.banking') }}"
+                                                <a href="{{url_for('pages.banking')}}"
                                                     class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                     Banking Law
                                                     <span class="ml-2">&#8594;</span>
                                                 </a>
                                             </li>
                                             <li class="mb-2 md:mb-4">
-                                                <a href="{{ url_for('pages.family') }}"
+                                                <a href="{{url_for('pages.family')}}"
                                                     class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                     Family Law
                                                     <span class="ml-2">&#8594;</span>
                                                 </a>
                                             </li>
                                             <li class="mb-2 md:mb-4">
-                                                <a href="{{ url_for('pages.health') }}"
+                                                <a href="{{url_for('pages.health')}}"
                                                     class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                     Health Law
                                                     <span class="ml-2">&#8594;</span>
@@ -558,21 +587,21 @@
                                         Focus</span>
                                     <ul class="text-lg md:text-sm transition-all duration-500 mx-auto max-w-xl">
                                         <li class="mb-2 md:mb-4">
-                                            <a href="{{ url_for('pages.criminal') }}"
+                                            <a href="{{url_for('pages.criminal')}}"
                                                 class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                 Criminal Law
                                                 <span class="ml-2">&#8594;</span>
                                             </a>
                                         </li>
                                         <li class="mb-2 md:mb-4">
-                                            <a href="{{ url_for('pages.interlectial') }}"
+                                            <a href="{{url_for('pages.interlectial')}}"
                                                 class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                 IP Law
                                                 <span class="ml-2">&#8594;</span>
                                             </a>
                                         </li>
                                         <li class="mb-2 md:mb-4">
-                                            <a href="{{ url_for('pages.tax') }}"
+                                            <a href="{{url_for('pages.tax')}}"
                                                 class="text-white hover:text-[#d13642] font-medium border-b border-gray-100 border-dashed rounded-md">
                                                 Tax Law
                                                 <span class="ml-2">&#8594;</span>
@@ -628,18 +657,16 @@
                         </div>
                     </div>
                     <div class="mt-16 border-t border-gray-400/30 pt-8 sm:mt-6 lg:mt-10">
-                        <div class="text-sm md:text-md text-center text-white">
+                        <div class="text-md text-center text-white">
                             <div>
-                                <span
-                                    class=" text-sm md:text-md items-center justify-center  bell-regular font-bold text-center">
-                                    ©<a href="/home">Masika and Koross</a>
+                                <span class=" items-center justify-center  bell-regular font-bold text-center">
+                                    ©<a href="home.html">Masika $ Koross</a>
                                     2024, All rights reserved.
                                 </span>
                             </div>
                             <div class="-ml-2">
-                                <span
-                                    class="text-sm md:text-md items-center justify-center  bell-regular font-bold text-center">
-                                    <a href="tel:+254707821269">Designed and Developed by Hark and Bernard
+                                <span class=" items-center justify-center  bell-regular font-bold text-center">
+                                    <a href="tel:+254707821269">Designed & Developed by Hark & Bernard
                                     </a>
                                     2024 .
                                 </span>
@@ -665,33 +692,34 @@
             displayArticles(updatedSection, true); // Partial update
         });
 
+   
         function renderMedia(link) {
-            // Check if the link is a YouTube video
             const youtubeMatch = link.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([\w-]+)/) ||
                 link.match(/(?:https?:\/\/)?youtu\.be\/([\w-]+)/);
             if (youtubeMatch) {
                 const videoId = youtubeMatch[1];
-                return `<iframe width="360" height="205" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+                return `<iframe class="w-full h-[180px] aspect-video rounded-md" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
             }
 
-            // Check if the link is an image (ends with common image extensions)
             const imageMatch = link.match(/\.(jpeg|jpg|gif|png|webp)$/i);
             if (imageMatch) {
-                return `<img src="${link}" alt="Article Image" class="w-full max-h-[205px] object-cover">`;
+                return `<img src="${link}" alt="Article Image" class="w-full h-[180px] object-cover rounded-md">`;
             }
 
-            // Check if the link is a video file (ends with video extensions)
             const videoMatch = link.match(/\.(mp4|mov|avi|mkv|webm)$/i);
             if (videoMatch) {
-                return `<video controls class="w-full max-h-80">
-                        <source src="${link}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>`;
+                return `<video controls class="w-full h-[180px] rounded-md object-cover">
+                    <source src="${link}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>`;
             }
 
-            // If it's not an image, YouTube video, or video file, just link it
-            return `<a href="${link}" target="_blank" class="text-blue-500 underline">${link}</a>`;
+            return `<a href="${link}" target="_blank" class="text-blue-500 underline flex items-center justify-center w-full h-[180px] rounded-md border border-gray-300">Open Link</a>`;
         }
+
+
+
+
 
         function displayArticles(featuredArticles, isPartialUpdate = false) {
             for (const [type, articles] of Object.entries(featuredArticles)) {
@@ -729,6 +757,9 @@
                 });
             }
         }
+
+
+       
 
         async function toggleFeatured(type, index, isFeatured) {
             try {
@@ -794,11 +825,23 @@
         });
     </script>
 
+    <!-- Humbuger -->
+    <script>
+        document.getElementById("hamburger").onclick = function toggleMenu() {
+            const navToggle = document.querySelectorAll(".toggle");
+            navToggle.forEach(element => {
+                element.classList.toggle("hidden");
+            });
+        };
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../static/js/consult.js"></script>
+    <script src="../static/js/about-slide.js"></script>
     <script src="../static/js/registers.js"></script>
+    <script src="../static/js/terms-modal.js"></script>
     <script src="../static/js/counter.js"></script>
     <script src="../static/js/background-changer.js"></script>
     <script src="../static/js/footer-accordion.js"></script>

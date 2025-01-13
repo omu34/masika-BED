@@ -54,6 +54,7 @@ def constitutional():
 def election():
     return render_template("election.html")
 
+
 @pages.route("/commercial")
 def commercial():
     return render_template("commercial.html")
@@ -66,13 +67,14 @@ def banking():
 def employment():
     return render_template("employment.html")
 
-@pages.route("/interlectial")
-def interlectial():
-    return render_template("interlectial.html")
 
 @pages.route("/tax")
 def tax():
     return render_template("tax.html")
+
+@pages.route("/interlectial")
+def interlectial():
+    return render_template("interlectial.html")
 
 @pages.route("/criminal")
 def criminal():

@@ -5,36 +5,36 @@
 
 {% block content %}
 <div class="max-w-7xl mx-auto">
-<div class="bg-white p-6 rounded-lg shadow-md">
-    <h2 class="text-xl font-extrabold mb-4 bell-bold text-red-700">Existing Articles</h2>
-    <div id="existing-articles" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Articles will be dynamically loaded here -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-extrabold mb-4 bell-bold text-red-700">Existing Articles</h2>
+        <div id="existing-articles" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Articles will be dynamically loaded here -->
+        </div>
     </div>
-</div>
 
-<div class="bg-white p-6 rounded-lg shadow-md max-w-5xl mx-auto">
-    <form id="article-form" class="mt-6 max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg space-y-4"
-        enctype="multipart/form-data">
-        
+    <div class="bg-white p-6 rounded-lg shadow-md max-w-5xl mx-auto">
+        <form id="article-form" class="mt-6 max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg space-y-4"
+            enctype="multipart/form-data">
+
             <div>
                 <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
                 <input type="text" name="title" id="title" placeholder="Title" required
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
             </div>
-        
+
             <div>
                 <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                 <textarea name="description" id="description" placeholder="Description" required
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
             </div>
-        
+
             <div>
                 <label for="link" class="block text-sm font-medium text-gray-700">Link (optional)</label>
                 <input type="text" name="link" id="link" placeholder="Link (optional)"
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
                 <div id="link-preview" class="mt-2 hidden"></div>
             </div>
-        
+
             <div>
                 <label for="file" class="block text-sm font-medium text-gray-700">Upload File</label>
                 <input type="file" name="file" id="file"
@@ -42,32 +42,32 @@
                     onchange="handleFileUpload(this)" />
                 <div id="file-preview" class="mt-2 hidden"></div>
             </div>
-        
+
             <div>
                 <label for="time_to_read" class="block text-sm font-medium text-gray-700">Read Time (optional)</label>
                 <input type="integer" name="time_to_read" id="time_to_read" placeholder="Read Time (optional)"
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
             </div>
-        
-            
-        <div>
-            <label for="article-type" class="block text-sm bell-bold font-medium">Article Type</label>
-            <select id="article-type" name="article_type"
-                class="w-full bell-regular text-red-600 border-red-800 rounded-lg shadow-sm">
-                <option value="news">News</option>
-                <option value="videos">Videos</option>
-                <option value="gallery">Gallery</option>
-            </select>
-        </div>
 
-        <div class="text-center">
-            <button type="submit"
-                class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                Add Article
-            </button>
-        </div>
-    </form>
-</div>
+
+            <div>
+                <label for="article-type" class="block text-sm bell-bold font-medium">Article Type</label>
+                <select id="article-type" name="article_type"
+                    class="w-full bell-regular text-red-600 border-red-800 rounded-lg shadow-sm">
+                    <option value="news">News</option>
+                    <option value="videos">Videos</option>
+                    <option value="gallery">Gallery</option>
+                </select>
+            </div>
+
+            <div class="text-center">
+                <button type="submit"
+                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Add Article
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 <script>
     const socket = io();
@@ -217,9 +217,3 @@
 
 
 {% endblock %}
-
-
-
-
-
-
