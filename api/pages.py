@@ -1,9 +1,6 @@
-import os
 from flask import Blueprint, render_template
 
-
 pages = Blueprint("pages", __name__)
-
 
 @pages.route("/about-us")
 def about():
@@ -67,10 +64,10 @@ def banking():
 def employment():
     return render_template("employment.html")
 
-
 @pages.route("/tax")
 def tax():
     return render_template("tax.html")
+
 
 @pages.route("/interlectial")
 def interlectial():

@@ -149,6 +149,7 @@ def create_app():
         ("api.models", "models"),
         ("api.pages", "pages"),
         ("api.googles", "googles"),
+        ("api.tasks", "tasks"),
     ]
 
     for module_path, blueprint_name in blueprints:

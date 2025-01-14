@@ -1,9 +1,12 @@
-from flask import url_for, Blueprint, current_app
+from flask import url_for, Blueprint, current_app, flash
 from flask_mail import Message
 from threading import Thread
 import re
 import os
+from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
+from .models import User
+from . import db  
 
 tasks = Blueprint("tasks", __name__)
 
@@ -70,3 +73,25 @@ def validate_article_data(title, description, time_to_read):
     if not time_to_read.isdigit():
         return "Time to read must be a number."
     return None
+
+# Function to Create User
+
+
+def create_user(username, email, password, is_admin=False):
+    # Check if the user already exists
+    existing_user = User.query.filter_by(username=username).first()
+
+    if existing_user:
+        flash(f'User with username "{username}" already exists!')
+        return None  # Or handle it in another way (e.g., update user info)
+
+    # If the user doesn't exist, create a new user
+    new_user = User(
+        username=username,
+        email=email,
+        password=generate_password_hash(password, method='scrypt'),
+        is_admin=is_admin
+    )
+    db.session.add(new_user)
+    db.session.commit()
+    return new_user

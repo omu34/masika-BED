@@ -83,25 +83,7 @@ class Message(db.Model):
     def __repr__(self):
         return f'<Message {self.id} - {self.name}>'
 
-# Function to Create User
-def create_user(username, email, password, is_admin=False):
-    # Check if the user already exists
-    existing_user = User.query.filter_by(username=username).first()
-    
-    if existing_user:
-        flash(f'User with username "{username}" already exists!')
-        return None  # Or handle it in another way (e.g., update user info)
 
-    # If the user doesn't exist, create a new user
-    new_user = User(
-        username=username,
-        email=email,
-        password=generate_password_hash(password, method='scrypt'),
-        is_admin=is_admin
-    )
-    db.session.add(new_user)
-    db.session.commit()
-    return new_user
 
 
 

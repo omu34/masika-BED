@@ -1,6 +1,6 @@
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
-from .tasks import send_email
+from .tasks import send_email, create_user
 from . import execute_query
 import os
 
