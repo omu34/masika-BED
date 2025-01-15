@@ -4,36 +4,24 @@
 
 {% block content %}
 <!--Banner component -->
-<div class="bg-cover bg-center md:-mt-16    h-auto text-white py-24 px-10 object-fill"
-    style="background-image: url(../static/images/tax.webp)">
-    <div class="md:w-full flex flex-col items-center justify-center md:mt-20">
-        <h1 class="text-center   bell-extrabold     text-white ">Tax Law</h1>
-        <p class=" mb-10 text-red-600 md:text-white text-md bell font-bold sm:text-xl md:text-2xl text-center   ">
-            Discover our commitment to excellence and client satisfaction.
+
+<div class="relative w-full md:-mt-16 h-[320px] md:h-[400px] text-white" id="home">
+<div class="absolute inset-0 opacity-90">
+    <img src="../static/images/tax.webp" alt="Background Image" class="object-cover object-center w-full h-full" />
+
+</div>
+<div class="absolute inset-9 flex flex-col md:flex-row items-center justify-between mx-auto max-w-7xl">
+    <div class="md:w-1/2 mb-4 md:mb-0">
+        <h1 class="text-red-700 font-medium text-4xl md:text-5xl leading-tight mb-2">Tax Law
+        </h1>
+        <p class="font-regular text-red-700 text-xl mb-8 mt-4">Discover our commitment to excellence and client satisfaction..
         </p>
-        <!-- <button href="#" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800"> -->
-
-        <!-- SVG Container -->
-        <div class="container mt-4 mx-auto max-w-7xl flex justify-center">
-            <svg fill="#000000" width="50px" height="50px" viewBox="0 0 24 24" id="down-arrow-circle"
-                data-name="Flat Color" xmlns="http://www.w3.org/2000/svg"
-                class="icon-container icon flat-color animate-bounce w-12 h-12" onclick="scrollToSection()">
-                <circle id="primary" cx="12" cy="12" r="10" style="fill: rgb(0, 0, 0);"></circle>
-                <path id="secondary"
-                    d="M14.14,13H13V7a1,1,0,0,0-2,0v6H9.86a1,1,0,0,0-.69,1.5l2.14,3.12a.82.82,0,0,0,1.38,0l2.14-3.12A1,1,0,0,0,14.14,13Z"
-                    style="fill: rgb(44, 169, 188);">
-                    Contact us
-                </path>
-
-            </svg>
-        </div>
-        <!-- </button> -->
-
-
+        <a href="{{ url_for('pages.contact_us') }}"
+            class="px-6 py-3 bg-[#801616] text-white font-medium rounded-full hover:bg-[#c09858]  transition duration-200">Contact
+            Us</a>
     </div>
 </div>
-
-
+</div>
 <!-- Tax section -->
  <div class="bg-white">
 <div class="sm:flex items-center max-w-7xl mx-auto">

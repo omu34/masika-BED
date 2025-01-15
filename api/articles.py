@@ -45,24 +45,53 @@ def upload_article():
         return jsonify({'message': 'Article uploaded successfully', 'article': article}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+
+
+
 # Directing saves to client
-
-
-@articles.route('/blog')
-def blog():
+@articles.route('/home')
+def home():
     """Render the homepage."""
-    return render_template('blog.html')
+    return render_template('home.html')
 
 # Socket.IO event for client connection
+# @socketio.on('connect')
+# def handle_connect():
+#     """Send the latest two articles of each type to the client."""
+#     featured_articles = {}
+#     for article_type in VALID_ARTICLE_TYPES:
+#         articles = (
+#             FeaturedArticle.query.filter_by(type=article_type)
+#             .order_by(FeaturedArticle.id.desc())
+#             .limit(2)  # Fetch only the last 2 articles
+#             .all()
+#         )
+#         featured_articles[article_type] = [
+#             {
+#                 "id": article.id,
+#                 "title": article.title,
+#                 "description": article.description,
+#                 "link": article.link,
+#                 "time_featured": article.time_featured,
+#                 "time_to_read": article.time_to_read,
+#                 "is_featured": article.is_featured,
+#             }
+#             for article in articles
+#         ]
+#     emit('initial_data', featured_articles)
+
+# SocketIO event to send the last two updated articles to the client (for home page)
+
+
 @socketio.on('connect')
 def handle_connect():
-    """Send the latest two articles of each type to the client."""
+    """Send the latest two articles of each type to the client for the home page."""
     featured_articles = {}
     for article_type in VALID_ARTICLE_TYPES:
         articles = (
             FeaturedArticle.query.filter_by(type=article_type)
             .order_by(FeaturedArticle.id.desc())
-            .limit(2)  # Fetch only the last 2 articles
+            .limit(2)  # Fetch only the last 2 updated articles
             .all()
         )
         featured_articles[article_type] = [
@@ -77,8 +106,8 @@ def handle_connect():
             }
             for article in articles
         ]
-    emit('initial_data', featured_articles)
-
+    # Changed event name to differentiate
+    emit('initial_data_home', featured_articles)
 
 @articles.route('/uploads/<folder>/<filename>')
 def uploaded_file(folder, filename):
